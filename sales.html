@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works | eCon Growth — The Sales Process</title>
+<meta name="description" content="No pitch decks. No pressure. Just a real conversation about your operation and what changes when Command OS is running it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070A0F;--bg2:#0A0E15;--bg3:#0D1219;--bg4:#060810;--green:#21E68A;--gd:rgba(33,230,138,.08);--gg:rgba(33,230,138,.25);--gb:rgba(33,230,138,.15);--text:#EAF0FF;--mu:rgba(234,240,255,.52);--mu2:rgba(234,240,255,.22);--mu3:rgba(234,240,255,.08);--bd:rgba(234,240,255,.06);--red:#EF4444}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;line-height:1.5}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");opacity:.3;pointer-events:none;z-index:0}
+@keyframes pd{0%,100%{box-shadow:0 0 6px rgba(33,230,138,.25),0 0 0 0 rgba(33,230,138,.35)}50%{box-shadow:0 0 14px rgba(33,230,138,.25),0 0 0 6px rgba(33,230,138,0)}}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ob{0%,100%{transform:translate(0,0)}50%{transform:translate(22px,-26px)}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.v{opacity:1;transform:translateY(0)}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 48px;height:64px;display:flex;align-items:center;transition:background .4s,border-color .4s}
+.nav.scrolled{background:rgba(7,10,15,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(234,240,255,.06)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);white-space:nowrap;flex-shrink:0}
+.logo-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 10px rgba(33,230,138,.5);animation:pd 2.2s infinite;flex-shrink:0}
+.logo-e{color:var(--text)}.logo-c{color:var(--green)}.logo-rest{color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0 auto;padding:0}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(234,240,255,.52);padding:6px 12px;border-radius:5px;text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(234,240,255,.08)}
+.nav-cta{background:#21E68A;color:#070A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:12px;padding:9px 20px;border-radius:7px;letter-spacing:0;transition:all .2s;flex-shrink:0;white-space:nowrap;text-decoration:none;display:inline-block}
+.nav-cta:hover{background:#fff;color:#070A0F}
+
+.btn-primary{display:inline-flex;align-items:center;gap:9px;background:var(--green);color:#070A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;padding:16px 32px;border-radius:8px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 0 32px rgba(33,230,138,.28);transition:all .25s;white-space:nowrap}
+.btn-primary:hover{background:#fff;transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--text);font-family:'Syne',sans-serif;font-weight:600;font-size:15px;padding:16px 28px;border-radius:8px;border:1px solid rgba(234,240,255,.1);cursor:pointer;text-decoration:none;transition:all .25s}
+.btn-ghost:hover{border-color:var(--gb);color:var(--green);background:var(--gd)}
+
+.section{padding:120px 0}
+.section-inner{max-width:1100px;margin:0 auto;padding:0 52px}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.section-label::before,.section-label::after{content:'';flex:1;max-width:36px;height:1px;background:var(--green)}
+.section-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5.5vw,68px);letter-spacing:1.5px;line-height:.9;margin-bottom:20px}
+.section-h2 .green{color:var(--green)}.section-h2 .ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+.section-sub{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:300;color:var(--mu);line-height:1.85;max-width:640px}
+
+/* HERO */
+.hero{min-height:80vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(33,230,138,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(33,230,138,.018) 1px,transparent 1px);background-size:56px 56px;z-index:0}
+.orb{position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(33,230,138,.065) 0%,transparent 60%);top:-300px;right:-200px;filter:blur(90px);animation:ob 18s ease-in-out infinite;border-radius:50%;z-index:0}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:100px 52px 80px;width:100%;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gd);border:1px solid var(--gb);border-radius:4px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:36px;animation:fu .6s .1s both}
+.badge-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pd 2s infinite;flex-shrink:0}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8.5vw,108px);letter-spacing:.5px;line-height:.88;margin-bottom:32px;animation:fu .7s .2s both}
+.hero-h1 .green{color:var(--green)}.hero-h1 .ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+.hero-body{font-family:'JetBrains Mono',monospace;font-size:clamp(13px,1.5vw,16px);font-weight:300;color:var(--mu);line-height:1.9;max-width:600px;margin:0 auto 44px;animation:fu .7s .35s both}
+.hero-body strong{color:var(--text);font-weight:500}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;animation:fu .6s .5s both}
+
+/* STEPS */
+.steps-sec{background:var(--bg2);border-top:1px solid var(--bd)}
+.steps-list{display:flex;flex-direction:column;gap:3px;margin-top:60px}
+.step-card{display:grid;grid-template-columns:72px 1fr;gap:28px;align-items:start;padding:36px 40px;background:var(--bg3);border:1px solid var(--bd);border-radius:12px;transition:border-color .3s;position:relative;overflow:hidden}
+.step-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--green);opacity:0;transition:opacity .3s}
+.step-card:hover{border-color:var(--gb)}.step-card:hover::before{opacity:1}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:rgba(33,230,138,.2);line-height:1;transition:color .3s}
+.step-card:hover .step-num{color:var(--green)}
+.step-title{font-family:'Syne',sans-serif;font-size:19px;font-weight:700;margin-bottom:10px}
+.step-text{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.85}
+.step-text strong{color:var(--text);font-weight:500}
+.step-tag{display:inline-block;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);background:var(--gd);border:1px solid var(--gb);padding:4px 10px;border-radius:4px;letter-spacing:.08em;text-transform:uppercase}
+
+/* DIFF GRID */
+.diff-sec{background:var(--bg);border-top:1px solid var(--bd)}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
+.diff-card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:36px;transition:all .3s}
+.diff-card:hover{border-color:var(--gb);transform:translateY(-4px)}
+.diff-icon{font-size:26px;margin-bottom:14px;display:block}
+.diff-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:10px}
+.diff-text{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.8}
+
+/* WHO IT'S FOR */
+.icp-sec{background:var(--bg2);border-top:1px solid var(--bd)}
+.icp-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:60px}
+.icp-checks{display:flex;flex-direction:column;gap:4px}
+.icp-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:rgba(7,10,15,.8);border:1px solid var(--bd);border-radius:8px;transition:all .3s}
+.icp-item:hover{background:rgba(33,230,138,.04);border-color:var(--gb)}
+.icp-check{width:20px;height:20px;border-radius:5px;background:var(--gd);border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-size:10px;color:var(--green);font-weight:700}
+.icp-check.no{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2);color:var(--red)}
+.icp-text{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:rgba(234,240,255,.8);line-height:1.65}
+.icp-text strong{color:var(--text);font-weight:500}
+.icp-cta-card{background:rgba(7,10,15,.95);border:1px solid var(--gb);border-radius:14px;padding:40px;position:sticky;top:80px;box-shadow:0 0 80px rgba(33,230,138,.06)}
+.icp-cta-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pd 2s infinite;display:inline-block;margin-right:8px}
+.icp-cta-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center}
+.icp-cta-h{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1.5px;line-height:.95;margin-bottom:14px}
+.icp-cta-h .green{color:var(--green)}
+.icp-cta-p{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.9;margin-bottom:24px}
+.icp-cta-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);text-align:center;margin-top:12px;line-height:1.6}
+
+/* PROOF */
+.proof-sec{background:var(--bg);border-top:1px solid var(--bd)}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;border-radius:12px;overflow:hidden;margin-top:60px}
+.proof-cell{background:var(--bg2);border:1px solid var(--bd);padding:40px 28px;text-align:center}
+.proof-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--green);line-height:1;margin-bottom:8px}
+.proof-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);letter-spacing:.06em;text-transform:uppercase;line-height:1.6}
+
+/* PAGE CTA */
+.page-cta{padding:130px 0;background:var(--bg2);border-top:1px solid var(--bd);text-align:center;position:relative;overflow:hidden}
+.page-cta::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(33,230,138,.07) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(80px);pointer-events:none}
+.page-cta-inner{position:relative;z-index:1;max-width:660px;margin:0 auto;padding:0 52px}
+.page-cta-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,78px);letter-spacing:1px;line-height:.9;margin-bottom:24px}
+.page-cta-h .green{color:var(--green)}.page-cta-h .ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+.page-cta-p{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:300;color:var(--mu);line-height:1.85;margin-bottom:40px}
+.page-cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.page-cta-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);margin-top:16px;letter-spacing:.06em}
+
+/* FOOTER */
+.footer{padding:72px 0 40px;background:var(--bg4);border-top:1px solid var(--bd);position:relative;z-index:1}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 52px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:40px}
+.footer-brand p{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.8;margin-top:16px;max-width:280px}
+.footer-phone{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green);margin-top:14px;letter-spacing:.04em}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu2);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mu);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--green)}
+.footer-social-row{padding-top:28px;border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-social-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu2);letter-spacing:.14em;text-transform:uppercase}
+.footer-social-icons{display:flex;align-items:center;gap:10px}
+.footer-si{width:42px;height:42px;border-radius:10px;background:rgba(33,230,138,.04);border:1px solid rgba(33,230,138,.12);display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(234,240,255,.4);transition:all .25s}
+.footer-si:hover{color:#21E68A;border-color:rgba(33,230,138,.4);background:rgba(33,230,138,.06);transform:translateY(-2px)}
+.footer-si svg{width:18px;height:18px}
+.footer-legal-row{display:flex;justify-content:center;gap:32px;padding:20px 0;flex-wrap:wrap}
+.footer-legal-row a{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(234,240,255,.38);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.footer-legal-row a:hover{color:var(--green)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--bd);flex-wrap:wrap;gap:12px}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);letter-spacing:.06em}
+.footer-tagline{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2)}
+.footer-tagline span{color:var(--green)}
+
+@media(max-width:900px){
+  .nav{padding:0 24px}.nav-links{display:none}
+  .hero-inner{padding:80px 24px 60px}
+  .section{padding:80px 0}.section-inner{padding:0 24px}
+  .diff-grid{grid-template-columns:1fr}.proof-grid{grid-template-columns:1fr 1fr}
+  .icp-layout{grid-template-columns:1fr;gap:48px}.icp-cta-card{position:relative;top:auto}
+  .step-card{grid-template-columns:1fr;gap:10px}
+  .footer-inner{padding:0 24px}.footer-top{grid-template-columns:1fr 1fr;gap:36px}
+  .page-cta-inner{padding:0 24px}
+}
+
+/* Universal mobile safety net */
+@media(max-width:900px){
+  img{max-width:100%;height:auto}
+  .section-inner{padding:0 24px!important}
+  [style*="grid-template-columns:2fr"]{grid-template-columns:1fr!important}
+  .hero-btns,.page-cta-btns{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-ghost{justify-content:center;text-align:center}
+}
+
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a href="index.html" class="logo"><div class="logo-dot"></div><span class="logo-e">e</span><span class="logo-c">C</span><span class="logo-rest">on Growth</span></a>
+  <ul class="nav-links">
+    <li><a href="command-os.html">Model</a></li>
+    <li><a href="sales.html" class="active">Sales</a></li>
+    <li><a href="secondbrain.html">Meet Roger</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="visibility.html">Visibility</a></li>
+  </ul>
+  <a href="book.html" class="nav-cta">Book Your Growth Call</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div><div class="orb"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="badge-dot"></div>No Pitch Decks · No Pressure · Real Talk</div>
+    <h1 class="hero-h1">WE DON'T SELL.<br><span class="green">WE SHOW YOU</span><br><span class="ghost">WHAT CHANGES.</span></h1>
+    <p class="hero-body">Most sales processes are designed to get you to say yes before you're ready. Ours is designed to help you make the <strong>right decision</strong> — whether that's working with us or not.</p>
+    <div class="hero-btns">
+      <a href="book.html" class="btn-primary">Book Your Growth Call →</a>
+      <a href="#process" class="btn-ghost">See the Process ↓</a>
+    </div>
+  </div>
+</section>
+
+<section class="section steps-sec" id="process">
+  <div class="section-inner">
+    <div class="rv" style="text-align:center">
+      <div class="section-label">The Process</div>
+      <h2 class="section-h2" style="text-align:center">FROM FIRST CALL<br>TO <span class="green">DAY ONE LIVE.</span></h2>
+      <p class="section-sub" style="margin:0 auto;text-align:center">Four steps. No surprises. No pressure at any stage.</p>
+    </div>
+    <div class="steps-list rv">
+      <div class="step-card"><div class="step-num">01</div><div><div class="step-title">Book a Growth Call</div><p class="step-text">30 minutes. You talk to Kristopher directly. He'll ask about your operation: trucks, dispatch, where revenue is leaking, what you're trying to build. <strong>He comes prepared because he's looked up your company before the call.</strong></p><span class="step-tag">30 Minutes · No Pitch Deck</span></div></div>
+      <div class="step-card"><div class="step-num">02</div><div><div class="step-title">We Show You the System — In Your Context</div><p class="step-text">Not a generic demo. We walk through Command OS using your operation as the example. <strong>You see exactly what changes for your specific business.</strong> You see Roger answer a call. You see the dashboard. You see what your Monday morning report would look like.</p><span class="step-tag">Live Walkthrough · Your Operation</span></div></div>
+      <div class="step-card"><div class="step-num">03</div><div><div class="step-title">You Decide — No Deadline, No Pressure</div><p class="step-text">If it's a fit, we tell you what onboarding looks like and what it costs. If it's not the right time, we tell you that too. <strong>There's no hard close. No "this offer expires in 24 hours."</strong> We want clients who are ready — not clients we had to pressure into it.</p><span class="step-tag">You're In Control · No Hard Close</span></div></div>
+      <div class="step-card"><div class="step-num">04</div><div><div class="step-title">Onboarding Starts — System Live Day One</div><p class="step-text">Once you're in, we build your instance, configure your workflows, and set up Roger. <strong>Day one, the system is already working.</strong> You wake up the next morning with a morning brief in your inbox and leads in your pipeline from calls Roger handled overnight.</p><span class="step-tag">Full Setup Included · Live on Day One</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section diff-sec">
+  <div class="section-inner">
+    <div class="rv" style="text-align:center">
+      <div class="section-label">Why It's Different</div>
+      <h2 class="section-h2" style="text-align:center">NOT WHAT YOU'VE<br><span class="green">DEALT WITH BEFORE.</span></h2>
+    </div>
+    <div class="diff-grid rv">
+      <div class="diff-card"><span class="diff-icon">🎯</span><div class="diff-title">One Industry. Full Focus.</div><div class="diff-text">We don't serve plumbers, roofers, or electricians. We serve HVAC. Every workflow was purpose-built for how HVAC companies run.</div></div>
+      <div class="diff-card"><span class="diff-icon">🔧</span><div class="diff-title">Built by Someone Who Ran It.</div><div class="diff-text">Kristopher spent a decade in HVAC before building this. He knows what a bad dispatch day feels like and what your tech needs before they knock.</div></div>
+      <div class="diff-card"><span class="diff-icon">📈</span><div class="diff-title">We're Building Your Exit Too.</div><div class="diff-text">Watson's background is in structuring businesses for 7–8x exits. When you install Command OS, you're building infrastructure that makes your business worth what it should be worth.</div></div>
+      <div class="diff-card"><span class="diff-icon">⚡</span><div class="diff-title">No Setup Limbo.</div><div class="diff-text">Most software companies sell you a 90-day onboarding. We're live on day one. Roger's answering calls. Dispatch is systematic. The morning brief is in your inbox.</div></div>
+      <div class="diff-card"><span class="diff-icon">🤝</span><div class="diff-title">We're Selective on Purpose.</div><div class="diff-text">We only work with HVAC owners between 2–15 trucks who are ready to run a real operation. We turn people away. That's how we make sure every client actually gets results.</div></div>
+      <div class="diff-card"><span class="diff-icon">💬</span><div class="diff-title">Direct Access to the Founders.</div><div class="diff-text">You're not handed off to a support ticket system. You talk to Kristopher. You get Watson's strategic perspective when it's relevant.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section icp-sec">
+  <div class="section-inner">
+    <div class="rv">
+      <div class="section-label">Who We Work With</div>
+      <h2 class="section-h2">WE'RE SPECIFIC ABOUT<br>WHO <span class="green">WE TAKE ON.</span></h2>
+      <p class="section-sub" style="margin-bottom:52px">eCon Growth isn't for everyone. Here's exactly who we built this for.</p>
+    </div>
+    <div class="icp-layout rv">
+      <div class="icp-checks">
+        <div class="icp-item"><div class="icp-check">✓</div><div class="icp-text"><strong>2–15 trucks running</strong> with real revenue — but the operation still feels like organized chaos most days.</div></div>
+        <div class="icp-item"><div class="icp-check">✓</div><div class="icp-text"><strong>You're still the bottleneck.</strong> Every problem, every escalation, every decision ends up back on you.</div></div>
+        <div class="icp-item"><div class="icp-check">✓</div><div class="icp-text"><strong>You want real visibility</strong> — close rate, avg ticket, which tech is profitable, what's in the pipeline next month.</div></div>
+        <div class="icp-item"><div class="icp-check">✓</div><div class="icp-text"><strong>You want to scale without breaking.</strong> More trucks should mean more money — not more problems.</div></div>
+        <div class="icp-item"><div class="icp-check">✓</div><div class="icp-text"><strong>You're thinking about the long game.</strong> Stepping back, selling, or building something that doesn't fall apart without you.</div></div>
+        <div class="icp-item" style="border-color:rgba(239,68,68,.18)"><div class="icp-check no">✗</div><div class="icp-text" style="color:var(--mu)"><strong style="color:rgba(234,240,255,.4)">Not a fit</strong> if you want a magic button. This is a real system — it requires real implementation.</div></div>
+      </div>
+      <div class="icp-cta-card">
+        <div class="icp-cta-label"><span class="icp-cta-dot"></span>Ready to Talk?</div>
+        <h3 class="icp-cta-h">BOOK A<br><span class="green">GROWTH CALL.</span></h3>
+        <p class="icp-cta-p">30 minutes with Kristopher. We look at your operation, show you what Command OS changes, and tell you honestly whether it's the right move right now.</p>
+        <a href="book.html" class="btn-primary" style="width:100%;justify-content:center">Book Your Growth Call →</a>
+        <div class="icp-cta-note">No contract · Full onboarding included<br>(615) 664-9178 · Built for one industry: HVAC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section proof-sec">
+  <div class="section-inner">
+    <div class="proof-grid rv">
+      <div class="proof-cell"><div class="proof-num">24/7</div><div class="proof-label">AI handling every<br>call, lead &amp; follow-up</div></div>
+      <div class="proof-cell"><div class="proof-num">Day 1</div><div class="proof-label">System live, Roger<br>answering, dispatch running</div></div>
+      <div class="proof-cell"><div class="proof-num">7–8x</div><div class="proof-label">Exit valuation target<br>built in from day one</div></div>
+      <div class="proof-cell"><div class="proof-num">1</div><div class="proof-label">Industry. HVAC.<br>Everything built for it.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="page-cta">
+  <div class="page-cta-inner rv">
+    <h2 class="page-cta-h">READY TO HAVE<br><span class="green">THE CONVERSATION?</span></h2>
+    <p class="page-cta-p">Book a Growth Call. 30 minutes with Kristopher. No pitch. No pressure. Just an honest look at your operation and what changes when the system is running it.</p>
+    <div class="page-cta-btns">
+      <a href="book.html" class="btn-primary">Book Your Growth Call →</a>
+      <a href="tel:6156649178" class="btn-ghost">Call (615) 664-9178</a>
+    </div>
+    <div class="page-cta-note">No contract · Full onboarding included · Built for one industry: HVAC</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-dot"></div><span class="logo-e">e</span><span class="logo-c">C</span><span class="logo-rest">on Growth</span></a>
+        <p>The AI Operating System built exclusively for HVAC business owners. More revenue. More control. Less chaos.</p>
+        <div class="footer-phone">(615) 664-9178</div>
+      </div>
+      <div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="command-os.html">Command OS</a></li><li><a href="secondbrain.html">Meet Roger</a></li><li><a href="visibility.html">Visibility Dashboard</a></li><li><a href="book.html">Book a Call</a></li></ul></div>
+      <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="investors.html">Investors</a></li></ul></div>
+      <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="blog.html">HVAC Growth Blog</a></li><li><a href="roi-calculator.html">ROI Calculator</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul></div>
+    </div>
+    <div class="footer-social-row">
+      <div class="footer-social-label">Follow Along</div>
+      <div class="footer-social-icons">
+        <a href="https://www.facebook.com/61588379971211/" class="footer-si" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.tiktok.com/@econgrowthofficial" class="footer-si" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+        <a href="https://www.youtube.com/@eConGrowthofficial" class="footer-si" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        <a href="https://www.linkedin.com/company/econ-growthoffical/" class="footer-si" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-legal-row"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 ECON GROWTH. ALL RIGHTS RESERVED.</div>
+      <div class="footer-tagline">BUILT FOR <span>HVAC BUSINESS OWNERS</span> · POWERED BY <span>SECONDBRAIN AI</span></div>
+    </div>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40)});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

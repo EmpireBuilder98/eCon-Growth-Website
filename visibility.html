@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visibility Dashboard | eCon Growth — Know Everything Without Being Everywhere</title>
+<meta name="description" content="Real-time intelligence across every part of your HVAC operation. Close rates, tech performance, dispatch efficiency, pipeline value — all in one place, in real time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070A0F;--bg2:#0A0E15;--bg3:#0D1219;--bg4:#060810;--green:#21E68A;--gd:rgba(33,230,138,.08);--gg:rgba(33,230,138,.25);--gb:rgba(33,230,138,.15);--text:#EAF0FF;--mu:rgba(234,240,255,.52);--mu2:rgba(234,240,255,.22);--mu3:rgba(234,240,255,.08);--bd:rgba(234,240,255,.06);--red:#EF4444}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;line-height:1.5}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");opacity:.3;pointer-events:none;z-index:0}
+@keyframes pd{0%,100%{box-shadow:0 0 6px rgba(33,230,138,.25),0 0 0 0 rgba(33,230,138,.35)}50%{box-shadow:0 0 14px rgba(33,230,138,.25),0 0 0 6px rgba(33,230,138,0)}}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ob{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-22px)}}
+@keyframes count{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.v{opacity:1;transform:translateY(0)}
+
+/* ═══ NAV ═══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:64px;display:flex;align-items:center;transition:background .4s,border-color .4s}
+.nav.scrolled{background:rgba(7,10,15,.96);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(234,240,255,.06)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);white-space:nowrap}
+.logo-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 10px rgba(33,230,138,.5);animation:pd 2.2s infinite;flex-shrink:0}
+.logo-e{color:var(--text)}.logo-c{color:var(--green)}.logo-rest{color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0 auto}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(234,240,255,.52);padding:6px 12px;border-radius:5px;text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(234,240,255,.08)}
+.nav-cta{background:#21E68A;color:#070A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:12px;padding:9px 20px;border-radius:7px;text-transform:none;letter-spacing:0;transition:all .2s;flex-shrink:0;white-space:nowrap;text-decoration:none;display:inline-block}
+.nav-cta:hover{background:#fff;color:#070A0F}
+
+
+/* ═══ SHARED ═══ */
+.section{padding:120px 0}.section-inner{max-width:1100px;margin:0 auto;padding:0 52px}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.section-label::before,.section-label::after{content:'';flex:1;max-width:36px;height:1px;background:var(--green)}
+.section-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5.5vw,68px);letter-spacing:1.5px;line-height:.9;margin-bottom:20px}
+.section-h2 .green{color:var(--green)}.section-h2 .ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+.section-sub{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:300;color:var(--mu);line-height:1.85;max-width:640px}
+.btn-primary{display:inline-flex;align-items:center;gap:9px;background:var(--green);color:#070A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;padding:16px 32px;border-radius:8px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 0 32px rgba(33,230,138,.28);transition:all .25s;white-space:nowrap}
+.btn-primary:hover{background:#fff;transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--text);font-family:'Syne',sans-serif;font-weight:600;font-size:15px;padding:16px 28px;border-radius:8px;border:1px solid rgba(234,240,255,.1);cursor:pointer;text-decoration:none;transition:all .25s}
+.btn-ghost:hover{border-color:var(--gb);color:var(--green)}
+
+/* ═══ HERO ═══ */
+.hero{min-height:88vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(33,230,138,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(33,230,138,.018) 1px,transparent 1px);background-size:56px 56px}
+.orb-1{position:absolute;width:900px;height:900px;background:radial-gradient(circle,rgba(33,230,138,.065) 0%,transparent 60%);top:-300px;right:-200px;filter:blur(90px);animation:ob 18s ease-in-out infinite;border-radius:50%}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 52px;width:100%;text-align:center;animation:fu .7s both}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gd);border:1px solid var(--gb);border-radius:4px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:32px}
+.badge-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pd 2s infinite;flex-shrink:0}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8.5vw,108px);letter-spacing:.5px;line-height:.88;margin-bottom:28px}
+.hero-h1 .green{color:var(--green)}.hero-h1 .ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+.hero-body{font-family:'JetBrains Mono',monospace;font-size:clamp(13px,1.5vw,16px);font-weight:300;color:var(--mu);line-height:1.9;max-width:620px;margin:0 auto 44px}
+.hero-body strong{color:var(--text);font-weight:500}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* ═══ LIVE DASHBOARD MOCK ═══ */
+.dashboard-sec{background:var(--bg2);border-top:1px solid var(--bd);padding:100px 0}
+.dash-wrap{max-width:1100px;margin:60px auto 0;padding:0 52px}
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:3px}
+.dash-card{background:var(--bg3);border:1px solid var(--bd);border-radius:10px;padding:28px 24px;transition:all .3s;position:relative;overflow:hidden}
+.dash-card:hover{border-color:var(--gb);transform:translateY(-2px)}
+.dash-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0;transition:opacity .3s}
+.dash-card:hover::before{opacity:1}
+.dash-card-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.dash-card-val{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:1px;color:var(--green);line-height:1;margin-bottom:6px}
+.dash-card-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);font-weight:300}
+.dash-card-delta{display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:9px;color:#21E68A;background:rgba(33,230,138,.08);border:1px solid rgba(33,230,138,.15);border-radius:4px;padding:2px 7px;margin-top:8px}
+.dash-card-delta.down{color:var(--red);background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.15)}
+
+.dash-row2{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3px;margin-bottom:3px}
+.dash-row3{display:grid;grid-template-columns:1fr 2fr;gap:3px}
+
+/* Tech performance table */
+.dash-table{background:var(--bg3);border:1px solid var(--bd);border-radius:10px;padding:24px;overflow:hidden}
+.dash-table-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between}
+.dash-table-badge{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);background:var(--gd);border:1px solid var(--gb);padding:3px 8px;border-radius:4px;letter-spacing:.06em}
+.tech-row{display:grid;grid-template-columns:1fr auto auto auto;gap:16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd)}
+.tech-row:last-child{border-bottom:none}
+.tech-name{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text);font-weight:500}
+.tech-metric{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu);text-align:right}
+.tech-bar-wrap{width:80px;height:4px;background:rgba(234,240,255,.08);border-radius:2px}
+.tech-bar{height:4px;border-radius:2px;background:var(--green)}
+.tech-status{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px}
+.tech-status.good{background:rgba(33,230,138,.1);color:var(--green)}
+.tech-status.warn{background:rgba(239,200,68,.1);color:#EFC844}
+
+/* Pipeline card */
+.dash-pipeline{background:var(--bg3);border:1px solid var(--bd);border-radius:10px;padding:24px}
+.pipeline-stages{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.pipeline-stage{display:flex;align-items:center;gap:10px}
+.stage-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);width:80px;flex-shrink:0}
+.stage-bar-wrap{flex:1;height:8px;background:rgba(234,240,255,.06);border-radius:4px;overflow:hidden}
+.stage-bar{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--green),rgba(33,230,138,.4))}
+.stage-val{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);width:48px;text-align:right;flex-shrink:0}
+
+/* Roger live feed */
+.dash-roger{background:var(--bg3);border:1px solid var(--bd);border-radius:10px;padding:24px}
+.roger-feed{display:flex;flex-direction:column;gap:6px;margin-top:14px;max-height:200px;overflow:hidden}
+.roger-event{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:rgba(7,10,15,.8);border:1px solid var(--bd);border-radius:7px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);line-height:1.5}
+.roger-event-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.roger-event-dot.green{background:var(--green)}.roger-event-dot.blue{background:#60A5FA}.roger-event-dot.yellow{background:#FCD34D}
+.roger-event strong{color:var(--text);font-weight:500}
+
+/* ═══ 5 PILLARS ═══ */
+.pillars-sec{background:var(--bg);border-top:1px solid var(--bd)}
+.pillars-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-top:60px}
+.pillar-card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:36px 28px;text-align:center;transition:all .35s;position:relative;overflow:hidden}
+.pillar-card:hover{border-color:var(--gb);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.pillar-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,rgba(33,230,138,.06),transparent 70%);opacity:0;transition:opacity .35s}
+.pillar-card:hover::after{opacity:1}
+.pillar-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:rgba(33,230,138,.15);letter-spacing:1px;line-height:1;margin-bottom:12px;transition:color .3s}
+.pillar-card:hover .pillar-num{color:var(--green)}
+.pillar-icon{font-size:28px;margin-bottom:14px;display:block}
+.pillar-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:10px}
+.pillar-text{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:300;color:var(--mu);line-height:1.8}
+
+/* ═══ MORNING BRIEF ═══ */
+.brief-sec{background:var(--bg2);border-top:1px solid var(--bd)}
+.brief-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+.brief-mock{background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:32px;font-family:'JetBrains Mono',monospace}
+.brief-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--bd)}
+.brief-from{font-size:11px;color:var(--mu)}
+.brief-from strong{color:var(--green)}
+.brief-time{font-size:10px;color:var(--mu2)}
+.brief-subject{font-size:13px;font-weight:500;color:var(--text);margin-bottom:20px}
+.brief-section{margin-bottom:18px}
+.brief-section-title{font-size:9px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.brief-line{font-size:11px;color:var(--mu);padding:4px 0;border-bottom:1px solid rgba(234,240,255,.04);display:flex;justify-content:space-between;gap:10px}
+.brief-line strong{color:var(--text);font-weight:500}
+.brief-line span{color:var(--green)}
+.brief-points{list-style:none;display:flex;flex-direction:column;gap:6px}
+.brief-points li{font-size:11px;color:var(--mu);display:flex;align-items:flex-start;gap:8px;line-height:1.6}
+.brief-points li::before{content:'→';color:var(--green);flex-shrink:0}
+.brief-copy{display:flex;flex-direction:column;gap:20px}
+.brief-copy h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,48px);letter-spacing:1px;line-height:.95}
+.brief-copy h3 .green{color:var(--green)}
+.brief-copy p{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:300;color:var(--mu);line-height:1.85}
+.brief-copy p strong{color:var(--text);font-weight:500}
+
+/* ═══ CTA ═══ */
+.page-cta{padding:140px 0;background:var(--bg);border-top:1px solid var(--bd);text-align:center;position:relative;overflow:hidden}
+.page-cta::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(33,230,138,.07) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(80px)}
+.page-cta-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 52px}
+.page-cta-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6.5vw,80px);letter-spacing:1px;line-height:.9;margin-bottom:28px}
+.page-cta-h .green{color:var(--green)}.page-cta-h .ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+.page-cta-p{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:300;color:var(--mu);line-height:1.85;margin-bottom:44px}
+.page-cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* ═══ FOOTER ═══ */
+.footer{padding:72px 0 40px;background:var(--bg4);border-top:1px solid var(--bd)}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 52px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.footer-brand p{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.8;margin-top:16px;max-width:280px}
+.footer-phone{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green);margin-top:14px;letter-spacing:.04em}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu2);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mu);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--green)}
+.footer-social-row{padding-top:28px;margin-top:0;border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-social-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu2);letter-spacing:.14em;text-transform:uppercase}
+.footer-social-icons{display:flex;align-items:center;gap:10px}
+.footer-si{width:42px;height:42px;border-radius:10px;background:rgba(33,230,138,.04);border:1px solid rgba(33,230,138,.12);display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(234,240,255,.4);transition:all .25s}
+.footer-si:hover{color:#21E68A;border-color:rgba(33,230,138,.4);background:rgba(33,230,138,.06);transform:translateY(-2px)}
+.footer-si svg{width:18px;height:18px}
+.footer-legal-row{display:flex;justify-content:center;gap:32px;padding:20px 0 0;flex-wrap:wrap}
+.footer-legal-row a{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(234,240,255,.38);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.footer-legal-row a:hover{color:var(--green)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--bd);flex-wrap:wrap;gap:12px;margin-top:20px}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);letter-spacing:.06em}
+.footer-tagline{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);letter-spacing:.06em}
+.footer-tagline span{color:var(--green)}
+
+
+@media(max-width:900px){
+  .section-inner{padding:0 24px}.hero-inner{padding:60px 24px 40px}
+  .dash-grid{grid-template-columns:1fr 1fr}.dash-row2,.dash-row3{grid-template-columns:1fr}
+  .pillars-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .brief-layout{grid-template-columns:1fr;gap:48px}
+  .page-cta-inner{padding:0 24px}
+}
+@media(max-width:900px){
+  .hero-inner{padding:60px 24px 40px}
+  .hero-h1{font-size:clamp(44px,13vw,72px)}
+  .hero-btns{flex-direction:column;align-items:center}
+  .pillars-grid{grid-template-columns:1fr 1fr!important;gap:14px}
+  .brief-layout{grid-template-columns:1fr!important;gap:40px}
+  .page-cta-inner{padding:0 24px}
+  .page-cta-btns{flex-direction:column;align-items:center}
+}
+@media(max-width:480px){.pillars-grid{grid-template-columns:1fr!important}}
+
+/* Universal mobile safety net */
+@media(max-width:900px){
+  img{max-width:100%;height:auto}
+  .section-inner{padding:0 24px!important}
+  [style*="grid-template-columns:2fr"]{grid-template-columns:1fr!important}
+  .hero-btns,.page-cta-btns{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-ghost{justify-content:center;text-align:center}
+}
+
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a href="index.html" class="logo"><div class="logo-dot"></div><span class="logo-e">e</span><span class="logo-c">C</span><span class="logo-rest">on Growth</span></a>
+  <ul class="nav-links">
+    <li><a href="command-os.html">Model</a></li>
+    <li><a href="sales.html">Sales</a></li>
+    <li><a href="secondbrain.html">Meet Roger</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="visibility.html" class="active">Visibility</a></li>
+  </ul>
+  <a href="book.html" class="nav-cta">Book Your Growth Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><div class="hero-grid"></div><div class="orb-1"></div></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="badge-dot"></div>Real-Time · AI-Powered · Always On</div>
+    <h1 class="hero-h1">KNOW EVERYTHING.<br><span class="green">BE EVERYWHERE.</span><br><span class="ghost">OWN NOTHING.</span></h1>
+    <p class="hero-body">Most HVAC owners find out what happened yesterday — <strong>at best.</strong> Command OS gives you live visibility across every call, every tech, every job, and every dollar in your pipeline. Right now. Not tomorrow morning.</p>
+    <div class="hero-btns">
+      <a href="book.html" class="btn-primary">See It Live →</a>
+      <a href="#dashboard" class="btn-ghost">See the Dashboard ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DASHBOARD MOCK -->
+<section class="dashboard-sec" id="dashboard">
+  <div class="section-inner">
+    <div class="rv" style="text-align:center">
+      <div class="section-label">Your Command Center</div>
+      <h2 class="section-h2" style="text-align:center">THIS IS WHAT YOUR<br><span class="green">MONDAY MORNING</span> LOOKS LIKE.</h2>
+      <p class="section-sub" style="margin:0 auto;text-align:center">Real numbers. Live feeds. Everything you need to run the week — before you've had your first cup of coffee.</p>
+    </div>
+  </div>
+  <div class="dash-wrap rv">
+    <!-- Row 1: Key metrics -->
+    <div class="dash-grid">
+      <div class="dash-card">
+        <div class="dash-card-label">Close Rate — This Week</div>
+        <div class="dash-card-val">42%</div>
+        <div class="dash-card-sub">Industry avg: 31%</div>
+        <div class="dash-card-delta">↑ +6% vs last week</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Avg Ticket</div>
+        <div class="dash-card-val">$847</div>
+        <div class="dash-card-sub">Up from $612 last month</div>
+        <div class="dash-card-delta">↑ +38%</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Pipeline Value</div>
+        <div class="dash-card-val">$248K</div>
+        <div class="dash-card-sub">34 active opportunities</div>
+        <div class="dash-card-delta">↑ Live · Updated now</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Leads Captured</div>
+        <div class="dash-card-val">11</div>
+        <div class="dash-card-sub">Overnight — you were asleep</div>
+        <div class="dash-card-delta">↑ 0 missed</div>
+      </div>
+    </div>
+    <!-- Row 2 -->
+    <div class="dash-row2">
+      <!-- Tech table -->
+      <div class="dash-table">
+        <div class="dash-table-title">Tech Performance <span class="dash-table-badge">Live</span></div>
+        <div class="tech-row">
+          <div class="tech-name">Jake Martinez</div>
+          <div class="tech-metric">$1,240 avg</div>
+          <div class="tech-bar-wrap"><div class="tech-bar" style="width:92%"></div></div>
+          <div class="tech-status good">✓</div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-name">Carlos Reyes</div>
+          <div class="tech-metric">$980 avg</div>
+          <div class="tech-bar-wrap"><div class="tech-bar" style="width:74%"></div></div>
+          <div class="tech-status good">✓</div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-name">Devon Hill</div>
+          <div class="tech-metric">$540 avg</div>
+          <div class="tech-bar-wrap"><div class="tech-bar" style="width:41%;background:rgba(252,211,77,.7)"></div></div>
+          <div class="tech-status warn">!</div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-name">Marcus Webb</div>
+          <div class="tech-metric">$1,060 avg</div>
+          <div class="tech-bar-wrap"><div class="tech-bar" style="width:81%"></div></div>
+          <div class="tech-status good">✓</div>
+        </div>
+      </div>
+      <!-- Pipeline stages -->
+      <div class="dash-pipeline">
+        <div class="dash-table-title">Pipeline Stages <span class="dash-table-badge">$248K</span></div>
+        <div class="pipeline-stages">
+          <div class="pipeline-stage"><div class="stage-label">New Lead</div><div class="stage-bar-wrap"><div class="stage-bar" style="width:100%"></div></div><div class="stage-val">$86K</div></div>
+          <div class="pipeline-stage"><div class="stage-label">Assessed</div><div class="stage-bar-wrap"><div class="stage-bar" style="width:65%"></div></div><div class="stage-val">$61K</div></div>
+          <div class="pipeline-stage"><div class="stage-label">Quoted</div><div class="stage-bar-wrap"><div class="stage-bar" style="width:48%"></div></div><div class="stage-val">$44K</div></div>
+          <div class="pipeline-stage"><div class="stage-label">Scheduled</div><div class="stage-bar-wrap"><div class="stage-bar" style="width:38%"></div></div><div class="stage-val">$36K</div></div>
+          <div class="pipeline-stage"><div class="stage-label">Closed</div><div class="stage-bar-wrap"><div class="stage-bar" style="width:22%"></div></div><div class="stage-val">$21K</div></div>
+        </div>
+      </div>
+      <!-- Roger live feed -->
+      <div class="dash-roger">
+        <div class="dash-table-title">Roger Live Feed <span class="dash-table-badge" style="animation:pd 2s infinite">● Active</span></div>
+        <div class="roger-feed">
+          <div class="roger-event"><div class="roger-event-dot green"></div><div><strong>2:14 AM</strong> — Answered inbound, booked AC replacement consult. Lisa Rodriguez. $3,200 opp.</div></div>
+          <div class="roger-event"><div class="roger-event-dot blue"></div><div><strong>6:48 AM</strong> — Follow-up sent to Tom Hargrove. Tune-up quote, 3rd touch. Opens tracked.</div></div>
+          <div class="roger-event"><div class="roger-event-dot green"></div><div><strong>7:22 AM</strong> — Inbound call qualified. New install request. Dispatched to Marcus.</div></div>
+          <div class="roger-event"><div class="roger-event-dot yellow"></div><div><strong>8:05 AM</strong> — Devon Hill check-in. AI flagged: 2 missed follow-ups this week. Coaching brief queued.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 PILLARS OF VISIBILITY -->
+<section class="section pillars-sec" id="pillars">
+  <div class="section-inner">
+    <div class="rv" style="text-align:center">
+      <div class="section-label">What You Can See</div>
+      <h2 class="section-h2" style="text-align:center">FIVE LAYERS OF<br><span class="green">COMPLETE VISIBILITY.</span></h2>
+      <p class="section-sub" style="margin:0 auto;text-align:center">Command OS gives you eyes on every part of your operation simultaneously — without you having to be in any of it.</p>
+    </div>
+    <div class="pillars-grid rv">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <span class="pillar-icon">📞</span>
+        <div class="pillar-title">Every Call & Lead</div>
+        <div class="pillar-text">Every inbound call, missed call, overnight lead, and follow-up — logged, tracked, and actioned. Zero leads fall through.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <span class="pillar-icon">🔧</span>
+        <div class="pillar-title">Tech Performance</div>
+        <div class="pillar-text">Real-time close rates, average ticket, and job completion per tech. Know who's performing, who needs coaching, and why.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <span class="pillar-icon">📍</span>
+        <div class="pillar-title">Dispatch Intelligence</div>
+        <div class="pillar-text">Live job status, tech location, schedule adherence, and dispatch efficiency. Bottlenecks surface before they become problems.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <span class="pillar-icon">💰</span>
+        <div class="pillar-title">Revenue & Pipeline</div>
+        <div class="pillar-text">Total pipeline value, stage breakdown, average ticket trends, and revenue forecasting — updated in real time, not end of month.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">05</div>
+        <span class="pillar-icon">📊</span>
+        <div class="pillar-title">AI Coaching Insights</div>
+        <div class="pillar-text">SecondBrain surfaces patterns you'd never catch manually. Weekly coaching briefs, performance flags, and opportunity alerts delivered automatically.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORNING BRIEF -->
+<section class="section brief-sec" id="brief">
+  <div class="section-inner">
+    <div class="brief-layout rv">
+      <div class="brief-mock">
+        <div class="brief-header">
+          <div class="brief-from">From: <strong>SecondBrain AI</strong> &lt;ai@command-os&gt;</div>
+          <div class="brief-time">Mon 6:00 AM · Auto-generated</div>
+        </div>
+        <div class="brief-subject">📊 Monday Morning Brief — Summit Mechanical</div>
+        <div class="brief-section">
+          <div class="brief-section-title">Last 7 Days</div>
+          <div class="brief-line"><span>Revenue Collected</span><span>$18,240</span></div>
+          <div class="brief-line"><span>Calls Handled by Roger</span><span>47</span></div>
+          <div class="brief-line"><span>Leads Booked</span><span>11</span></div>
+          <div class="brief-line"><span>Close Rate</span><strong>42% <span>(↑6%)</span></strong></div>
+        </div>
+        <div class="brief-section">
+          <div class="brief-section-title">This Week — Watch List</div>
+          <ul class="brief-points">
+            <li>Devon Hill: avg ticket dropped 28% — needs coaching on add-ons</li>
+            <li>Tom Hargrove follow-up: 3rd touch sent, high intent signal detected</li>
+            <li>Thursday fully booked — add Jake to overflow</li>
+          </ul>
+        </div>
+      </div>
+      <div class="brief-copy">
+        <h3>EVERY MONDAY.<br><span class="green">6 AM.</span><br>IN YOUR INBOX.</h3>
+        <p>SecondBrain generates your weekly brief automatically. <strong>No pulling reports. No asking your dispatcher.</strong> Revenue, close rates, tech performance, pipeline flags, and coaching priorities — all synthesized and delivered before your day starts.</p>
+        <p>You don't manage it. You read it, make one or two decisions, and move. That's what it looks like to run a business instead of be owned by one.</p>
+        <a href="book.html" class="btn-primary">See Your Brief Live →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-cta">
+  <div class="page-cta-inner rv">
+    <h2 class="page-cta-h">STOP RUNNING BLIND.<br><span class="green">GET VISIBILITY</span><br><span class="ghost">TODAY.</span></h2>
+    <p class="page-cta-p">Book a Growth Call. We'll show you exactly what your operation looks like inside Command OS — live, with your numbers as the example.</p>
+    <div class="page-cta-btns">
+      <a href="book.html" class="btn-primary">Book Your Growth Call →</a>
+      <a href="tel:6156649178" class="btn-ghost">Call (615) 664-9178</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-dot"></div><span class="logo-e">e</span><span class="logo-c">C</span><span class="logo-rest">on Growth</span></a>
+        <p>The AI Operating System built exclusively for HVAC business owners. More revenue. More control. Less chaos.</p>
+        <div class="footer-phone">(615) 664-9178</div>
+      </div>
+      <div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="command-os.html">Command OS</a></li><li><a href="secondbrain.html">Roger &amp; SecondBrain AI</a></li><li><a href="visibility.html">Visibility Dashboard</a></li><li><a href="book.html">Book a Call</a></li></ul></div>
+      <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="sales.html">Sales Process</a></li><li><a href="investors.html">Investors</a></li></ul></div>
+      <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="blog.html">HVAC Growth Blog</a></li><li><a href="roi-calculator.html">ROI Calculator</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul></div>
+    </div>
+    <div class="footer-social-row">
+      <div class="footer-social-label">Follow Along</div>
+      <div class="footer-social-icons">
+        <a href="https://www.facebook.com/61588379971211/" class="footer-si" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.tiktok.com/@econgrowthofficial" class="footer-si" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+        <a href="https://www.youtube.com/@eConGrowthofficial" class="footer-si" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        <a href="https://www.linkedin.com/company/econ-growthoffical/" class="footer-si" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-legal-row"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 ECON GROWTH. ALL RIGHTS RESERVED.</div>
+      <div class="footer-tagline">BUILT FOR <span>HVAC BUSINESS OWNERS</span> · POWERED BY <span>SECONDBRAIN AI</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40)});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
