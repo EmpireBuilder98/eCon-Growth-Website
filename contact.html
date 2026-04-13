@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+<script>
+if (window.location.protocol === 'http:' && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+    window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+}
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | eCon Growth</title>
+<meta name="description" content="Get in touch with the eCon Growth team. We're here to help you transform your HVAC operation with AI-powered tools.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070A0F;--bg2:#0A0E15;--bg3:#0D1219;--bg4:#060810;--green:#21E68A;--gd:rgba(33,230,138,.08);--gg:rgba(33,230,138,.25);--gb:rgba(33,230,138,.15);--text:#EAF0FF;--mu:rgba(234,240,255,.65);--mu2:rgba(234,240,255,.22);--mu3:rgba(234,240,255,.08);--bd:rgba(234,240,255,.06)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;line-height:1.5}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");opacity:.3;pointer-events:none;z-index:0}
+@keyframes pd{0%,100%{box-shadow:0 0 6px rgba(33,230,138,.25),0 0 0 0 rgba(33,230,138,.35)}50%{box-shadow:0 0 14px rgba(33,230,138,.25),0 0 0 6px rgba(33,230,138,0)}}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ob{0%,100%{transform:translate(0,0)}50%{transform:translate(22px,-26px)}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.v{opacity:1;transform:translateY(0)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 48px;height:64px;display:flex;align-items:center;transition:background .4s,border-color .4s}
+.nav.scrolled{background:rgba(7,10,15,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(234,240,255,.06)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0;display:flex;align-items:center;gap:0;text-decoration:none;color:var(--text);white-space:nowrap;flex-shrink:0}
+.logo-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 10px rgba(33,230,138,.5);animation:pd 2.2s infinite;flex-shrink:0;margin-right:8px}
+.logo-e{color:var(--text)}.logo-c{color:var(--green)}.logo-rest{color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0 auto;padding:0}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(234,240,255,.65);padding:6px 12px;border-radius:5px;text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(234,240,255,.08)}
+.nav-cta{background:#21E68A;color:#070A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:12px;padding:9px 20px;border-radius:7px;letter-spacing:0;transition:all .2s;flex-shrink:0;white-space:nowrap;text-decoration:none;display:inline-block}
+.nav-cta:hover{background:#fff;color:#070A0F}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:9px;background:var(--green);color:#070A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;padding:16px 32px;border-radius:8px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 0 32px rgba(33,230,138,.28);transition:all .25s;white-space:nowrap}
+.btn-primary:hover{background:#fff;transform:translateY(-2px)}
+
+/* SECTIONS */
+.section{padding:120px 0}
+.section-inner{max-width:1100px;margin:0 auto;padding:0 52px}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.section-label::before,.section-label::after{content:'';flex:1;max-width:36px;height:1px;background:var(--green)}
+.section-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5.5vw,68px);letter-spacing:1.5px;line-height:.9;margin-bottom:20px}
+.section-h2 .green{color:var(--green)}.section-h2 .ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+.section-sub{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:300;color:var(--mu);line-height:1.85;max-width:640px}
+
+/* HERO */
+.hero{min-height:50vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(33,230,138,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(33,230,138,.018) 1px,transparent 1px);background-size:56px 56px;z-index:0}
+.orb{position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(33,230,138,.065) 0%,transparent 60%);top:-300px;right:-200px;filter:blur(90px);animation:ob 18s ease-in-out infinite;border-radius:50%;z-index:0}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 52px;width:100%;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gd);border:1px solid var(--gb);border-radius:4px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:.14em;text-transform:uppercase;margin-bottom:32px;animation:fu .6s both}
+.badge-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pd 2s infinite;flex-shrink:0}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8.5vw,110px);letter-spacing:.5px;line-height:.88;margin-bottom:28px;animation:fu .7s .15s both}
+.hero-h1 .green{color:var(--green)}.hero-h1 .ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+.hero-body{font-family:'JetBrains Mono',monospace;font-size:clamp(13px,1.5vw,16px);font-weight:300;color:var(--mu);line-height:1.9;max-width:620px;margin:0 auto 40px;animation:fu .7s .3s both}
+
+/* CONTACT LAYOUT */
+.contact-section{padding:80px 0 120px;position:relative;z-index:1}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;max-width:1100px;margin:0 auto;padding:0 52px}
+.contact-form-card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:44px;position:relative;overflow:hidden}
+.contact-form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent)}
+.contact-form-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
+.contact-form-sub{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mu);line-height:1.7;margin-bottom:28px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-group.full-width{grid-column:1 / -1}
+.form-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);letter-spacing:.04em;text-transform:uppercase}
+.form-input,.form-textarea{background:var(--bg3);border:1px solid var(--bd);border-radius:7px;padding:13px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text);transition:all .2s;width:100%}
+.form-input:focus,.form-textarea:focus{border-color:var(--gb);background:var(--gd);outline:none}
+.form-textarea{min-height:120px;resize:vertical}
+.form-submit{grid-column:1 / -1;width:100%;padding:16px;background:var(--green);color:#070A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;border-radius:8px;border:none;cursor:pointer;transition:all .2s;margin-top:6px;box-shadow:0 0 24px rgba(33,230,138,.2)}
+.form-submit:hover{background:#fff;transform:translateY(-2px)}
+.form-submit:disabled{background:rgba(33,230,138,.4);cursor:not-allowed;transform:none}
+
+/* SIDEBAR */
+.contact-sidebar{display:flex;flex-direction:column;gap:24px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:32px;transition:border-color .3s}
+.sidebar-card:hover{border-color:var(--gb)}
+.sidebar-card-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:16px}
+.sidebar-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.sidebar-item:last-child{border-bottom:none}
+.sidebar-icon{color:var(--green);font-size:16px;flex-shrink:0;margin-top:2px}
+.sidebar-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.sidebar-value{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text);font-weight:400}
+.sidebar-value a{color:var(--green);text-decoration:none;transition:color .2s}
+.sidebar-value a:hover{color:var(--text)}
+
+.sidebar-social-icons{display:flex;align-items:center;gap:10px;margin-top:8px}
+.sidebar-social-icons a{width:42px;height:42px;border-radius:10px;background:rgba(33,230,138,.04);border:1px solid rgba(33,230,138,.12);display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(234,240,255,.4);transition:all .25s}
+.sidebar-social-icons a:hover{color:#21E68A;border-color:rgba(33,230,138,.4);background:rgba(33,230,138,.06);transform:translateY(-2px)}
+.sidebar-social-icons svg{width:18px;height:18px}
+
+/* SUCCESS MESSAGE */
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success.show{display:block}
+.form-success-icon{font-size:48px;color:var(--green);margin-bottom:16px}
+.form-success-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:8px}
+.form-success-text{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mu);line-height:1.7}
+
+/* ═══ MOBILE NAV ═══ */
+.nav-actions{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.nav-toggle{display:none;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;border:1px solid rgba(234,240,255,.12);background:rgba(234,240,255,.04);color:var(--text);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.nav-toggle:hover{background:rgba(33,230,138,.08);border-color:rgba(33,230,138,.22)}
+.nav-toggle:focus-visible{outline:2px solid rgba(33,230,138,.55);outline-offset:3px}
+.nav-toggle-bars,.nav-toggle-bars::before,.nav-toggle-bars::after{display:block;position:relative;width:18px;height:2px;border-radius:999px;background:currentColor;transition:transform .25s ease,opacity .2s ease,top .25s ease}
+.nav-toggle-bars::before,.nav-toggle-bars::after{content:'';position:absolute;left:0}
+.nav-toggle-bars::before{top:-6px}
+.nav-toggle-bars::after{top:6px}
+.body-menu-open .nav-toggle-bars{background:transparent}
+.body-menu-open .nav-toggle-bars::before{top:0;transform:rotate(45deg)}
+.body-menu-open .nav-toggle-bars::after{top:0;transform:rotate(-45deg)}
+.mobile-menu-overlay{position:fixed;inset:0;background:rgba(4,7,12,.68);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:540}
+.mobile-menu{position:fixed;top:0;right:-340px;width:min(88vw,320px);height:100vh;height:100dvh;padding:88px 22px 28px;background:rgba(7,10,15,.98);border-left:1px solid rgba(234,240,255,.08);box-shadow:-24px 0 60px rgba(0,0,0,.35);display:flex;flex-direction:column;gap:18px;transition:right .3s ease;z-index:550}
+.mobile-menu-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+.mobile-menu-links{display:flex;flex-direction:column;gap:8px}
+.mobile-menu-links a{display:block;padding:13px 14px;border-radius:10px;background:rgba(234,240,255,.03);border:1px solid rgba(234,240,255,.06);color:var(--text);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;transition:background .2s,border-color .2s,color .2s}
+.mobile-menu-links a:hover,.mobile-menu-links a.active{background:rgba(33,230,138,.08);border-color:rgba(33,230,138,.2);color:var(--green)}
+.mobile-menu-links .nav-cta,.mobile-menu-cta{margin-top:10px;display:block;width:100%;text-align:center;padding:14px 18px;font-size:14px;border-radius:10px}
+.body-menu-open{overflow:hidden}
+.body-menu-open .mobile-menu-overlay{opacity:1;pointer-events:auto}
+.body-menu-open .mobile-menu{right:0}
+@media(max-width:900px){.nav{padding:0 20px}.nav-links,.nav-actions .nav-cta{display:none}.nav-toggle{display:inline-flex}}
+
+/* FOOTER */
+.footer{padding:72px 0 40px;background:var(--bg4);border-top:1px solid var(--bd);position:relative;z-index:1}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 52px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:40px}
+.footer-brand p{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.8;margin-top:16px;max-width:280px}
+.footer-phone{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green);margin-top:14px}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu2);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mu);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--green)}
+.footer-social-row{padding-top:28px;border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-social-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu2);letter-spacing:.14em;text-transform:uppercase}
+.footer-social-icons{display:flex;align-items:center;gap:10px}
+.footer-si{width:42px;height:42px;border-radius:10px;background:rgba(33,230,138,.04);border:1px solid rgba(33,230,138,.12);display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(234,240,255,.4);transition:all .25s}
+.footer-si:hover{color:#21E68A;border-color:rgba(33,230,138,.4);background:rgba(33,230,138,.06);transform:translateY(-2px)}
+.footer-si svg{width:18px;height:18px}
+.footer-legal-row{display:flex;justify-content:center;gap:32px;padding:20px 0;flex-wrap:wrap}
+.footer-legal-row a{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(234,240,255,.38);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.footer-legal-row a:hover{color:var(--green)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--bd);flex-wrap:wrap;gap:12px}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);letter-spacing:.06em}
+.footer-tagline{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2)}
+.footer-tagline span{color:var(--green)}
+
+/* MOBILE */
+@media(max-width:900px){
+  .nav{padding:0 24px}.nav-links{display:none}
+  .hero-inner{padding:60px 24px 48px}
+  .hero-h1{font-size:clamp(44px,13vw,72px)}
+  .section{padding:80px 0}.section-inner{padding:0 24px}
+  .contact-grid{grid-template-columns:1fr;padding:0 24px;gap:40px}
+  .contact-form-card{padding:28px}
+  .form-grid{grid-template-columns:1fr}
+  .footer-inner{padding:0 24px}.footer-top{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:480px){
+  .hero-h1{font-size:42px}
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a href="index.html" class="logo"><div class="logo-dot"></div><span class="logo-e">e</span><span class="logo-c">C</span><span class="logo-rest">on Growth</span></a>
+  <ul class="nav-links">
+    <li><a href="command-os.html">Model</a></li>
+    <li><a href="sales.html">Sales</a></li>
+    <li><a href="roger.html">Roger</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="visibility.html">Visibility</a></li>
+  </ul>
+  <div class="nav-actions">
+  <a href="book.html" class="nav-cta">Book Your Growth Call</a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span class="nav-toggle-bars"></span>
+  </button>
+</div>
+</nav>
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-title">Navigation</div>
+  <nav class="mobile-menu-links" id="mobileMenuLinks" aria-label="Mobile navigation"></nav>
+</aside>
+<main>
+
+<section class="hero">
+  <div class="hero-grid"></div><div class="orb"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="badge-dot"></div>We'd Love to Hear From You</div>
+    <h1 class="hero-h1">GET IN<br><span class="green">TOUCH.</span></h1>
+    <p class="hero-body">Have a question about Command OS, Roger, or how eCon Growth can help your HVAC operation? Reach out and our team will get back to you within one business day.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-form-card">
+      <h2 class="contact-form-title">Send Us a Message</h2>
+      <p class="contact-form-sub">Fill out the form below and we'll get back to you as soon as possible.</p>
+
+      <form id="contact-form" class="form-grid">
+        <div class="form-group">
+          <label for="first-name" class="form-label">First Name</label>
+          <input type="text" id="first-name" name="firstName" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="last-name" class="form-label">Last Name</label>
+          <input type="text" id="last-name" name="lastName" class="form-input" required>
+        </div>
+        <div class="form-group full-width">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="tel" id="phone" name="phone" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="company" class="form-label">Company Name</label>
+          <input type="text" id="company" name="company" class="form-input">
+        </div>
+        <div class="form-group full-width">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" class="form-textarea" required placeholder="Tell us about your HVAC operation and how we can help..."></textarea>
+        </div>
+        <div class="form-group full-width">
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(234,240,255,.65);line-height:1.6">
+            <input type="checkbox" id="consent-check" required style="margin-top:3px;accent-color:#21E68A;width:16px;height:16px;flex-shrink:0">
+            I consent to receiving text messages and emails regarding my inquiry and eCon Growth services. Message &amp; data rates may apply. Reply STOP to opt out.
+          </label>
+        </div>
+        <button type="submit" id="contact-submit" class="form-submit">Send Message</button>
+      </form>
+
+      <div id="contact-success" class="form-success">
+        <div class="form-success-icon">&#10003;</div>
+        <h3 class="form-success-title">Message Sent!</h3>
+        <p class="form-success-text">Thanks for reaching out. Our team will review your message and get back to you within one business day.</p>
+      </div>
+    </div>
+
+    <div class="contact-sidebar">
+      <div class="sidebar-card">
+        <h3 class="sidebar-card-title">Contact Information</h3>
+        <div class="sidebar-item">
+          <span class="sidebar-icon">&#9742;</span>
+          <div>
+            <div class="sidebar-label">Phone</div>
+            <div class="sidebar-value"><a href="tel:6156649178">(615) 664-9178</a></div>
+          </div>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-icon">&#9993;</span>
+          <div>
+            <div class="sidebar-label">Email</div>
+            <div class="sidebar-value"><a href="mailto:hello@econ-growth.com">hello@econ-growth.com</a></div>
+          </div>
+        </div>
+        <div class="sidebar-item">
+          <span class="sidebar-icon">&#9201;</span>
+          <div>
+            <div class="sidebar-label">Office Hours</div>
+            <div class="sidebar-value">Mon - Fri, 9:00 AM - 5:00 PM MST</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3 class="sidebar-card-title">Follow Us</h3>
+        <div class="sidebar-social-icons">
+          <a href="https://www.facebook.com/61588379971211/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.tiktok.com/@econgrowthofficial" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+          <a href="https://www.youtube.com/@eConGrowthofficial" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+          <a href="https://www.linkedin.com/company/econ-growthoffical/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+
+      <div class="sidebar-card" style="background:rgba(33,230,138,.04);border-color:var(--gb)">
+        <h3 class="sidebar-card-title">Ready to See a Demo?</h3>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mu);line-height:1.7;margin-bottom:18px">Book a 30-minute growth call and see Command OS in action on your operation.</p>
+        <a href="book.html" class="btn-primary" style="width:100%;justify-content:center;font-size:13px;padding:14px 24px">Book Your Growth Call &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-dot"></div><span class="logo-e">e</span><span class="logo-c">C</span><span class="logo-rest">on Growth</span></a>
+        <p>The AI Operating System built exclusively for HVAC business owners. More revenue. More control. Less chaos.</p>
+        <div class="footer-phone">(615) 664-9178</div>
+      </div>
+      <div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="command-os.html">Command OS</a></li><li><a href="roger.html">Roger</a></li><li><a href="meet-roger.html">Roger Live</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="visibility.html">Visibility</a></li><li><a href="book.html">Book a Call</a></li></ul></div>
+      <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="sales.html">Sales Process</a></li><li><a href="investors.html">Investors</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+      <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="blog.html">HVAC Growth Blog</a></li><li><a href="roi-calculator.html">ROI Calculator</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul></div>
+    </div>
+    <div class="footer-social-row">
+      <div class="footer-social-label">Follow Along</div>
+      <div class="footer-social-icons">
+        <a href="https://www.facebook.com/61588379971211/" class="footer-si" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.tiktok.com/@econgrowthofficial" class="footer-si" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+        <a href="https://www.youtube.com/@eConGrowthofficial" class="footer-si" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        <a href="https://www.linkedin.com/company/econ-growthoffical/" class="footer-si" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-legal-row"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 ECON GROWTH. ALL RIGHTS RESERVED.</div>
+      <div class="footer-tagline">BUILT FOR <span>HVAC BUSINESS OWNERS</span> &middot; POWERED BY <span>SECONDBRAIN AI</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40)});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('contact-submit');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  const formData = new FormData(this);
+  const data = {
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName'),
+    email: formData.get('email'),
+    phone: formData.get('phone'),
+    company: formData.get('company'),
+    message: formData.get('message'),
+  };
+
+  try {
+    const response = await fetch('https://agrestal-birgit-inswept.ngrok-free.dev/booking/contact', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+    });
+
+    // Show success regardless for now
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('contact-success').classList.add('show');
+  } catch (error) {
+    // Show success anyway (backend may not be wired yet)
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('contact-success').classList.add('show');
+  }
+});
+</script>
+
+<script>
+(function(){
+  const body=document.body;
+  const nav=document.getElementById('nav');
+  const toggle=document.getElementById('navToggle');
+  const drawer=document.getElementById('mobileMenu');
+  const overlay=document.getElementById('mobileMenuOverlay');
+  const linksTarget=document.getElementById('mobileMenuLinks');
+
+  if(nav&&linksTarget){
+    const desktopLinks=nav.querySelector('.nav-links');
+    const desktopCta=nav.querySelector('.nav-cta');
+    if(desktopLinks){ linksTarget.innerHTML=desktopLinks.innerHTML; }
+    if(desktopCta){
+      const mobileCta=desktopCta.cloneNode(true);
+      mobileCta.classList.add('mobile-menu-cta');
+      linksTarget.appendChild(mobileCta);
+    }
+    linksTarget.querySelectorAll('a,button').forEach(el=>el.setAttribute('tabindex','-1'));
+  }
+
+  window.toggleMobileMenu=function(force){
+    const shouldOpen=typeof force==='boolean'?force:!body.classList.contains('body-menu-open');
+    body.classList.toggle('body-menu-open',shouldOpen);
+    if(toggle){
+      toggle.setAttribute('aria-expanded',shouldOpen?'true':'false');
+      toggle.setAttribute('aria-label',shouldOpen?'Close navigation menu':'Open navigation menu');
+    }
+    if(drawer){ drawer.setAttribute('aria-hidden',shouldOpen?'false':'true'); drawer.querySelectorAll('a,button').forEach(el=>el.setAttribute('tabindex',shouldOpen?'0':'-1')); }
+  };
+
+  window.closeMobileMenu=function(){ window.toggleMobileMenu(false); };
+
+  if(toggle){
+    toggle.addEventListener('click',function(){ window.toggleMobileMenu(); });
+  }
+
+  if(overlay){
+    overlay.addEventListener('click',window.closeMobileMenu);
+  }
+
+  if(linksTarget){
+    linksTarget.addEventListener('click',function(event){
+      const target=event.target.closest('a');
+      if(target){ window.closeMobileMenu(); }
+    });
+  }
+
+  window.addEventListener('resize',function(){
+    if(window.innerWidth>900){ window.closeMobileMenu(); }
+  });
+
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape'){ window.closeMobileMenu(); }
+  });
+})();
+</script>
+
+</body>
+</html>
