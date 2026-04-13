@@ -106,12 +106,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);letter-spacing:.06em}
 .footer-tagline{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);letter-spacing:.06em}
 .footer-tagline span{color:var(--green)}
-/* Universal mobile safety net */
-@media(max-width:900px){
-  img{max-width:100%;height:auto}
-  .section-inner{padding:0 24px!important}
-  .footer-inner{padding:0 24px}
-}
+/* mobile safety net consolidated into MOBILE RESPONSIVE block below */
 
 /* HERO */
 .hero{min-height:80vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
@@ -218,19 +213,24 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .nav{padding:0 20px}
   .nav-links,.nav-actions .nav-cta{display:none}
   .nav-toggle{display:inline-flex}
-  .hero-inner{padding:60px 24px 48px}
+  .hero-inner{padding:60px 20px 48px!important}
   .hero-h1{font-size:clamp(44px,13vw,72px)}
-  .hero-btns{flex-direction:column;align-items:center}
-  .story-layout{grid-template-columns:1fr;gap:40px}
-  .founders-grid{grid-template-columns:1fr}
-  .mission-pillars{grid-template-columns:1fr}
-  .footer-top{grid-template-columns:1fr 1fr;gap:36px}
-  .page-cta-inner{padding:36px 24px}
-  .page-cta-btns{flex-direction:column;align-items:center}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .section{padding:60px 0}
+  .section-inner,.section-inner.wide{padding:0 20px!important}
+  .story-layout{grid-template-columns:1fr!important;gap:40px}
+  .founders-grid{grid-template-columns:1fr!important}
+  .mission-pillars{grid-template-columns:1fr!important}
+  .footer-inner{padding:0 20px}
+  .footer-top{grid-template-columns:1fr!important;gap:36px}
+  .page-cta-inner{padding:36px 20px}
+  .page-cta-btns,.final-cta-btns{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center;text-align:center}
+  img{max-width:100%;height:auto}
 }
 @media(max-width:480px){
-  .hero-h1{font-size:42px}
-  .footer-top{grid-template-columns:1fr}
+  .hero-h1{font-size:36px!important}
+  .section-h2{font-size:32px!important}
 }
 
 </style>

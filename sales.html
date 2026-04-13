@@ -145,23 +145,30 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .footer-tagline span{color:var(--green)}
 
 @media(max-width:900px){
-  .nav{padding:0 24px}.nav-links{display:none}
-  .hero-inner{padding:80px 24px 60px}
-  .section{padding:80px 0}.section-inner{padding:0 24px}
-  .diff-grid{grid-template-columns:1fr}.proof-grid{grid-template-columns:1fr 1fr}
-  .icp-layout{grid-template-columns:1fr;gap:48px}.icp-cta-card{position:relative;top:auto}
-  .step-card{grid-template-columns:1fr;gap:10px}
-  .footer-inner{padding:0 24px}.footer-top{grid-template-columns:1fr 1fr;gap:36px}
-  .page-cta-inner{padding:0 24px}
-}
-
-/* Universal mobile safety net */
-@media(max-width:900px){
+  .nav{padding:0 20px}
+  .nav-links,.nav-actions .nav-cta{display:none}
+  .nav-toggle{display:inline-flex}
+  .hero-inner{padding:60px 20px 48px!important}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .section{padding:60px 0}
+  .section-inner,.section-inner.wide{padding:0 20px!important}
+  .diff-grid{grid-template-columns:1fr!important}
+  .proof-grid{grid-template-columns:1fr 1fr!important}
+  .icp-layout{grid-template-columns:1fr!important;gap:48px}
+  .icp-cta-card{position:relative;top:auto}
+  .step-card{grid-template-columns:1fr!important;gap:10px}
+  .footer-inner{padding:0 20px}
+  .footer-top{grid-template-columns:1fr!important;gap:36px}
+  .page-cta-inner{padding:0 20px}
+  .page-cta-btns,.final-cta-btns{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center;text-align:center}
   img{max-width:100%;height:auto}
-  .section-inner{padding:0 24px!important}
   [style*="grid-template-columns:2fr"]{grid-template-columns:1fr!important}
-  .hero-btns,.page-cta-btns{flex-direction:column;align-items:stretch}
-  .btn-primary,.btn-ghost{justify-content:center;text-align:center}
+}
+@media(max-width:480px){
+  .hero-h1{font-size:36px!important}
+  .section-h2{font-size:32px!important}
+  .proof-grid{grid-template-columns:1fr!important}
 }
 
 
@@ -187,7 +194,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .body-menu-open{overflow:hidden}
 .body-menu-open .mobile-menu-overlay{opacity:1;pointer-events:auto}
 .body-menu-open .mobile-menu{right:0}
-@media(max-width:900px){.nav{padding:0 20px}.nav-links,.nav-actions .nav-cta{display:none}.nav-toggle{display:inline-flex}}
 
 </style>
 </head>

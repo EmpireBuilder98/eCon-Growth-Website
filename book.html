@@ -167,9 +167,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .add-to-cal:hover{background:var(--gd);border-color:var(--gb);color:var(--green)}
 
 @media(max-width:900px){
-.main{grid-template-columns:1fr}
-.info-panel{padding:48px 24px;border-right:none;border-bottom:1px solid var(--bd)}
-.cal-panel{padding:48px 24px}
+  .main{grid-template-columns:1fr!important}
+  .info-panel{padding:48px 20px;border-right:none;border-bottom:1px solid var(--bd)}
+  .cal-panel{padding:48px 20px}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center;text-align:center}
+  img{max-width:100%;height:auto}
 }
 
 /* FOOTER */
@@ -196,8 +198,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .footer-tagline{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2)}
 .footer-tagline span{color:var(--green)}
 @media(max-width:900px){
-.footer-inner{padding:0 24px}
-.footer-top{grid-template-columns:1fr 1fr;gap:36px}
+  .footer-inner{padding:0 20px}
+  .footer-top{grid-template-columns:1fr!important;gap:36px}
+}
+@media(max-width:480px){
+  .info-h1{font-size:36px!important}
 }
 </style>
 </head>
