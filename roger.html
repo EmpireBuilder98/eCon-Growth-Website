@@ -285,22 +285,30 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   </div>
 </div>
 
-<!-- ROGER LIVE DEMO — pulled from homepage -->
+<!-- ROGER LIVE DEMO — embedded -->
+<section class="section" id="try-roger" style="background:var(--bg2);border-top:1px solid var(--bd);padding:100px 0">
+  <div class="section-inner">
+    <div class="rv" style="text-align:center;margin-bottom:56px">
+      <div class="section-label">Live Demo</div>
+      <h2 class="section-h2" style="text-align:center">TRY ROGER<br><span class="green">RIGHT NOW.</span></h2>
+      <p class="section-sub" style="margin:0 auto">Enter your company name — Roger will call your phone pretending to be a customer calling YOUR business. Live AI, not a recording.</p>
+    </div>
+    <div class="rv" style="max-width:520px;margin:0 auto;background:var(--bg3);border:1px solid rgba(33,230,138,.2);border-radius:16px;padding:44px;box-shadow:0 0 80px rgba(33,230,138,.08)">
+      <div style="font-size:40px;text-align:center;margin-bottom:12px">🎙️</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;text-align:center;margin-bottom:6px">TRY ROGER — <span style="color:#21E68A">LIVE</span></h3>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(234,240,255,.55);text-align:center;line-height:1.7;margin-bottom:28px">Roger will call you as if he's a customer calling YOUR business.</p>
+      <input id="rogerCoName" type="text" placeholder="Your Company Name" value="eCon Growth" style="width:100%;background:rgba(234,240,255,.06);border:1px solid rgba(234,240,255,.12);border-radius:8px;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#EAF0FF;outline:none;margin-bottom:12px;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='rgba(33,230,138,.4)'" onblur="this.style.borderColor='rgba(234,240,255,.12)'">
+      <input id="rogerPhone" type="tel" placeholder="Your Phone Number" style="width:100%;background:rgba(234,240,255,.06);border:1px solid rgba(234,240,255,.12);border-radius:8px;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#EAF0FF;outline:none;margin-bottom:16px;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='rgba(33,230,138,.4)'" onblur="this.style.borderColor='rgba(234,240,255,.12)'">
+      <button id="callMeBtn" onclick="callRogerDemo()" style="width:100%;background:#21E68A;color:#070A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:16px;padding:18px;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .25s;box-shadow:0 0 28px rgba(33,230,138,.3)">📞 Call Me Now</button>
+      <div id="rogerCallStatus"></div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(234,240,255,.3);text-align:center;margin-top:16px">Or call directly: <a href="tel:+18445419279" style="color:#21E68A">(844) 541-9279</a></p>
+    </div>
+  </div>
+</section>
+
 <section class="section roger-sec" id="roger">
   <div class="section-inner wide">
-
-    <!-- LIVE DEMO CTA -->
-    <div class="rv" style="text-align:center;margin:48px 0">
-      <div style="background:rgba(33,230,138,.04);border:1px solid rgba(33,230,138,.15);border-radius:16px;padding:60px 40px;max-width:700px;margin:0 auto">
-        <div style="font-size:48px;margin-bottom:20px">🤠</div>
-        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;margin-bottom:12px">WATCH ROGER <span style="color:#21E68A">IN ACTION</span></h3>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(234,240,255,.65);line-height:1.8;margin-bottom:28px">See real calls. Live transcripts. AI brain activity. Watch Roger book appointments, recognize callers, and handle emergencies — all in real-time.</p>
-        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-          <a href="meet-roger.html" class="btn-primary">Watch Roger Live →</a>
-          <a href="tel:+18445419279" class="btn-ghost">Call Roger: (844) 541-9279</a>
-        </div>
-      </div>
-    </div>
+    <div class="roger-bottom rv">
 
     <!-- HOW IT WORKS + BEFORE/AFTER -->
     <div class="roger-bottom rv">
@@ -338,6 +346,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     </div>
   </div>
 </section>
+<script>
+function showRogerStatus(msg,ok){var el=document.getElementById('rogerCallStatus');if(!el)return;el.style.cssText='margin-top:14px;font-family:\'JetBrains Mono\',monospace;font-size:12px;padding:12px 16px;border-radius:8px;line-height:1.6;text-align:center;border:1px solid '+(ok?'rgba(33,230,138,.25)':'rgba(234,240,255,.08)');el.style.background=ok?'rgba(33,230,138,.1)':'rgba(234,240,255,.04)';el.style.color=ok?'#21E68A':'rgba(234,240,255,.7)';el.innerHTML=msg;}
+function callRogerDemo(){var co=document.getElementById('rogerCoName').value.trim()||'eCon Growth';var ph=document.getElementById('rogerPhone').value.trim();if(!ph){showRogerStatus('Please enter your phone number.',false);return;}var btn=document.getElementById('callMeBtn');btn.textContent='Calling...';btn.disabled=true;showRogerStatus('Connecting Roger...',true);var ws;try{ws=new WebSocket('wss://agrestal-birgit-inswept.ngrok-free.dev');ws.onopen=function(){ws.send(JSON.stringify({type:'call_request',phone:ph,company:co}));showRogerStatus('✅ Roger is calling you now. Answer your phone!',true);btn.textContent='📞 Call Me Now';btn.disabled=false;};ws.onerror=function(){doFetch(co,ph,btn);};ws.onclose=function(e){if(e.code!==1000)doFetch(co,ph,btn);};setTimeout(function(){if(ws.readyState!==1)doFetch(co,ph,btn);},3000);}catch(e){doFetch(co,ph,btn);}}
+function doFetch(co,ph,btn){fetch('/demo/call-me',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:ph,company:co})}).then(function(r){return r.json();}).then(function(){showRogerStatus('✅ Roger is calling you now!',true);}).catch(function(){showRogerStatus('Roger\'s demo line is offline. Call directly: <a href="tel:+18445419279" style="color:#21E68A">(844) 541-9279</a> or <a href="book.html" style="color:#21E68A">book a live demo</a>.',false);});if(btn){btn.textContent='📞 Call Me Now';btn.disabled=false;}}
+</script>
 
 <!-- WHAT ROGER DOES -->
 <section class="section does-sec" id="what-roger-does">

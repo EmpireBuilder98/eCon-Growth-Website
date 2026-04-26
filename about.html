@@ -78,6 +78,73 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .btn-ghost{display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--text);font-family:'Syne',sans-serif;font-weight:600;font-size:15px;padding:16px 28px;border-radius:8px;border:1px solid rgba(234,240,255,.1);cursor:pointer;text-decoration:none;transition:all .25s}
 .btn-ghost:hover{border-color:var(--gb);color:var(--green)}
 .green{color:var(--green)}.ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+
+/* ═══ STORY SECTION ═══ */
+.story-sec{background:var(--bg2);border-top:1px solid var(--bd)}
+.story-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:0}
+.story-copy{display:flex;flex-direction:column;gap:20px}
+.story-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5vw,64px);letter-spacing:1.5px;line-height:.9;margin-bottom:4px}
+.story-h .green{color:var(--green)}
+.story-p{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:300;color:var(--mu);line-height:1.9;max-width:100%}
+.story-p strong{color:var(--text);font-weight:500}
+.story-stats{display:flex;gap:24px;margin-top:12px;flex-wrap:wrap}
+.story-stat{background:var(--bg3);border:1px solid var(--bd);border-radius:10px;padding:20px 24px;text-align:center;flex:1;min-width:80px;position:relative;overflow:hidden}
+.story-stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--green)}
+.story-stat-num{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--green);line-height:1;margin-bottom:4px}
+.story-stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu);letter-spacing:.08em;text-transform:uppercase;line-height:1.5}
+
+/* ═══ TIMELINE ═══ */
+.timeline{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--bd);padding-left:32px;margin-left:12px}
+.tl-item{position:relative;padding:0 0 36px 0}
+.tl-item::before{content:'';position:absolute;left:-38px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(33,230,138,.4)}
+.tl-item:last-child{padding-bottom:0}
+.tl-year{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.tl-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:6px}
+.tl-text{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.8}
+
+/* ═══ FOUNDERS SECTION ═══ */
+.founders-sec{background:var(--bg);border-top:1px solid var(--bd)}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.founder-full-card{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:36px;transition:border-color .3s;position:relative;overflow:hidden}
+.founder-full-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0;transition:opacity .3s}
+.founder-full-card:hover{border-color:var(--gb)}.founder-full-card:hover::before{opacity:1}
+.founder-head{display:flex;align-items:flex-start;gap:20px;margin-bottom:20px}
+.founder-avatar-lg{width:80px;height:80px;border-radius:12px;overflow:hidden;flex-shrink:0;border:2px solid rgba(33,230,138,.2)}
+.founder-avatar-lg img{width:100%;height:100%;object-fit:cover;display:block}
+.founder-meta{flex:1;min-width:0}
+.founder-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;margin-bottom:4px}
+.founder-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.founder-tags{display:flex;gap:6px;flex-wrap:wrap}
+.founder-tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu2);background:var(--bg3);border:1px solid var(--bd);padding:3px 8px;border-radius:4px;letter-spacing:.06em}
+.founder-full-bio{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:300;color:var(--mu);line-height:1.9;overflow-wrap:break-word}
+.founders-cta{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:36px 44px;background:rgba(33,230,138,.06);border:1px solid var(--gb);border-radius:12px;margin-top:48px;flex-wrap:wrap}
+.founders-cta-text{flex:1}
+.founders-cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,3vw,32px);letter-spacing:1px;margin-bottom:6px}
+.founders-cta-sub{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mu);line-height:1.7}
+
+/* ═══ MISSION SECTION ═══ */
+.mission-sec{background:var(--bg2);border-top:1px solid var(--bd)}
+.mission-layout{max-width:900px;margin:0 auto;text-align:center}
+.mission-statement{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:1.5px;line-height:.9;margin-bottom:28px}
+.mission-statement .green{color:var(--green)}
+.mission-sub{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:300;color:var(--mu);line-height:1.9;margin-bottom:60px;overflow-wrap:break-word}
+.mission-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mission-pillar{background:var(--bg3);border:1px solid var(--bd);border-radius:12px;padding:32px;text-align:left;transition:border-color .3s}
+.mission-pillar:hover{border-color:var(--gb)}
+.mission-pillar-icon{font-size:26px;margin-bottom:14px;display:block}
+.mission-pillar-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px}
+.mission-pillar-text{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.8}
+
+/* ═══ PAGE CTA ═══ */
+.page-cta{padding:140px 0;background:var(--bg2);border-top:1px solid var(--bd);text-align:center;position:relative;overflow:hidden}
+.page-cta::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(33,230,138,.07) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(80px);pointer-events:none}
+.page-cta-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 52px}
+.page-cta-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6.5vw,80px);letter-spacing:1px;line-height:.9;margin-bottom:28px}
+.page-cta-h .green{color:var(--green)}
+.page-cta-h .ghost{-webkit-text-stroke:1.5px rgba(234,240,255,.18);color:transparent}
+.page-cta-p{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:300;color:var(--mu);line-height:1.85;margin-bottom:44px}
+.page-cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+
 @media(max-width:900px){
 .section{padding:72px 0}
   .section-inner{padding:0 24px}
@@ -100,6 +167,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .page-cta-btns{flex-direction:column;align-items:center}
   .footer-inner{padding:0 24px}
   .footer-top{grid-template-columns:1fr!important;gap:32px}
+  .founders-grid{grid-template-columns:1fr!important;gap:20px}
+  .story-stats{gap:12px}
+  .story-stat{min-width:70px;padding:14px 16px}
+  .founders-cta{flex-direction:column;gap:20px}
 }
 
 @media(max-width:480px){
@@ -202,12 +273,17 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="section-inner">
     <div class="story-layout rv">
       <div class="story-copy">
-        <div class="section-label left">The Origin</div>
-        <h2 class="story-h">TEN YEARS.<br>EVERY ROLE.<br><span class="green">ONE VISION.</span></h2>
-        <p class="story-p">Kristopher Cravens didn't build Command OS in a boardroom. He built it after a decade in the field — sweating through installs, running service calls, dispatching techs, closing sales, and at times running entire HVAC companies solo while the owner was gone for weeks at a time.</p>
-        <p class="story-p"><strong>He saw the same problems everywhere he worked.</strong> Good operators. Great technicians. Terrible systems. Businesses running entirely on whoever had the most information in their head. Revenue leaking out the back door through missed calls. Owners drowning in the middle of operations they built to set themselves free.</p>
-        <p class="story-p">He didn't write a business plan. He built what he wished he had. What every employer he ever worked for wished they had. And then he found the right partner to help him take it to an industry that desperately needs it.</p>
-        <a href="book.html" class="btn-primary" style="align-self:flex-start;margin-top:8px">Talk to Kristopher →</a>
+        <div class="section-label left">The Origin Story</div>
+        <h2 class="story-h">WE DIDN'T BUILD THIS<br>FROM A WHITEBOARD.<br><span class="green">WE BUILT IT FROM THE FIELD.</span></h2>
+        <p class="story-p">Kristopher Cravens started in HVAC at 16. Not as a manager — as a tech. Install crews, service calls, dispatch chaos, late-night emergencies. He's worked every role in this industry for over a decade.</p>
+        <p class="story-p"><strong>The tools were always broken. The systems were always missing.</strong> Good operators running on tribal knowledge. Revenue leaking through missed calls. Owners drowning in the middle of businesses they built to set themselves free.</p>
+        <p class="story-p">Command OS is what he built because it didn't exist. The highest ticket he ever closed using the blueprint we now teach: <strong style="color:var(--green)">$48,000.</strong></p>
+        <div class="story-stats">
+          <div class="story-stat"><div class="story-stat-num">16</div><div class="story-stat-label">Age Started<br>in HVAC</div></div>
+          <div class="story-stat"><div class="story-stat-num">10+</div><div class="story-stat-label">Years in<br>the Industry</div></div>
+          <div class="story-stat"><div class="story-stat-num">$48K</div><div class="story-stat-label">Top Ticket<br>Closed</div></div>
+        </div>
+        <a href="book.html" class="btn-primary" style="align-self:flex-start;margin-top:8px">Book Your Growth Call →</a>
       </div>
       <div class="timeline">
         <div class="tl-item">
@@ -291,6 +367,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
           <span class="founder-tag">Enterprise Value</span>
         </div>
       </div>
+    </div>
+    <div class="founders-cta rv">
+      <div class="founders-cta-text">
+        <div class="founders-cta-title">READY TO TALK?</div>
+        <p class="founders-cta-sub">Get direct access to the people who built the system — not a salesperson.</p>
+      </div>
+      <a href="book.html" class="btn-primary">Book Your Growth Call →</a>
     </div>
   </div>
 </section>
