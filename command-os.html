@@ -186,6 +186,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* ═══ FOOTER ═══ */
 
+@media(max-width:900px){
 .hero-inner{padding:80px 24px 60px;text-align:center}
   .hero-h1{font-size:clamp(44px,13vw,72px)}
   .hero-btns{flex-direction:column;align-items:center}
@@ -207,6 +208,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .cockpit-modules{grid-template-columns:repeat(2,1fr)!important}
   .footer-top{grid-template-columns:1fr 1fr!important;gap:40px}
   .layer-card{grid-template-columns:60px 1fr!important;gap:16px!important;padding:20px 16px!important}
+  .layer-body{min-width:0;overflow:hidden;word-break:break-word}
+  .layer-text{max-width:100%!important}
   .layer-tags{flex-wrap:wrap!important;justify-content:flex-start!important;margin-top:12px!important}
   .layer-tag{white-space:normal!important;font-size:9px!important}
   .proof-grid{grid-template-columns:1fr 1fr!important}
@@ -257,7 +260,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);letter-spacing:.06em}
 .footer-tagline{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu2);letter-spacing:.06em}
 .footer-tagline span{color:var(--green)}
-@media(max-width:900px){.footer-inner{padding:0 24px!important}.footer-top{grid-template-columns:1fr 1fr!important;gap:40px!important}}
+@media(max-width:900px){.footer-inner{padding:0 24px!important}.footer-top{grid-template-columns:1fr!important;gap:32px!important}}
 
 </style>
 </head>
