@@ -1374,110 +1374,39 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
       <p class="section-sub" style="margin:16px auto 0">Roger is Command HVAC's built-in AI Voice Agent. He answers every call, qualifies every lead, handles objections, and books the job — automatically, while you sleep.</p>
     </div>
 
-    <!-- LIVE DEMO UI — matches Image 2 -->
-    <div class="roger-ui rv">
-      <!-- TOP BAR -->
-      <div class="roger-ui-topbar">
-        <div class="roger-ui-live-pill">
-          <div class="roger-ui-live-dot"></div>
-          AI Voice Bot — Live
+    <!-- ROGER INFO + DUAL CTA -->
+    <div class="rv" style="max-width:880px;margin:0 auto;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg3) 100%);border:1px solid rgba(33,230,138,.20);border-radius:20px;padding:48px 44px;box-shadow:0 0 80px rgba(33,230,138,.08),0 20px 60px rgba(0,0,0,.4);position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#21E68A,transparent);opacity:.7"></div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:36px" class="roger-info-stats">
+        <div style="text-align:center;padding:18px 12px;background:rgba(7,10,15,.4);border-radius:12px;border:1px solid rgba(234,240,255,.06)">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);line-height:1;margin-bottom:6px">3 sec</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);letter-spacing:.08em;text-transform:uppercase">Avg Answer Time</div>
         </div>
-        <div class="roger-ui-version">econ-ai-v1</div>
+        <div style="text-align:center;padding:18px 12px;background:rgba(7,10,15,.4);border-radius:12px;border:1px solid rgba(234,240,255,.06)">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);line-height:1;margin-bottom:6px">24/7</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);letter-spacing:.08em;text-transform:uppercase">Always On Duty</div>
+        </div>
+        <div style="text-align:center;padding:18px 12px;background:rgba(7,10,15,.4);border-radius:12px;border:1px solid rgba(234,240,255,.06)">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--green);line-height:1;margin-bottom:6px">100%</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);letter-spacing:.08em;text-transform:uppercase">Calls Captured</div>
+        </div>
       </div>
 
-      <!-- ACTIONS COUNTER -->
-      <div class="roger-ui-counter">
-        <div class="roger-ui-counter-dot"></div>
-        ACTIONS EXECUTED TODAY&nbsp;&nbsp;<span class="roger-ui-counter-num" id="roger-actions">1,924</span>
-      </div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:300;color:var(--mu);line-height:1.9;text-align:center;max-width:640px;margin:0 auto 16px">
+        Roger answers every inbound call in under 3 seconds — warm, professional, HVAC-fluent. He <strong style="color:var(--text)">qualifies the lead, captures the job details, books the appointment</strong> directly into your dispatch schedule, and sends the confirmation text. The homeowner has no idea it's AI.
+      </p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:300;color:var(--mu2);line-height:1.85;text-align:center;max-width:580px;margin:0 auto 36px">
+        Missed calls, after-hours leads, simultaneous rings — handled. Pipeline stays clean. Revenue stops leaking.
+      </p>
 
-      <!-- TWO PANELS -->
-      <div class="roger-ui-panels">
-
-        <!-- LEFT: LIVE CALL TRANSCRIPT -->
-        <div class="roger-ui-panel">
-          <div class="roger-call-header">
-            <div class="roger-caller-info">
-              <div class="roger-caller-name" id="roger-caller-name">Marcus Webb</div>
-              <div class="roger-caller-phone">+1 (702) 555-0194</div>
-            </div>
-            <div class="roger-rec-badge">● REC</div>
-          </div>
-          <div class="roger-call-stats">
-            <div class="roger-call-stat"><div class="roger-call-stat-label">DURATION</div><div class="roger-call-stat-val" id="roger-duration">0:42</div></div>
-            <div class="roger-call-stat"><div class="roger-call-stat-label">INTENT</div><div class="roger-call-stat-val" id="roger-intent" style="color:var(--green)">94%</div></div>
-            <div class="roger-call-stat"><div class="roger-call-stat-label">SENTIMENT</div><div class="roger-call-stat-val" id="roger-sentiment" style="color:var(--green)">Positive</div></div>
-          </div>
-          <div class="roger-transcript-scroll" id="roger-transcript">
-            <div class="roger-line roger-line-lead">Alright, I'm open to it.</div>
-            <div class="roger-line roger-line-bot"><span class="roger-bot-label">AI BOT</span>Perfect. Thursday at 2PM work for you?</div>
-            <div class="roger-line roger-line-lead">Yeah, Thursday's good.</div>
-            <div class="roger-line roger-line-bot"><span class="roger-bot-label">AI BOT</span>Locked in. Sending the details to your email right now. We'll see you Thursday, Marcus.</div>
-          </div>
-          <div class="roger-call-footer">
-            <div class="roger-footer-stat"><div class="roger-footer-label">LEAD SCORE</div><div class="roger-footer-val" style="color:var(--green)">87 / 100</div></div>
-            <div class="roger-footer-stat"><div class="roger-footer-label">NEXT ACTION</div><div class="roger-footer-val"><span style="background:rgba(33,230,138,.15);color:var(--green);padding:2px 10px;border-radius:4px;font-size:10px">Booked ✓</span></div></div>
-            <div class="roger-footer-stat"><div class="roger-footer-label">STATUS</div><div class="roger-footer-val" style="color:var(--green)">● Active</div></div>
-          </div>
-        </div>
-
-        <!-- CENTER: WAVEFORM + SPEAKING INDICATOR -->
-        <div class="roger-ui-center">
-          <div class="roger-waveform-wrap">
-            <div class="roger-waveform-ring"></div>
-            <div class="roger-waveform-mic">🎙</div>
-          </div>
-          <div class="roger-speaking-label">● SPEAKING</div>
-        </div>
-
-        <!-- RIGHT: BOT EXECUTING TASKS -->
-        <div class="roger-ui-panel">
-          <div class="roger-tasks-header">
-            <div class="roger-tasks-title">Bot Executing Tasks</div>
-            <div class="roger-tasks-count" id="roger-tasks-count">4 tasks</div>
-          </div>
-          <div class="roger-tasks-list">
-            <div class="roger-task">
-              <div class="roger-task-icon">📅</div>
-              <div class="roger-task-body">
-                <div class="roger-task-title">Demo booked · Thu 2PM</div>
-                <div class="roger-task-sub">Calendar invite sent · Zoom generated · Reminder set</div>
-              </div>
-              <div class="roger-task-time"><div class="roger-task-check">✓ BOOKED</div><div class="roger-task-ms">0.2s</div></div>
-            </div>
-            <div class="roger-task">
-              <div class="roger-task-icon">📄</div>
-              <div class="roger-task-body">
-                <div class="roger-task-title">Proposal queued & sent</div>
-                <div class="roger-task-sub">Growth Plan · $497/mo · PDF attached</div>
-              </div>
-              <div class="roger-task-time"><div class="roger-task-check">✓ SENT</div><div class="roger-task-ms">0.3s</div></div>
-            </div>
-            <div class="roger-task">
-              <div class="roger-task-icon">⚡</div>
-              <div class="roger-task-body">
-                <div class="roger-task-title">Lead scored & sequenced</div>
-                <div class="roger-task-sub">Intent: 94% · High Value · Sequence A4 triggered</div>
-              </div>
-              <div class="roger-task-time"><div class="roger-task-check">✓ SCORED</div><div class="roger-task-ms">0.2s</div></div>
-            </div>
-            <div class="roger-task">
-              <div class="roger-task-icon">👤</div>
-              <div class="roger-task-body">
-                <div class="roger-task-title">Contact record created</div>
-                <div class="roger-task-sub">Marcus Webb · +1 (702) 555-0194 · Added to pipeline</div>
-              </div>
-              <div class="roger-task-time"><div class="roger-task-check">✓ LOGGED</div><div class="roger-task-ms">0.1s</div></div>
-            </div>
-          </div>
-          <div class="roger-tasks-footer">
-            <div class="roger-tasks-kpi"><div class="roger-tasks-kpi-val" id="roger-tasks-today">1,947</div><div class="roger-tasks-kpi-label">TASKS TODAY</div></div>
-            <div class="roger-tasks-kpi"><div class="roger-tasks-kpi-val" style="color:var(--green)">98.2%</div><div class="roger-tasks-kpi-label">SUCCESS RATE</div></div>
-            <div class="roger-tasks-kpi"><div class="roger-tasks-kpi-val" style="color:var(--green)">0.3s</div><div class="roger-tasks-kpi-label">AVG SPEED</div></div>
-          </div>
-        </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
+        <a href="book.html" class="btn-primary">Book Your Growth Call →</a>
+        <a href="secondbrain.html#roger" class="btn-ghost">See Roger Live ↓</a>
       </div>
     </div>
+
+    <style>@media(max-width:600px){.roger-info-stats{grid-template-columns:1fr 1fr!important;gap:12px}}</style>
 
     <!-- HOW IT WORKS + BEFORE/AFTER -->
     <div class="roger-bottom rv">
