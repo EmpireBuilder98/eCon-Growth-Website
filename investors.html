@@ -200,6 +200,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 @media(max-width:600px){.moat-grid{grid-template-columns:1fr!important}.model-cards{grid-template-columns:1fr!important}.market-grid{grid-template-columns:1fr!important}}
 @media(max-width:760px){[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
+@media(max-width:680px){.anthropic-callout{grid-template-columns:1fr!important;text-align:center;padding:28px 24px!important}}
 
 /* ═══ HAMBURGER MENU ═══ */
 
@@ -249,7 +250,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <section class="hero">
   <div class="hero-grid"></div><div class="orb-1"></div>
   <div class="hero-inner">
-    <div class="hero-badge"><div class="badge-dot"></div>Investor &amp; Partnership Overview · NDA Available Upon Request</div>
+    <div class="hero-badge"><div class="badge-dot"></div>Anthropic Partnership · Investor &amp; Partnership Overview · NDA Available</div>
     <h1 class="hero-h1">THE OPERATING SYSTEM<br><span class="ghost">HVAC RUNS ON</span><br><span class="ghost">DIDN'T EXIST.</span><br><span class="green">SO WE BUILT IT.</span></h1>
     <p class="hero-body">Every HVAC company in America runs on tribal knowledge, scattered tools, and an owner who hasn't slept through an on-call night in years. <strong>Command HVAC is the proprietary AI operating system that replaces all of it — live in production today, aimed at a $180B industry with no purpose-built operator.</strong></p>
     <div class="hero-btns">
@@ -327,10 +328,22 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="moat-grid rv">
       <div class="moat-card"><span class="moat-icon">🧠</span><div class="moat-title">10 Years of Industry Depth</div><div class="moat-text">Command HVAC was built by Kristopher Cravens after a decade operating inside HVAC companies — install, service, dispatch, sales, ownership. The system reflects knowledge no outside developer can replicate.</div></div>
       <div class="moat-card"><span class="moat-icon">🔒</span><div class="moat-title">Proprietary Infrastructure</div><div class="moat-text">Command HVAC is custom-built — not assembled from GoHighLevel, HubSpot, or any existing CRM. Every workflow, automation, and AI layer is proprietary. No white-label exposure.</div></div>
-      <div class="moat-card"><span class="moat-icon">🤖</span><div class="moat-title">SecondBrain AI — Exclusive Layer</div><div class="moat-text">The SecondBrain intelligence layer learns from every client interaction across the entire network. Over time this creates a data moat competitors cannot buy — it has to be built.</div></div>
+      <div class="moat-card"><span class="moat-icon">🤖</span><div class="moat-title">Anthropic Claude — Exclusive Layer</div><div class="moat-text">The Claude intelligence layer learns from every client interaction across the entire network. Over time this creates a data moat competitors cannot buy — it has to be built.</div></div>
       <div class="moat-card"><span class="moat-icon">📞</span><div class="moat-title">Roger — Live Voice AI</div><div class="moat-text">Roger answers calls, qualifies leads, books appointments, and handles follow-ups 24/7 in real time. The integration depth between Roger, dispatch, and field ops is not replicable with off-the-shelf tools.</div></div>
       <div class="moat-card"><span class="moat-icon">🔄</span><div class="moat-title">Sticky Recurring Revenue</div><div class="moat-text">Once Command HVAC is running an operation, removing it means re-hiring, re-training, and rebuilding every system manually. Churn is structurally low — the system becomes the business.</div></div>
       <div class="moat-card"><span class="moat-icon">🚀</span><div class="moat-title">First-Mover in Uncrowded Category</div><div class="moat-text">ServiceTitan announced AI features in early 2026 — confirming the direction. But feature additions to an existing platform are not the same as a purpose-built AI operating system. We built the OS. They're bolting on features.</div></div>
+    </div>
+
+    <!-- Anthropic Partnership Callout -->
+    <div class="rv anthropic-callout" style="margin-top:48px;background:linear-gradient(135deg,rgba(33,230,138,.06),rgba(33,230,138,.02));border:1px solid var(--gb);border-radius:14px;padding:36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent)"></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3.5vw,42px);letter-spacing:1.5px;line-height:.95;color:var(--text)">
+        SELECTED BY<br><span style="color:var(--green)">ANTHROPIC.</span>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px;display:inline-flex;align-items:center;gap:8px"><span style="width:5px;height:5px;background:var(--green);border-radius:50%;animation:pd 2s infinite"></span>Frontier AI Partnership · Active Certification</div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:300;color:var(--mu);line-height:1.85;margin:0">eCon Growth was selected as one of the <strong style="color:var(--text)">first U.S. startups admitted into Anthropic's full certification and partnership process</strong> — the company behind Claude, the frontier model class powering the most reliable AI agents in production today. Roger and the entire Command HVAC intelligence layer run on Claude. This isn't a generic OpenAI wrapper; we are partnered with the lab itself, alongside the earliest production deployments of frontier-grade AI in vertical SaaS.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -352,7 +365,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <div style="position:absolute;top:14px;right:14px;font-family:'JetBrains Mono',monospace;font-size:9px;color:#070A0F;background:var(--green);padding:3px 8px;border-radius:4px;letter-spacing:.06em">MOST POPULAR</div>
         <span style="font-size:32px;display:block;margin-bottom:16px">⚡</span>
         <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px">Growth</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu);line-height:1.8">Full system plus SecondBrain coaching layer, tech performance tracking, advanced automations, and priority support.</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu);line-height:1.8">Full system plus Claude coaching layer, tech performance tracking, advanced automations, and priority support.</div>
       </div>
       <div style="background:var(--bg3);border:1px solid var(--bd);border-radius:12px;padding:36px 28px;text-align:center">
         <span style="font-size:32px;display:block;margin-bottom:16px">🏆</span>
@@ -407,7 +420,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       </a>
     </div>
     <div class="rv" style="text-align:center;margin-top:32px">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu2);letter-spacing:.06em">Founder · <strong style="color:var(--text)">Kristopher Cravens</strong> · 10 years operating inside HVAC · Built Command HVAC from the ground up</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu2);letter-spacing:.06em">Founder · <strong style="color:var(--text)">Kristopher Cravens</strong> · 10 years operating inside HVAC · Built Command HVAC on Anthropic's Claude</p>
     </div>
   </div>
 </section>
@@ -447,7 +460,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="footer-legal-row"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 ECON GROWTH. ALL RIGHTS RESERVED.</div>
-      <div class="footer-tagline">BUILT FOR <span>HVAC BUSINESS OWNERS</span> · POWERED BY <span>SECONDBRAIN AI</span></div>
+      <div class="footer-tagline">BUILT FOR <span>HVAC BUSINESS OWNERS</span> · POWERED BY <span>ANTHROPIC CLAUDE</span></div>
     </div>
   </div>
 </footer>
