@@ -11,11 +11,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://econ-growth.com/investors.html">
 <meta property="og:title" content="eCon Growth — Investor Overview">
-<meta property="og:description" content="The category-defining AI Operating System for HVAC. Built proprietary. Live in production. Sticky recurring revenue. No real competition.">
+<meta property="og:description" content="Selected by Anthropic. The category-defining AI Operating System for HVAC, built on Claude. Live in production. Sticky recurring revenue. No real competition.">
 <meta property="og:site_name" content="eCon Growth">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="eCon Growth — Investor Overview">
-<meta name="twitter:description" content="The AI Operating System HVAC runs on doesn't exist yet. We're building it.">
+<meta name="twitter:description" content="Selected by Anthropic. Built on Claude. The category-defining AI Operating System for HVAC.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -245,7 +245,32 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </nav>
 <div class="nav-overlay" id="navOverlay"></div>
 
-
+<!-- ═══ EMBARGOED ANNOUNCEMENT BAR ═══ -->
+<div class="embargo-bar" role="note" aria-label="Embargoed announcement">
+  <div class="embargo-inner">
+    <span class="embargo-pulse" aria-hidden="true"></span>
+    <span class="embargo-tag">EMBARGOED</span>
+    <span class="embargo-text">Anthropic Partnership · Public Announcement Imminent · <strong>Advance Investor Preview</strong></span>
+  </div>
+</div>
+<style>
+.embargo-bar{position:relative;z-index:50;margin-top:64px;background:linear-gradient(90deg,rgba(33,230,138,.10) 0%,rgba(33,230,138,.16) 50%,rgba(33,230,138,.10) 100%);border-top:1px solid rgba(33,230,138,.22);border-bottom:1px solid rgba(33,230,138,.22);padding:11px 16px;overflow:hidden}
+.embargo-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#21E68A,transparent);opacity:.6}
+.embargo-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.embargo-pulse{width:8px;height:8px;background:#21E68A;border-radius:50%;flex-shrink:0;box-shadow:0 0 0 0 rgba(33,230,138,.7);animation:embargoPulse 1.8s infinite}
+@keyframes embargoPulse{0%{box-shadow:0 0 0 0 rgba(33,230,138,.6)}70%{box-shadow:0 0 0 10px rgba(33,230,138,0)}100%{box-shadow:0 0 0 0 rgba(33,230,138,0)}}
+.embargo-tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:#070A0F;background:#21E68A;padding:3px 9px;border-radius:3px;letter-spacing:.16em;font-weight:700;flex-shrink:0}
+.embargo-text{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(234,240,255,.85);letter-spacing:.08em;text-transform:uppercase;line-height:1.5;text-align:center}
+.embargo-text strong{color:#21E68A;font-weight:600}
+@media(max-width:680px){
+  .embargo-inner{gap:8px}
+  .embargo-text{font-size:9.5px;letter-spacing:.05em}
+  .embargo-tag{font-size:8px;letter-spacing:.12em}
+}
+/* Hero sits directly below the embargo bar; reduce its nav-clear padding
+   since the embargo bar now occupies the space below the fixed nav. */
+.hero{padding-top:32px!important}
+</style>
 
 <section class="hero">
   <div class="hero-grid"></div><div class="orb-1"></div>
