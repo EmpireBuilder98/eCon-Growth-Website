@@ -1896,20 +1896,56 @@ document.querySelectorAll('a,button').forEach(el=>{
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
 });
 
-/* ═══ GEO TARGETING ═══ */
+/* ═══ GEO TARGETING — multi-provider, fresh every load ═══ */
 (function(){
-  try {
-    fetch('https://ipapi.co/json/')
-      .then(r=>r.json())
-      .then(d=>{
-        const city = d.city || '';
-        const region = d.region_code || d.region || '';
-        const label = document.getElementById('geo-label');
-        if(label && city) {
-          label.textContent = 'AI Operating System · Built for HVAC Contractors in ' + city + (region ? ', ' + region : '');
-        }
-      }).catch(()=>{});
-  } catch(e){}
+  var label = document.getElementById('geo-label');
+  if(!label) return;
+  var baseText = 'AI Operating System · Built for HVAC Contractors';
+  /* Safe default — never shows a wrong city if lookups fail */
+  label.textContent = baseText + ' Nationwide';
+
+  function isPlausible(city) {
+    if (!city) return false;
+    var c = String(city).trim();
+    if (!c || c.length < 2) return false;
+    if (/^(unknown|n\/a|localhost|private)$/i.test(c)) return false;
+    return true;
+  }
+
+  function setFromResult(city, region) {
+    if (!isPlausible(city)) return false;
+    label.textContent = baseText + ' in ' + city + (region ? ', ' + region : '');
+    return true;
+  }
+
+  /* Providers tried in order — first plausible result wins. ipwho.is is the
+     most accurate free HTTPS option; geojs and ipapi are fallbacks if it's
+     rate-limited or down. */
+  var providers = [
+    function(){ return fetch('https://ipwho.is/').then(function(r){return r.json();}).then(function(d){
+      if (d && d.success !== false) return {city: d.city, region: (d.region_code || d.region)};
+      return null;
+    }); },
+    function(){ return fetch('https://get.geojs.io/v1/ip/geo.json').then(function(r){return r.json();}).then(function(d){
+      if (d) return {city: d.city, region: (d.region || d.country_code)};
+      return null;
+    }); },
+    function(){ return fetch('https://ipapi.co/json/').then(function(r){return r.json();}).then(function(d){
+      if (d && !d.error) return {city: d.city, region: (d.region_code || d.region)};
+      return null;
+    }); }
+  ];
+
+  function tryNext(i) {
+    if (i >= providers.length) return;
+    try {
+      providers[i]().then(function(r){
+        if (r && setFromResult(r.city, r.region)) return;
+        tryNext(i+1);
+      }).catch(function(){ tryNext(i+1); });
+    } catch(_) { tryNext(i+1); }
+  }
+  tryNext(0);
 })();
 
 /* ═══ NAV SCROLL ═══ */
