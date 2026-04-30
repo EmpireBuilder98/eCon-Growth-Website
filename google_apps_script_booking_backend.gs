@@ -152,11 +152,58 @@ function bookSlotResponse_(params) {
       sendInvites: true
     });
 
+    const startFormatted = formatIsoLocal_(start);
+
+    // Confirmation email to customer — sent from Roger
+    GmailApp.sendEmail(
+      email,
+      "You're booked — Growth Call with eCon Growth",
+      [
+        'Hi ' + firstName + ',',
+        '',
+        "This is Roger, eCon Growth's AI assistant. Your Growth Call is confirmed.",
+        '',
+        'Date & Time: ' + startFormatted,
+        'A calendar invite has been sent to ' + email + '.',
+        '',
+        "Kristopher will review your operation before the call so you can hit the ground running. If you need to reschedule, reply to this email or call (615) 664-9178.",
+        '',
+        '— Roger',
+        'eCon Growth AI'
+      ].join('\n'),
+      {
+        from: 'roger@econ-growth.com',
+        name: 'Roger | eCon Growth',
+        replyTo: 'support@econ-growth.com'
+      }
+    );
+
+    // Internal booking notification to admin
+    GmailApp.sendEmail(
+      'admin@econ-growth.com',
+      'New Booking: ' + fullName + ' — ' + startFormatted,
+      [
+        'A new Growth Call has been booked.',
+        '',
+        'Name: ' + fullName,
+        'Email: ' + email,
+        phone ? 'Phone: ' + phone : null,
+        company ? 'Company: ' + company : null,
+        trucks ? 'Trucks: ' + trucks : null,
+        'Time: ' + startFormatted,
+        'Source: ' + source
+      ].filter(Boolean).join('\n'),
+      {
+        from: 'noreply@econ-growth.com',
+        name: 'eCon Growth Booking System'
+      }
+    );
+
     return {
       ok: true,
       eventId: event.getId(),
       calendarNote: 'A calendar invite has been sent to your email.',
-      start: formatIsoLocal_(start),
+      start: startFormatted,
       end: formatIsoLocal_(end)
     };
   } finally {

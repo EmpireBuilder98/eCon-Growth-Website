@@ -269,7 +269,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
           <span class="sidebar-icon">&#9993;</span>
           <div>
             <div class="sidebar-label">Email</div>
-            <div class="sidebar-value"><a href="mailto:hello@econ-growth.com">hello@econ-growth.com</a></div>
+            <div class="sidebar-value"><a href="mailto:support@econ-growth.com">support@econ-growth.com</a></div>
           </div>
         </div>
         <div class="sidebar-item">
@@ -361,7 +361,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     'Company: ' + (data.company || 'Not provided') + '\n\n' +
     'Message:\n' + data.message
   );
-  window.location.href = 'mailto:hello@econ-growth.com?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:support@econ-growth.com?subject=' + subject + '&body=' + body;
   document.getElementById('contact-form').style.display = 'none';
   document.getElementById('contact-success').classList.add('show');
 });
