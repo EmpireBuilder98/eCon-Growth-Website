@@ -30,7 +30,6 @@ PAGES = {
     "aeo.html": "/aeo.html",
     "privacy.html": "/privacy.html",
     "terms.html": "/terms.html",
-    "secondbrain.html": "/secondbrain.html",
 }
 
 ORG_JSONLD = f"""<script type="application/ld+json">
