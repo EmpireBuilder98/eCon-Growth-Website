@@ -20,7 +20,7 @@
 | Field | Value |
 |---|---|
 | **Company name** | `eCon Growth` |
-| **Tagline (~140 chars)** | `The AI Operating System for HVAC. Built on Anthropic's Claude. Exclusively for contractors running 2–50+ trucks.` |
+| **Tagline / High-concept pitch** | `The software company behind Command HVAC — the AI OS HVAC companies run on.` |
 | **Website** | `https://econ-growth.com` |
 | **Industry / Markets** | `B2B SaaS, Artificial Intelligence, HVAC, Field Service` |
 | **Stage** | `Bootstrapped` or `Pre-seed` |
@@ -33,9 +33,11 @@
 ### Pitch / About (paste)
 
 ```
-eCon Growth is the AI Operating System built exclusively for HVAC business owners running 2–50+ trucks. We replace the chaos of dispatcher-dependent operations with a system the business actually runs on — Roger answers every call in under three seconds, AI dispatch handles assignment, real-time visibility shows the owner what's happening without anyone calling them, and weekly intelligence tells them what changed.
+eCon Growth is the software company behind Command HVAC — the AI Operating System HVAC companies run on. We build AI products for HVAC business owners running 2–50+ trucks: Command HVAC (the AI OS) and Roger (the 24/7 AI voice agent that answers every call in under three seconds and books directly into dispatch). Both are powered by Anthropic's Claude.
 
-Built on Anthropic's Claude. Co-founded by Kristopher Cravens (Founder & CEO, ten years inside HVAC operations) and Watson Wheeler (Co-Founder & COO, operations and exit strategy). The category-defining AI Operating System for HVAC.
+Together our products replace the chaos of dispatcher-dependent operations with a system the business actually runs on — AI dispatch handles assignment, real-time visibility shows the owner what's happening without anyone calling them, and weekly intelligence tells them what changed.
+
+Co-founded by Kristopher Cravens (Founder & CEO, ten years inside HVAC operations) and Watson Wheeler (Co-Founder & COO, operations and exit strategy).
 ```
 
 ### Founder bio (Kristopher)

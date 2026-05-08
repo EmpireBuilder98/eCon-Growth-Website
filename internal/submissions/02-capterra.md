@@ -49,7 +49,7 @@ Built on Anthropic's Claude. Replaces dispatcher-dependent operations with AI th
 
 **Long description (paste):**
 ```
-Command HVAC is the AI Operating System built exclusively for HVAC contractors running 2–50+ trucks. Powered by Anthropic's Claude, it replaces chaotic, owner-dependent operations with systematic AI-driven dispatch, voice agents, visibility, and weekly business intelligence.
+Command HVAC is the AI Operating System for HVAC contractors running 2–50+ trucks, made by eCon Growth — the software company building AI products for HVAC business owners. Powered by Anthropic's Claude. Replaces chaotic, owner-dependent operations with systematic AI-driven dispatch, voice agents, visibility, and weekly business intelligence.
 
 THE FIVE COMPONENTS:
 

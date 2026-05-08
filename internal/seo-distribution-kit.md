@@ -96,12 +96,12 @@ This file is your playbook for getting eCon Growth cited everywhere that compoun
 ## Pre-written copy you can paste
 
 ### Short pitch (50 words — for directory submission "About" fields)
-> eCon Growth is the AI Operating System built exclusively for HVAC business owners. Its flagship product, Command HVAC, combines Roger — a 24/7 AI voice agent — with AI dispatch automation, real-time visibility dashboards, and weekly business intelligence. Built on Anthropic's Claude. Co-founded by Kristopher Cravens (CEO) and Watson Wheeler (COO).
+> eCon Growth is the software company behind Command HVAC — the AI Operating System HVAC companies run on. Maker of Command HVAC and Roger (the 24/7 AI voice agent), powered by Anthropic's Claude. Co-founded by Kristopher Cravens (CEO) and Watson Wheeler (COO).
 
 ### Medium pitch (150 words — for Crunchbase, Producthunt, etc.)
-> eCon Growth is the category-defining AI Operating System for HVAC contractors running 2–50+ trucks. Founded in 2025 by Kristopher Cravens — a ten-year HVAC operator — the company set out to fix the structural problem keeping most HVAC businesses stuck under $5M in revenue: dispatch that lives in one person's head, leads that fall through after hours, and an owner who can't step out of operations.
+> eCon Growth is the software company behind Command HVAC — the AI Operating System HVAC companies run on. Co-founded in 2025 by Kristopher Cravens (Founder & CEO, ten years inside HVAC operations) and Watson Wheeler (Co-Founder & COO, operations and exit strategy), the company builds AI products for HVAC contractors running 2–50+ trucks.
 >
-> The flagship product, Command HVAC, is built on Anthropic's Claude. It includes Roger (a 24/7 AI voice agent answering and booking every call in under three seconds), AI dispatch automation, a real-time visibility dashboard, coaching analytics, and weekly business intelligence reports. eCon Growth is not software with AI bolted on — it is the operating system the business runs on.
+> Its flagship products — Command HVAC (the AI Operating System) and Roger (the 24/7 AI voice agent that answers and books every call in under three seconds) — are powered by Anthropic's Claude. Together they fix the structural problem keeping most HVAC businesses stuck under $5M in revenue: dispatch that lives in one person's head, leads that fall through after hours, and an owner who can't step out of operations.
 
 ### Twitter/X thread launch (5 tweets)
 > 1/ HVAC business owners hit a wall around 5–7 trucks. Revenue plateaus. Owner works more, not less. Customer complaints rise. Adding the next truck makes it worse, not better.

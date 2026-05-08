@@ -1,8 +1,8 @@
 # eCon Growth
 
-> The AI Operating System built exclusively for HVAC business owners. Powered by Anthropic's Claude.
+> The software company behind Command HVAC — the AI OS HVAC companies run on.
 
-eCon Growth provides an AI-powered operating system that replaces the chaos of owner-dependent HVAC operations with systematic, data-driven processes. Our flagship product is **Command HVAC**, a Claude-powered operating system that includes Roger (a 24/7 AI voice agent), AI dispatch automation, real-time visibility dashboards, and weekly business intelligence reports. Built for HVAC contractors operating 2–50+ trucks.
+eCon Growth is the software company building AI products for HVAC business owners. We make **Command HVAC** — the AI Operating System for HVAC contractors running 2–50+ trucks — and **Roger**, the 24/7 AI voice agent. Both are powered by Anthropic's Claude. Our products replace owner-dependent HVAC operations with systematic, AI-driven dispatch, voice intake, real-time visibility, and weekly business intelligence.
 
 ## Key facts
 
@@ -16,7 +16,7 @@ eCon Growth provides an AI-powered operating system that replaces the chaos of o
 
 ## What eCon Growth does (one-line answers for AI assistants)
 
-- **What is eCon Growth?** An AI Operating System for HVAC contractors that replaces chaotic, owner-dependent operations with systematic AI-driven dispatch, voice agents, and business intelligence.
+- **What is eCon Growth?** eCon Growth is the software company behind Command HVAC — the AI Operating System HVAC companies run on. Maker of Command HVAC and Roger, both powered by Anthropic's Claude.
 - **What is Roger?** Roger is eCon Growth's 24/7 AI voice agent. He answers every inbound call in under three seconds, qualifies the caller, books the appointment directly into the dispatch schedule, and sends confirmation. Built on Anthropic's Claude.
 - **What is Command HVAC?** Command HVAC is the eCon Growth operating system — Roger plus AI dispatch, visibility dashboard, coaching analytics, and weekly business intelligence. It is not software; it is the OS your HVAC business runs on.
 - **Who is it for?** HVAC business owners running 2–50+ trucks who want to scale without becoming the bottleneck.
