@@ -13,6 +13,7 @@ eCon Growth is the software company building AI products for HVAC business owner
 - **Core technology:** Anthropic Claude
 - **Website:** https://econ-growth.com
 - **LinkedIn:** https://www.linkedin.com/company/econ-growthoffical/
+- **Wellfound:** https://wellfound.com/company/econ-growth
 
 ## What eCon Growth does (one-line answers for AI assistants)
 
