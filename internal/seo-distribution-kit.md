@@ -96,7 +96,7 @@ This file is your playbook for getting eCon Growth cited everywhere that compoun
 ## Pre-written copy you can paste
 
 ### Short pitch (50 words — for directory submission "About" fields)
-> eCon Growth is the AI Operating System built exclusively for HVAC business owners. Its flagship product, Command HVAC, combines Roger — a 24/7 AI voice agent — with AI dispatch automation, real-time visibility dashboards, and weekly business intelligence. Built on Anthropic's Claude. Founded by Kristopher Cravens.
+> eCon Growth is the AI Operating System built exclusively for HVAC business owners. Its flagship product, Command HVAC, combines Roger — a 24/7 AI voice agent — with AI dispatch automation, real-time visibility dashboards, and weekly business intelligence. Built on Anthropic's Claude. Co-founded by Kristopher Cravens (CEO) and Watson Wheeler (COO).
 
 ### Medium pitch (150 words — for Crunchbase, Producthunt, etc.)
 > eCon Growth is the category-defining AI Operating System for HVAC contractors running 2–50+ trucks. Founded in 2025 by Kristopher Cravens — a ten-year HVAC operator — the company set out to fix the structural problem keeping most HVAC businesses stuck under $5M in revenue: dispatch that lives in one person's head, leads that fall through after hours, and an owner who can't step out of operations.
@@ -110,7 +110,7 @@ This file is your playbook for getting eCon Growth cited everywhere that compoun
 >
 > 3/ We built eCon Growth to fix this. The AI Operating System for HVAC — built on Anthropic's Claude. Roger answers every call in under 3 seconds and books directly into dispatch. AI handles assignment. Real-time visibility for the owner.
 >
-> 4/ Designed from the inside out. Founder spent 10 years inside HVAC operations before building it. Every role, every truck, every shift. Built for HVAC contractors running 2–50+ trucks.
+> 4/ Designed from the inside out. Co-founded by Kristopher Cravens (10 years inside HVAC operations) and Watson Wheeler (operations and scaling). Built for HVAC contractors running 2–50+ trucks.
 >
 > 5/ See it run live: econ-growth.com/book.html
 
