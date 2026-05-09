@@ -305,6 +305,22 @@ PAGES = [
         "eyebrow": "TOOL · ROI CALCULATOR",
         "accent": "Chaos",
     },
+    {
+        "filename": "sales.png",
+        "page_path": "sales.html",
+        "title": "How We Sell Command HVAC.",
+        "subtitle": "No pitch decks. No pressure. A 30-minute walkthrough of Command HVAC and Roger, tailored to your operation.",
+        "eyebrow": "SALES · HOW IT WORKS",
+        "accent": "Command",
+    },
+    {
+        "filename": "contact.png",
+        "page_path": "contact.html",
+        "title": "Talk to the Founders.",
+        "subtitle": "Direct line to Kris and Watson. Questions, partnerships, press, or a 30-minute Growth Call.",
+        "eyebrow": "CONTACT",
+        "accent": "Founders",
+    },
 ]
 
 
