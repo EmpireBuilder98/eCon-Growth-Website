@@ -13,6 +13,11 @@ SITE = "https://econ-growth.com"
 SITE_NAME = "eCon Growth"
 DEFAULT_IMAGE = f"{SITE}/assets/images/favicon.png"
 LINKEDIN = "https://www.linkedin.com/company/econ-growthoffical/"
+WELLFOUND = "https://wellfound.com/company/econ-growth"
+FACEBOOK = "https://www.facebook.com/61588379971211/"
+TIKTOK = "https://www.tiktok.com/@econgrowthofficial"
+YOUTUBE = "https://www.youtube.com/@eConGrowthofficial"
+SAASHUB = "https://www.saashub.com/econ-growth"
 
 PAGES = {
     "index.html": "/",
@@ -46,7 +51,12 @@ ORG_JSONLD = f"""<script type="application/ld+json">
     "name": "Kristopher Cravens"
   }},
   "sameAs": [
-    "{LINKEDIN}"
+    "{LINKEDIN}",
+    "{WELLFOUND}",
+    "{FACEBOOK}",
+    "{TIKTOK}",
+    "{YOUTUBE}",
+    "{SAASHUB}"
   ]
 }}
 </script>
