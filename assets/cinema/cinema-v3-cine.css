@@ -17,8 +17,8 @@
   top: -50%; left: -50%;
   width: 200%; height: 200%;
   pointer-events: none;
-  z-index: 9996;
-  opacity: 0.055;
+  z-index: 1190;          /* above page content, below v2 HUD/controls (9400+) */
+  opacity: 0.05;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 160px 160px;
@@ -39,12 +39,12 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 9995;
+  z-index: 1189;          /* sits just beneath the grain, above content */
   background:
-    radial-gradient(ellipse 120% 90% at 50% 42%,
-      rgba(0,0,0,0) 52%,
-      rgba(0,0,0,0.28) 80%,
-      rgba(2,4,8,0.62) 100%);
+    radial-gradient(ellipse 128% 96% at 50% 42%,
+      rgba(0,0,0,0) 60%,
+      rgba(0,0,0,0.20) 84%,
+      rgba(2,4,8,0.44) 100%);   /* softer corners — keep corner CTAs crisp */
   mix-blend-mode: multiply;
 }
 
@@ -58,7 +58,7 @@
   align-items: center;
   gap: 0.55rem;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 1300;          /* over content + grain, below v2 HUD/cold-open */
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.5s ease, transform 0.7s cubic-bezier(.16,1,.3,1);
@@ -115,7 +115,7 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 9994;
+  z-index: 1191;          /* light sweep rides just above the grain */
   opacity: 0;
   background:
     linear-gradient(95deg,
