@@ -30,7 +30,7 @@
     body.appendChild(grain);
     body.appendChild(flare);
 
-    /* ---- 2. chapter title cards ---- */
+    /* ---- 2. chapter title cards (scroll-driven, deterministic) ---- */
     var card = el("cine3-titlecard",
       '<div class="cine3-tc-num"></div>' +
       '<div class="cine3-tc-name"></div>' +
@@ -39,62 +39,82 @@
     var numEl = card.querySelector(".cine3-tc-num");
     var nameEl = card.querySelector(".cine3-tc-name");
 
-    var sections = [].slice.call(
-      document.querySelectorAll("section[data-chapter]"));
-    // skip the hero ("Open") so we don't curtain the landing
-    var chapters = sections.filter(function (s) {
+    var chapters = [].slice.call(
+      document.querySelectorAll("section[data-chapter]")
+    ).filter(function (s) {
       return (s.getAttribute("data-chapter") || "").toLowerCase() !== "open";
     });
 
-    var shownFor = null, hideT = null, lastY = window.scrollY;
+    var hideT = null;
     function showCard(name, idx) {
-      if (shownFor === name) return;
-      shownFor = name;
       numEl.textContent = "Ch. " + ("0" + idx).slice(-2);
-      nameEl.textContent = name;
-      // restart wipe
+      nameEl.textContent = name.toUpperCase();
       card.classList.remove("show");
-      void card.offsetWidth;
+      void card.offsetWidth;            // restart the wipe + fade
       card.classList.add("show");
       clearTimeout(hideT);
       hideT = setTimeout(function () { card.classList.remove("show"); },
-        reduce ? 1000 : 1400);
+        reduce ? 1100 : 1600);
     }
 
-    var io = new IntersectionObserver(function (entries) {
-      var goingDown = window.scrollY >= lastY;
-      lastY = window.scrollY;
-      if (!goingDown) return;            // only announce on the way down
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var name = e.target.getAttribute("data-chapter");
-        var idx = chapters.indexOf(e.target) + 1;
-        if (idx > 0) showCard(name.toUpperCase(), idx);
-        // fire anamorphic flare on key moments
-        if (e.target.hasAttribute("data-keymoment") && !reduce) {
-          flare.classList.remove("fire");
-          void flare.offsetWidth;
-          flare.classList.add("fire");
+    // Which chapter currently sits on the "trigger line" (42% down the viewport)?
+    // Recomputed every frame from live geometry — fast scroll can't skip it.
+    function activeChapter() {
+      var line = window.innerHeight * 0.42;
+      var found = -1;
+      for (var i = 0; i < chapters.length; i++) {
+        var r = chapters[i].getBoundingClientRect();
+        if (r.top <= line && r.bottom > line) { found = i; }
+      }
+      return found;
+    }
+
+    var lastIdx = -1;
+    var lastY = window.scrollY;
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var y = window.scrollY;
+        var goingDown = y > lastY;
+        lastY = y;
+        var idx = activeChapter();
+        if (idx !== lastIdx) {
+          // announce only when advancing forward (down the reel)
+          if (idx > lastIdx && goingDown && idx >= 0) {
+            showCard(chapters[idx].getAttribute("data-chapter"), idx + 1);
+            if (chapters[idx].hasAttribute("data-keymoment") && !reduce) {
+              flare.classList.remove("fire");
+              void flare.offsetWidth;
+              flare.classList.add("fire");
+            }
+          }
+          lastIdx = idx;
         }
       });
-    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
-    chapters.forEach(function (s) { io.observe(s); });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", function () { lastIdx = activeChapter(); },
+      { passive: true });
+    onScroll(); // prime
 
-    /* ---- 3. end-title credit roll (built into footer) ---- */
+    /* ---- 3. end-title credit roll (built in before footer) ---- */
+    function row(role, name) {
+      return '<div class="cr-row"><div class="cr-role">' + role +
+        '</div><div class="cr-name">' + name + "</div></div>";
+    }
     var credits = el("cine3-credits",
       '<div class="cr-fin">FIN.</div>' +
       row("The Operating System", "ECON GROWTH") +
-      row("Founders", "Kristopher Cravens · Watson Wheeler") +
+      row("Founders", "Kristopher Cravens &middot; Watson Wheeler") +
       row("Operations Layer", "Run themselves") +
       row("Marketing Layer", "Compounds") +
       row("Financial Layer", "Holds under pressure") +
       row("Flagship Product", "Command HVAC") +
       '<div class="cr-rule"></div>' +
       '<div class="cr-tag">AI Operating Systems for Serious Operators</div>');
-    function row(role, name) {
-      return '<div class="cr-row"><div class="cr-role">' + role +
-        '</div><div class="cr-name">' + name + "</div></div>";
-    }
     var footer = document.querySelector("footer") ||
       document.querySelector(".final-cta");
     if (footer && footer.parentNode) {
@@ -103,7 +123,7 @@
         es.forEach(function (e) {
           if (e.isIntersecting) { credits.classList.add("show"); cio.disconnect(); }
         });
-      }, { threshold: 0.25 });
+      }, { threshold: 0.2 });
       cio.observe(credits);
     }
   }

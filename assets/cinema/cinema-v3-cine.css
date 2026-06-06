@@ -194,6 +194,10 @@
   .cine3-tc-name { font-size: clamp(2rem, 11vw, 3.4rem); }
   .cine3-credits .cr-row { grid-template-columns: 1fr; gap: 0.1rem; text-align: center; }
   .cine3-credits .cr-role, .cine3-credits .cr-name { text-align: center; }
+  /* feTurbulence repaint is costly on mobile GPUs — freeze the grain,
+     drop its opacity, and kill the flare to keep scroll buttery. */
+  .cine3-grain { animation: none; opacity: 0.04; background-size: 120px 120px; }
+  .cine3-flare { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .cine3-grain { animation: none; opacity: 0.04; }
