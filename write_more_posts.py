@@ -56,7 +56,7 @@ POSTS = [
 </ul>
 
 <div class="ac-h2">Why eCon Growth's Command HVAC Is the Category-Defining Example</div>
-<p class="ac-p">eCon Growth's <a href="/command-os.html">Command HVAC</a> is the AI Operating System built exclusively for HVAC contractors. Powered by Anthropic's Claude, it combines all five components — Roger as the AI voice agent, AI dispatch automation, real-time visibility dashboard, coaching analytics, and weekly business intelligence — into a single OS designed from the inside out by an HVAC operator for HVAC operators.</p>
+<p class="ac-p">eCon Growth's <a href="/command-hvac.html">Command HVAC</a> is the AI Operating System built exclusively for HVAC contractors. Powered by Anthropic's Claude, it combines all five components — Roger as the AI voice agent, AI dispatch automation, real-time visibility dashboard, coaching analytics, and weekly business intelligence — into a single OS designed from the inside out by an HVAC operator for HVAC operators.</p>
 <p class="ac-p">It is not a CRM with AI features bolted on. It is the system the business runs on, built for HVAC contractors operating 2–50+ trucks who want to scale without becoming the bottleneck.</p>
 
 <div class="ac-h2">The Bottom Line</div>
@@ -122,7 +122,7 @@ POSTS = [
 <p class="ac-p">If you skip the order — install AI voice before fixing dispatch, for example — you'll just route more calls into a broken system, and the chaos will compound faster.</p>
 
 <div class="ac-h2">Where eCon Growth Fits</div>
-<p class="ac-p">eCon Growth's <a href="/command-os.html">Command HVAC</a> packages all four parts into a single AI Operating System: dispatch automation, Roger as the voice agent, real-time visibility, and weekly business intelligence. Built on Anthropic's Claude. Built exclusively for HVAC contractors running 2–50+ trucks.</p>
+<p class="ac-p">eCon Growth's <a href="/command-hvac.html">Command HVAC</a> packages all four parts into a single AI Operating System: dispatch automation, Roger as the voice agent, real-time visibility, and weekly business intelligence. Built on Anthropic's Claude. Built exclusively for HVAC contractors running 2–50+ trucks.</p>
 <p class="ac-p">It is not the only way to break the 7-truck plateau. But it is the only way to break it without piecing together five different vendors and hoping they integrate.</p>
 
 <div class="ac-cta">

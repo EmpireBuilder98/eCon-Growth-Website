@@ -227,7 +227,7 @@ PAGES = [
     },
     {
         "filename": "command-os.png",
-        "page_path": "command-os.html",
+        "page_path": "command-hvac.html",
         "title": "Command HVAC.",
         "subtitle": "The full operating system. Roger, dispatch, visibility, coaching, and weekly intelligence — in one OS.",
         "eyebrow": "PRODUCT · COMMAND OS",
@@ -320,6 +320,39 @@ PAGES = [
         "subtitle": "Direct line to Kris and Watson. Questions, partnerships, press, or a 30-minute Growth Call.",
         "eyebrow": "CONTACT",
         "accent": "Founders",
+    },
+    # ── Umbrella service pages (added 2026-05-27) ──
+    {
+        "filename": "investors.png",
+        "page_path": "investors.html",
+        "title": "AI Operating Systems for Serious Operators.",
+        "subtitle": "Co-founded by Kris and Watson. Three service lines. Powered by Anthropic's Claude. Built from inside the businesses we serve.",
+        "eyebrow": "INVESTORS",
+        "accent": "Operators",
+    },
+    {
+        "filename": "ai-social-os.png",
+        "page_path": "ai-social-os.html",
+        "title": "Kill the $10K Agency. Keep the Results.",
+        "subtitle": "AI Social Media OS — $1,500 setup + $497/month. About 16× cheaper than the agency. Built on Claude.",
+        "eyebrow": "PRODUCT · AI SOCIAL OS",
+        "accent": "$10K",
+    },
+    {
+        "filename": "marketing.png",
+        "page_path": "marketing.html",
+        "title": "Marketing That Compounds.",
+        "subtitle": "Retainers from $500/month. Campaigns, content systems, paid acquisition — for serious operators ready to scale.",
+        "eyebrow": "SERVICE · MARKETING",
+        "accent": "Compounds",
+    },
+    {
+        "filename": "financial-planning.png",
+        "page_path": "financial-planning.html",
+        "title": "Structure That Holds.",
+        "subtitle": "Business financial planning, structuring for growth, exit preparation. Led by Watson Wheeler.",
+        "eyebrow": "SERVICE · FINANCIAL",
+        "accent": "Holds",
     },
 ]
 

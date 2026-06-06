@@ -10,7 +10,7 @@ ROOT = Path(__file__).parent
 MARKER = "<!-- eg:product-schema -->"
 
 SCHEMAS = {
-    "command-os.html": '''<!-- eg:product-schema -->
+    "command-hvac.html": '''<!-- eg:product-schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -21,7 +21,7 @@ SCHEMAS = {
   "applicationSubCategory": "HVAC Operations Software",
   "operatingSystem": "Web, Cloud",
   "description": "Command HVAC is the AI Operating System for HVAC businesses with 2–50+ trucks. Built on Anthropic's Claude, it includes Roger (24/7 AI voice agent), AI dispatch automation, real-time visibility dashboards, coaching analytics, and weekly business intelligence reports.",
-  "url": "https://econ-growth.com/command-os.html",
+  "url": "https://econ-growth.com/command-hvac.html",
   "image": "https://econ-growth.com/assets/images/favicon.png",
   "creator": {
     "@type": "Organization",

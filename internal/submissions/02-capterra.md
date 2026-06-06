@@ -22,7 +22,7 @@
 | Field | Value |
 |---|---|
 | **Product name** | `Command HVAC` |
-| **Product website** | `https://econ-growth.com/command-os.html` |
+| **Product website** | `https://econ-growth.com/command-hvac.html` |
 | **Vendor name** | `eCon Growth` |
 | **Country** | `United States` |
 | **Founded** | `2025` |
@@ -104,7 +104,7 @@ You need 4–8 screenshots. Capterra wants at least 4. Use these in priority ord
 1. **Homepage hero** — go to https://econ-growth.com/ → Cmd+Shift+4 → screenshot the top-fold hero
 2. **Roger live demo** — https://econ-growth.com/meet-roger.html
 3. **Visibility Dashboard** — https://econ-growth.com/visibility.html (the dashboard mockup section)
-4. **Command OS** — https://econ-growth.com/command-os.html (the full system overview)
+4. **Command HVAC** — https://econ-growth.com/command-hvac.html (the full system overview)
 
 If you don't have time, the OG cards at https://econ-growth.com/assets/og/home.png and similar work as placeholder marketing images.
 

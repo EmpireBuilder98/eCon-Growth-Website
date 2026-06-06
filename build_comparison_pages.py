@@ -205,7 +205,7 @@ footer{{margin-top:80px;padding:40px 24px;text-align:center;border-top:1px solid
 <nav class="nav">
   <a href="/" class="logo"><div class="logo-dot"></div><span class="logo-text">e<span class="c">C</span>on Growth</span></a>
   <div class="nav-spacer">
-    <a href="/command-os.html">Command HVAC</a>
+    <a href="/command-hvac.html">Command HVAC</a>
     <a href="/blog.html">Blog</a>
     <a href="/book.html" class="cta">Book Your Growth Call</a>
   </div>
@@ -315,7 +315,7 @@ def render_page(cfg, all_slugs):
                 {
                     "@type": "SoftwareApplication",
                     "name": "Command HVAC",
-                    "url": f"{SITE}/command-os.html",
+                    "url": f"{SITE}/command-hvac.html",
                 },
                 {
                     "@type": "SoftwareApplication",

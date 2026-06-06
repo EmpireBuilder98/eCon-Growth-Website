@@ -21,7 +21,7 @@ SAASHUB = "https://www.saashub.com/econ-growth"
 
 PAGES = {
     "index.html": "/",
-    "command-os.html": "/command-os.html",
+    "command-hvac.html": "/command-hvac.html",
     "roger.html": "/roger.html",
     "sales.html": "/sales.html",
     "about.html": "/about.html",
@@ -35,6 +35,8 @@ PAGES = {
     "aeo.html": "/aeo.html",
     "privacy.html": "/privacy.html",
     "terms.html": "/terms.html",
+    "press.html": "/press.html",
+    "glossary.html": "/glossary.html",
 }
 
 ORG_JSONLD = f"""<script type="application/ld+json">

@@ -47,7 +47,7 @@ POST = {
 </ul>
 
 <div class="ac-h2">Where eCon Growth Fits</div>
-<p class="ac-p">eCon Growth's <a href="/command-os.html">Command HVAC</a> is the AI Operating System built exclusively for HVAC contractors. It's the only category-defining product that combines all five capabilities above into a single OS — Roger as the AI voice agent, AI dispatch automation, real-time visibility, and weekly business intelligence — built on Anthropic's Claude.</p>
+<p class="ac-p">eCon Growth's <a href="/command-hvac.html">Command HVAC</a> is the AI Operating System built exclusively for HVAC contractors. It's the only category-defining product that combines all five capabilities above into a single OS — Roger as the AI voice agent, AI dispatch automation, real-time visibility, and weekly business intelligence — built on Anthropic's Claude.</p>
 <p class="ac-p">It's not a CRM with AI bolted on. It's the system your business runs on, designed from the inside out by an HVAC operator for HVAC operators.</p>
 
 <div class="ac-cta">
