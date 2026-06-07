@@ -775,6 +775,13 @@
     const pin = cine.querySelector('.fullstack-cine-pin');
     sec.classList.add('cine-pinned');
 
+    // headline + eyebrow fade out as the finale takes over (prevents the
+    // headline / pillars / finale from stacking on top of each other).
+    const fsHead = cine.querySelector('.fullstack-cine-h');
+    const fsEyebrow = cine.querySelector('.fullstack-cine-eyebrow');
+    const fsPillarsWrap = cine.querySelector('.fs-cine-pillars');
+    [fsHead, fsEyebrow, fsPillarsWrap].forEach(e=>{ if(e) e.style.transition = 'opacity .45s ease'; });
+
     // rAF-throttled scroll handler — was reading bounding rect + offsetHeight on every scroll tick.
     // Audit P5 / Codex / Gemini all flagged this as the primary lag source.
     let scrollRaf = 0;
@@ -807,8 +814,13 @@
         el.classList.toggle('live', step >= s);
         el.classList.toggle('spot', step === s);
       });
-      finale.classList.toggle('live', p > 0.82);
-      pillars.forEach(el=>{ el.style.opacity = (p > 0.92) ? '0' : ''; });
+      // Clean hand-off: the whole pillar row + headline fade out together
+      // (>0.84), THEN the finale lands (>0.88) — no triple-stack, no ghost.
+      const dim = p > 0.84 ? '0' : '';
+      if(fsHead) fsHead.style.opacity = dim;
+      if(fsEyebrow) fsEyebrow.style.opacity = dim;
+      if(fsPillarsWrap) fsPillarsWrap.style.opacity = dim;
+      finale.classList.toggle('live', p > 0.88);
     };
     const onScroll = () => {
       if(scrollRaf) return;

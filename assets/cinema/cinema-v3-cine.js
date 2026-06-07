@@ -84,11 +84,17 @@
         if (idx !== lastIdx) {
           // announce only when advancing forward (down the reel)
           if (idx > lastIdx && goingDown && idx >= 0) {
-            showCard(chapters[idx].getAttribute("data-chapter"), idx + 1);
-            if (chapters[idx].hasAttribute("data-keymoment") && !reduce) {
-              flare.classList.remove("fire");
-              void flare.offsetWidth;
-              flare.classList.add("fire");
+            var sec = chapters[idx];
+            // key-moment sections (the Full Stack pin) have their own big title
+            // treatment — give them the flare, NOT a colliding title card.
+            if (sec.hasAttribute("data-keymoment")) {
+              if (!reduce) {
+                flare.classList.remove("fire");
+                void flare.offsetWidth;
+                flare.classList.add("fire");
+              }
+            } else {
+              showCard(sec.getAttribute("data-chapter"), idx + 1);
             }
           }
           lastIdx = idx;
