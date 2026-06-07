@@ -765,11 +765,6 @@
             <div class="fs-cine-pillar result" data-step="3"><span class="n">∞</span><div class="t">Leverage</div><div class="d">A business that runs — and is worth selling.</div></div>
           </div>
           <div class="fs-cine-finale" id="fsCineFinale">∞ LEVERAGE<span class="sub">The Full Stack, Installed.</span></div>
-          <!-- Floating data readouts — appear during the pinned scene -->
-          <div class="fs-readout r1"><span class="pip"></span>OPERATIONS<span class="v c">ONLINE</span></div>
-          <div class="fs-readout r2"><span class="pip"></span>MARKETING<span class="v c">COMPOUNDING</span></div>
-          <div class="fs-readout r3"><span class="pip"></span>FINANCIAL<span class="v c">STRUCTURED</span></div>
-          <div class="fs-readout r4"><span class="pip"></span>STACK COMPLETE<span class="v c">3 / 3</span></div>
         </div>
       </div>
     `;
