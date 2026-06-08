@@ -56,18 +56,21 @@
     // Idempotency guard — multiple paths (timeout, skip, key, tour cta) can call finish().
     // Was firing duplicate cine:cold:done events + restarting track-in animation 3s after manual dismiss.
     let finished = false;
-    const dismissTimer = setTimeout(()=>finish(), 3000);
+    // BUG#2: was 3000 — cut off mid-animation (inner ring runs to ~3.9s, CTA appears at 2.2s).
+    const dismissTimer = setTimeout(()=>finish(), 4500);
 
     const finish = () => {
       if(finished) return;
       finished = true;
       clearTimeout(dismissTimer);
+      D.removeEventListener('keydown', keyHandler);   // always clean up the listener (all 4 dismiss paths)
       sessionStorage.setItem(SESSION_KEY, '1');
       el.classList.add('gone');
-      D.body.classList.remove('cine-cold-locked');
       window.__cineColdDone = true;
       D.dispatchEvent(new Event('cine:cold:done'));
-      setTimeout(()=>el.remove(), 1000);
+      // BUG#10: keep scroll locked until the overlay has fully faded, else the
+      // page scrolls visibly behind the still-opaque boot screen.
+      setTimeout(()=>{ el.remove(); D.body.classList.remove('cine-cold-locked'); }, 1000);
       setTimeout(stageCinema, 350);
     };
 
@@ -722,13 +725,9 @@
             B.classList.add('cine-keymoment');
             clearTimeout(t._kmTo);
             t._kmTo = setTimeout(()=>B.classList.remove('cine-keymoment'), 4200);
-            // Camera shake — short, punchy
-            if(!REDUCED){
-              B.classList.remove('cine-keymoment-shake');
-              void B.offsetWidth;
-              B.classList.add('cine-keymoment-shake');
-              setTimeout(()=>B.classList.remove('cine-keymoment-shake'), 500);
-            }
+            // BUG#12: camera shake DISABLED. It transformed <body>, which re-anchors
+            // every position:fixed overlay (HUD, letterbox, ticker, buttons) — so the
+            // whole frozen UI shuddered together and read as the page glitching.
           }
         }
       });
@@ -787,6 +786,16 @@
     let scrollRaf = 0;
     const compute = () => {
       scrollRaf = 0;
+      // BUG#8: below the pin breakpoint (narrowed window / rotated tablet), tear the
+      // pin state down and restore the normal row, so it can't get stuck in the
+      // darkened spotlight/letterbox state against collapsed geometry.
+      if(innerWidth < 760){
+        pin.classList.remove('is-fixed','is-bottom');
+        B.classList.remove('cine-spotlight');
+        if(existingRow) existingRow.style.display = '';
+        return;
+      }
+      if(existingRow && existingRow.style.display !== 'none') existingRow.style.display = 'none';
       const rect = cine.getBoundingClientRect();
       const h = cine.offsetHeight;
       const winH = innerHeight;
@@ -1282,7 +1291,10 @@
     mountCredits();
     mountSceneObserver();
     mountFullStackPin();
-    mountLockOn();
+    // BUG#13/#14: lock-on targeting reticle DISABLED — 5 separate bugs (drifts off
+    // target on scroll, tracks stale element, strobes across dense links, double
+    // fit(), unthrottled reflow). Pure bug-surface for a decorative HUD bracket.
+    // mountLockOn();
     mountGlitch();
     mountTitleCards();
     mountSound();

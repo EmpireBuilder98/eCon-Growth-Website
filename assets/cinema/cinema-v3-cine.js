@@ -70,6 +70,7 @@
     }
 
     var lastIdx = -1;
+    var maxAnnounced = -1;   // BUG#5: high-water mark so each card fires ONCE
     var lastY = window.scrollY;
     var ticking = false;
     function onScroll() {
@@ -82,8 +83,10 @@
         lastY = y;
         var idx = activeChapter();
         if (idx !== lastIdx) {
-          // announce only when advancing forward (down the reel)
-          if (idx > lastIdx && goingDown && idx >= 0) {
+          // announce each chapter at most once, on first forward entry —
+          // scrubbing up/down across a boundary no longer re-flashes the card.
+          if (idx > maxAnnounced && goingDown && idx >= 0) {
+            maxAnnounced = idx;
             var sec = chapters[idx];
             // key-moment sections (the Full Stack pin) have their own big title
             // treatment — give them the flare, NOT a colliding title card.
@@ -102,7 +105,9 @@
       });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", function () { lastIdx = activeChapter(); },
+    // BUG: also reset the scroll baseline on resize so the first post-resize
+    // scroll computes direction correctly.
+    window.addEventListener("resize", function () { lastIdx = activeChapter(); lastY = window.scrollY; },
       { passive: true });
     onScroll(); // prime
 

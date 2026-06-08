@@ -13,7 +13,7 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 1186;
+  z-index: 108;
   background: repeating-linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0px,
@@ -59,7 +59,7 @@
   left: 0; right: 0; bottom: 0;
   height: 24px;
   pointer-events: none;
-  z-index: 1300;
+  z-index: 120;
   overflow: hidden;
   display: flex;
   align-items: center;

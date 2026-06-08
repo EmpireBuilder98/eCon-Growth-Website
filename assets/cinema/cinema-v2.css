@@ -558,9 +558,11 @@ body.cine-chapters-on .cine-chapters{opacity:1;transform:translateX(0);pointer-e
     rgba(0,0,0,.55) 55%,
     rgba(0,0,0,.88) 80%,
     rgba(0,0,0,.95) 100%);
-  opacity:0;transition:opacity 1.2s cubic-bezier(.4,0,.3,1);
+  /* BUG#4: fast fade-OUT (.3s) so the dim clears before the next section is
+     on screen; slow fade-IN (1.2s) kept for the dramatic darken. */
+  opacity:0;transition:opacity .3s ease;
 }
-body.cine-spotlight .cine-spotlight-vignette{opacity:1}
+body.cine-spotlight .cine-spotlight-vignette{opacity:1;transition:opacity 1.2s cubic-bezier(.4,0,.3,1)}
 
 /* When spotlight is on, lift the pinned scene above the dim layer */
 body.cine-spotlight .fullstack-cine-pin{z-index:7;position:fixed!important}
@@ -995,8 +997,14 @@ body.cinema-on .cine-grain{display:block;animation:cineGrainShift 2.4s steps(6) 
 @media(prefers-reduced-motion:reduce){
   #cine-cold-open,.cine-co-mark,.cine-co-tag,.cine-co-skip,.cine-co-ring,.cine-co-cross,.cine-co-scan{display:none!important}
   body.cine-cold-locked{overflow:auto!important;height:auto!important}
-  .cine-card-drop,.cine-flash,.cine-wipe,.cine-card-scrim,.cine-grain,.cine-credits-track{display:none!important;animation:none!important}
+  /* BUG#9: reduced-motion also kills the breathing vignette (was omitted). */
+  .cine-card-drop,.cine-flash,.cine-wipe,.cine-card-scrim,.cine-grain,.cine-vignette,.cine-credits-track{display:none!important;animation:none!important}
   .fullstack-cine{height:auto}
   .fullstack-cine-pin{position:relative;height:auto}
   .fs-cine-pillar{opacity:1;transform:none}
+}
+/* BUG#9: on phones, freeze the heavy full-viewport grain + breathing vignette
+   (mix-blend/filter animations) so enabling the tour doesn't stutter scroll. */
+@media(max-width:760px){
+  body.cinema-on .cine-grain,body.cinema-on .cine-vignette{animation:none!important}
 }

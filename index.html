@@ -175,6 +175,9 @@
 }
 html{scroll-behavior:smooth}
 html{overflow-x:hidden}
+/* BUG#3: reserve the scrollbar gutter so the JS-pinned Full Stack scene
+   (position:fixed vs absolute) doesn't snap horizontally at pin boundaries. */
+html{scrollbar-gutter:stable}
 body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;line-height:1.5}
 
 /* NOISE */
@@ -963,14 +966,14 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 
 </style>
 <!-- CINEMA v2 (consolidated) -->
-<link rel="preload" href="/assets/cinema/cinema-v2.css?v=2d" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/cinema/cinema-v2.css?v=2d"></noscript>
+<link rel="preload" href="/assets/cinema/cinema-v2.css?v=2e" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/cinema/cinema-v2.css?v=2e"></noscript>
 <!-- CINEMA v3 (movie-grade additive layer) -->
-<link rel="preload" href="/assets/cinema/cinema-v3-cine.css?v=7" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/cinema/cinema-v3-cine.css?v=7"></noscript>
+<link rel="preload" href="/assets/cinema/cinema-v3-cine.css?v=8" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/cinema/cinema-v3-cine.css?v=8"></noscript>
 <!-- CINEMA v4 (systems / futuristic layer) -->
-<link rel="preload" href="/assets/cinema/cinema-v4-systems.css?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/cinema/cinema-v4-systems.css?v=4"></noscript>
+<link rel="preload" href="/assets/cinema/cinema-v4-systems.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/cinema/cinema-v4-systems.css?v=5"></noscript>
 </head>
 <body>
 
@@ -1575,10 +1578,8 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
     var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     if(segs.length&&!reduce){
       head.style.minHeight=head.offsetHeight+'px';
-      segs.forEach(function(s){s.textContent=''});
       var cursor=document.createElement('span');cursor.className='tw-cursor';
       var si=0,ci=0;
-      segs[0].appendChild(cursor);
       function tick(){
         var seg=segs[si],txt=texts[si];
         if(ci<txt.length){
@@ -1587,18 +1588,27 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
         }else{
           si++;ci=0;
           if(si<segs.length){segs[si].appendChild(cursor);setTimeout(tick,70);}
+          // BUG#11: remove the caret a beat after the last char so the finished
+          // headline shows no permanent blinking artifact.
+          else{ setTimeout(function(){ if(cursor.parentNode) cursor.parentNode.removeChild(cursor); }, 1400); }
         }
       }
       // Wait for the cold open to dismiss before typing,
       // otherwise the headline finishes typing while the user is still on the boot screen.
       var twStarted = false;
-      function startTW(){ if(twStarted) return; twStarted = true; setTimeout(tick, 180); }
+      // BUG#1: blank the real (SEO) headline ONLY at the moment typing starts —
+      // never at parse time — so a slow/failed cinema layer can't leave the hero empty.
+      function startTW(){ if(twStarted) return; twStarted = true;
+        segs.forEach(function(s){s.textContent=''});
+        segs[0].appendChild(cursor);
+        setTimeout(tick, 180);
+      }
       if(window.__cineColdDone){
         startTW();
       } else {
         document.addEventListener('cine:cold:done', startTW, {once:true});
-        // Fallback in case the cinema layer fails to load — kick off at 6s
-        setTimeout(startTW, 6000);
+        // Fallback shortened 6000 -> 1500: hero never sits empty more than ~1.5s.
+        setTimeout(startTW, 1500);
       }
     }
   }
@@ -1707,8 +1717,8 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 })();
 </script>
 <!-- CINEMA v2 (consolidated) -->
-<script src="/assets/cinema/cinema-v2.js?v=2d" defer></script>
-<script src="/assets/cinema/cinema-v3-cine.js?v=5" defer></script>
+<script src="/assets/cinema/cinema-v2.js?v=2e" defer></script>
+<script src="/assets/cinema/cinema-v3-cine.js?v=6" defer></script>
 <script src="/assets/cinema/cinema-v4-systems.js?v=3" defer></script>
 <!-- Service worker — caches static assets for instant repeat visits.
      On localhost: actively UNREGISTERS any existing SW so dev iterations always hit network. -->
