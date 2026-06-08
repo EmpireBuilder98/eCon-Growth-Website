@@ -42,7 +42,7 @@
         <div>MODE · install mode</div>
       </div>
       <div class="cine-co-mark">
-        <span>eC<span class="c">on</span></span>
+        <span>e<span class="c">C</span>on</span>
         <span class="bar"></span>
         <span>Growth</span>
       </div>
