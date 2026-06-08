@@ -1723,16 +1723,14 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 <!-- Service worker — caches static assets for instant repeat visits.
      On localhost: actively UNREGISTERS any existing SW so dev iterations always hit network. -->
 <script>
+// Service worker DISABLED everywhere. A stale SW (cache dated 2026-05-29) was
+// cache-first serving old cinema assets after deploys, so visitors saw the old
+// site. Actively unregister any existing SW + purge its caches on every load so
+// the deploy always wins. (Re-introduce a properly versioned SW later if needed.)
 if('serviceWorker' in navigator){
-  const isDev = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
   window.addEventListener('load', () => {
-    if(isDev){
-      // Kill any existing SW + caches so my edits show on next reload
-      navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
-      if(window.caches){ caches.keys().then(ks => ks.forEach(k => caches.delete(k))); }
-    } else {
-      navigator.serviceWorker.register('/sw.js').catch(() => {});
-    }
+    navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister())).catch(()=>{});
+    if(window.caches){ caches.keys().then(ks => ks.forEach(k => caches.delete(k))).catch(()=>{}); }
   });
 }
 </script>
