@@ -968,6 +968,9 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 <!-- CINEMA v3 (movie-grade additive layer) -->
 <link rel="preload" href="/assets/cinema/cinema-v3-cine.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/assets/cinema/cinema-v3-cine.css?v=5"></noscript>
+<!-- CINEMA v4 (systems / futuristic layer) -->
+<link rel="preload" href="/assets/cinema/cinema-v4-systems.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/cinema/cinema-v4-systems.css?v=2"></noscript>
 </head>
 <body>
 
@@ -1706,6 +1709,7 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 <!-- CINEMA v2 (consolidated) -->
 <script src="/assets/cinema/cinema-v2.js?v=2d" defer></script>
 <script src="/assets/cinema/cinema-v3-cine.js?v=5" defer></script>
+<script src="/assets/cinema/cinema-v4-systems.js?v=1" defer></script>
 <!-- Service worker — caches static assets for instant repeat visits.
      On localhost: actively UNREGISTERS any existing SW so dev iterations always hit network. -->
 <script>
