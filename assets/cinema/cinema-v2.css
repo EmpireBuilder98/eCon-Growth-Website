@@ -162,7 +162,9 @@ section.section,
 .cine-grade{
   position:fixed;inset:0;z-index:2;pointer-events:none;
   background:rgba(var(--cine-grade-r),var(--cine-grade-g),var(--cine-grade-b),var(--cine-grade-a));
-  mix-blend-mode:overlay;
+  /* PERF (felt-jank): was mix-blend-mode:overlay — a full-viewport blend
+     recomposite fired on every section's grade crossfade, hitching scroll.
+     Plain alpha tint composites cheaply. */
   transition:background 1.2s cubic-bezier(.4,0,.3,1);
   display:none;
 }
@@ -624,9 +626,11 @@ body.cine-spotlight .fs-readout{opacity:1;transform:translateY(0)}
 .fullstack-cine-pin{
   position:absolute;top:0;left:0;right:0;height:100vh;
   display:flex;align-items:center;justify-content:center;
-  overflow:hidden;will-change:transform;
+  overflow:hidden;
+  /* PERF: will-change moved to .is-fixed only — a permanent layer here blurred
+     the big pinned headline text and leaked GPU memory. */
 }
-.fullstack-cine-pin.is-fixed{position:fixed;top:0;left:0;right:0}
+.fullstack-cine-pin.is-fixed{position:fixed;top:0;left:0;right:0;will-change:transform}
 .fullstack-cine-pin.is-bottom{position:absolute;top:auto;bottom:0}
 .fullstack-cine-stage{
   position:relative;width:100%;max-width:1100px;padding:0 52px;
@@ -990,7 +994,9 @@ body.cinema-on .cine-grain{display:block;animation:cineGrainShift 2.4s steps(6) 
 @keyframes cineCreditsRoll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ─── HERO PARALLAX (CSS class, JS sets the offset) ─── */
-.hero-bg{will-change:transform}
+/* PERF: will-change removed — permanent compositor layer leaked memory; the
+   parallax only nudges CSS vars during mousemove, no permanent layer needed. */
+.hero-bg{}
 .hero-bg.parallax{transform:translate3d(var(--px,0px), var(--py,0px), 0)}
 
 /* ─── REDUCED MOTION ────────────────────────────────── */

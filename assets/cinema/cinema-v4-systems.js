@@ -89,11 +89,14 @@
     if (!reduce && "IntersectionObserver" in window) {
       var heads = [].slice.call(document.querySelectorAll(".section-h2"))
         .filter(function (h) { return !h.closest(".fullstack-sec"); });
+      // PERF/consistency: multi-step threshold + bottom margin so the decrypt
+      // reliably fires on entry regardless of scroll velocity (0.45 was skipped
+      // on fast scroll, making the effect feel inconsistent/glitchy).
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          if (e.isIntersecting) { scramble(e.target); io.unobserve(e.target); }
+          if (e.isIntersecting && e.intersectionRatio > 0) { scramble(e.target); io.unobserve(e.target); }
         });
-      }, { threshold: 0.45 });
+      }, { threshold: [0, 0.15, 0.45], rootMargin: "0px 0px -10% 0px" });
       heads.forEach(function (h) { io.observe(h); });
     }
   }

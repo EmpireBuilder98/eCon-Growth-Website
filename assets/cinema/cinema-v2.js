@@ -618,7 +618,20 @@
     let tx = 0, ty = 0;
     let cx = 0, cy = 0;
     let raf = 0;
+    // PERF: cache hero visibility via IO so the mousemove handler never reads
+    // layout (getBoundingClientRect per event was forcing a reflow on a layer
+    // the rAF was simultaneously dirtying).
+    let visible = true;
+    const hero = bg.closest('.hero') || bg;
+    if('IntersectionObserver' in window){
+      visible = false;
+      new IntersectionObserver(([en])=>{
+        visible = en.isIntersecting;
+        if(!visible && raf){ cancelAnimationFrame(raf); raf = 0; bg.style.willChange='auto'; }
+      }, {threshold:0}).observe(hero);
+    }
     const tick = () => {
+      if(!visible){ cx = tx; cy = ty; raf = 0; bg.style.willChange='auto'; return; }
       cx += (tx - cx) * 0.06;
       cy += (ty - cy) * 0.06;
       bg.style.setProperty('--px', cx.toFixed(2)+'px');
@@ -627,15 +640,14 @@
         raf = requestAnimationFrame(tick);
       } else {
         raf = 0;
+        bg.style.willChange = 'auto';   // drop the layer when idle
       }
     };
     W.addEventListener('mousemove', (e)=>{
-      // Only respond if hero is in view (perf)
-      const r = bg.getBoundingClientRect();
-      if(r.bottom < 0 || r.top > innerHeight) return;
+      if(!visible) return;              // cached boolean — no layout read
       tx = (e.clientX / innerWidth - 0.5) * 22;
       ty = (e.clientY / innerHeight - 0.5) * 14;
-      if(!raf) raf = requestAnimationFrame(tick);
+      if(!raf){ bg.style.willChange='transform'; raf = requestAnimationFrame(tick); }
     }, {passive:true});
   }
 
@@ -797,7 +809,7 @@
       }
       if(existingRow && existingRow.style.display !== 'none') existingRow.style.display = 'none';
       const rect = cine.getBoundingClientRect();
-      const h = cine.offsetHeight;
+      const h = rect.height;   // PERF: reuse rect (was a 2nd forced layout via offsetHeight)
       const winH = innerHeight;
       const cineTop = rect.top;
       const cineBottom = rect.bottom;

@@ -58,7 +58,9 @@
     }
 
     // Which chapter currently sits on the "trigger line" (42% down the viewport)?
-    // Recomputed every frame from live geometry — fast scroll can't skip it.
+    // Live geometry (getBoundingClientRect) — robust to the layout shifting after
+    // load (fullstack pin adds 380vh). 8 rect reads/frame is cheap; the real perf
+    // cost was the mix-blend overlays, already removed.
     function activeChapter() {
       var line = window.innerHeight * 0.42;
       var found = -1;
