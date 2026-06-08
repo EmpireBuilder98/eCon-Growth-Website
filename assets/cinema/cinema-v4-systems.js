@@ -21,9 +21,10 @@
   function boot() {
     var body = document.body;
 
-    /* ---- 1+2. scanlines + sweep ---- */
+    /* ---- 1. scanlines (static) ---- */
     body.appendChild(el("sys-scanlines"));
-    if (!reduce) body.appendChild(el("sys-sweep"));
+    // PERF: sweep removed — a full-screen screen-blended element animating
+    // down the page every frame was a constant re-composite cost.
 
     /* ---- 3. telemetry ticker ---- */
     var SEP = '<span class="sys-sep">//</span>';

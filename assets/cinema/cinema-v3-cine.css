@@ -18,12 +18,13 @@
   width: 200%; height: 200%;
   pointer-events: none;
   z-index: 1190;          /* above page content, below v2 HUD/controls (9400+) */
-  opacity: 0.05;
-  mix-blend-mode: overlay;
+  opacity: 0.04;
+  /* PERF: no mix-blend — blend modes force a full-viewport composite pass
+     every frame. Plain alpha is GPU-cheap and visually near-identical here. */
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-size: 160px 160px;
-  will-change: transform;
-  animation: cine3-grain-shift 0.9s steps(5) infinite;
+  /* PERF: grain is painted ONCE (static). The per-frame transform animation
+     was re-compositing the whole viewport every frame and halving FPS. */
 }
 @keyframes cine3-grain-shift {
   0%   { transform: translate(0, 0); }
@@ -44,8 +45,8 @@
     radial-gradient(ellipse 128% 96% at 50% 42%,
       rgba(0,0,0,0) 60%,
       rgba(0,0,0,0.20) 84%,
-      rgba(2,4,8,0.44) 100%);   /* softer corners — keep corner CTAs crisp */
-  mix-blend-mode: multiply;
+      rgba(2,4,8,0.5) 100%);   /* softer corners — keep corner CTAs crisp */
+  /* PERF: plain alpha (was multiply). Black radial darkens corners the same. */
 }
 
 /* ---- 3. CHAPTER TITLE CARDS -------------------------------- */

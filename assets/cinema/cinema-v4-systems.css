@@ -18,17 +18,12 @@
     to bottom,
     rgba(0,0,0,0) 0px,
     rgba(0,0,0,0) 2px,
-    rgba(0,0,0,0.16) 3px,
+    rgba(0,0,0,0.22) 3px,
     rgba(0,0,0,0) 4px);
-  mix-blend-mode: multiply;
-  opacity: 0.55;
-  animation: sys-flicker 5.5s steps(60) infinite;
-}
-@keyframes sys-flicker {
-  0%,100% { opacity: 0.55; }
-  47% { opacity: 0.5; }
-  48% { opacity: 0.62; }
-  49% { opacity: 0.52; }
+  opacity: 0.5;
+  /* PERF: plain alpha (was multiply) — dark lines over content read the same. */
+  /* PERF: static scanlines (painted once). The flicker animation forced a
+     full-viewport re-composite every frame. */
 }
 
 /* ---- 2. SCANNING SWEEP ------------------------------------ */
