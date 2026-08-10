@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free AI Bottleneck Audit — eCon Growth</title>
+  <meta name="description" content="Answer 7 questions about your operation. Get your #1 AI bottleneck on-screen instantly — specific to your business, not a generic playbook.">
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --eg-bg:#070A0F;--eg-bg-2:#0A0E15;
+      --eg-green:#21E68A;--eg-green-soft:rgba(33,230,138,0.08);
+      --eg-green-border:rgba(33,230,138,0.25);--eg-green-glow:rgba(33,230,138,0.45);
+      --eg-text:#EAF0FF;--eg-muted:rgba(234,240,255,0.65);
+      --eg-muted-2:rgba(234,240,255,0.40);--eg-border:rgba(234,240,255,0.07);
+      --eg-border-strong:rgba(234,240,255,0.11);--eg-glass:rgba(13,18,25,0.62);
+      --eg-red:#EF4444;
+      --display:"Bebas Neue",Impact,sans-serif;
+      --mono:"JetBrains Mono",ui-monospace,monospace;
+      --body:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    body{font-family:var(--body);background:var(--eg-bg);color:var(--eg-text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+    .bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
+      background:radial-gradient(circle at 72% -6%,rgba(33,230,138,.09),transparent 32rem),
+                radial-gradient(circle at 6% 108%,rgba(33,230,138,.06),transparent 28rem),
+                linear-gradient(180deg,var(--eg-bg),var(--eg-bg-2))}
+    .bg-mesh::before{content:"";position:absolute;inset:0;
+      background-image:linear-gradient(rgba(33,230,138,.016) 1px,transparent 1px),linear-gradient(90deg,rgba(33,230,138,.016) 1px,transparent 1px);
+      background-size:54px 54px;mask-image:linear-gradient(to bottom,black,rgba(0,0,0,.25))}
+    .bg-mesh::after{content:"";position:absolute;inset:0;opacity:.18;
+      background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.22) 3px,rgba(0,0,0,0) 4px)}
+
+    .page{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:32px 18px calc(60px + env(safe-area-inset-bottom,0px))}
+
+    .top-nav{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:600px;margin-bottom:28px}
+    .eg-logo{display:inline-flex;align-items:center;gap:7px;text-decoration:none;white-space:nowrap}
+    .eg-logo-dot{width:7px;height:7px;border-radius:50%;background:var(--eg-green);flex-shrink:0;box-shadow:0 0 10px rgba(33,230,138,.65),0 0 24px rgba(33,230,138,.22)}
+    .eg-logo-text{font-family:var(--display);font-size:18px;letter-spacing:.06em;color:var(--eg-text);text-transform:uppercase;line-height:1}
+    .eg-logo-c{color:var(--eg-green)}
+    .back-link{font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--eg-muted-2);text-decoration:none;transition:color .2s}
+    .back-link:hover{color:var(--eg-muted)}
+
+    .form-card{width:100%;max-width:600px;
+      background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.01) 40%,rgba(33,230,138,.02)),var(--eg-glass);
+      border:1px solid var(--eg-border-strong);border-radius:18px;overflow:hidden;
+      box-shadow:0 0 60px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);
+      backdrop-filter:blur(32px) saturate(1.3);-webkit-backdrop-filter:blur(32px) saturate(1.3)}
+
+    .progress-bar-wrap{width:100%;height:2px;background:var(--eg-border)}
+    .progress-bar-fill{height:2px;background:linear-gradient(90deg,var(--eg-green),rgba(150,255,210,.8));
+      transition:width .4s cubic-bezier(.4,0,.2,1);box-shadow:0 0 8px rgba(33,230,138,.5)}
+
+    .step-header{padding:28px 28px 0}
+    .step-count{font-family:var(--mono);font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--eg-green);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+    .step-count::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--eg-green);box-shadow:0 0 6px rgba(33,230,138,.5)}
+    .step-header h2{font-family:var(--display);font-size:2rem;font-weight:400;letter-spacing:.04em;text-transform:uppercase;color:var(--eg-text);margin-bottom:6px;line-height:.92}
+    .step-header p{font-size:.85rem;color:var(--eg-muted-2);line-height:1.55}
+
+    .step-body{padding:22px 28px 24px}
+
+    .field{margin-bottom:16px}
+    .field label{display:block;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--eg-muted);margin-bottom:8px}
+    .field input,.field textarea,.field select{
+      width:100%;background:rgba(7,10,15,.7);border:1px solid var(--eg-border-strong);border-radius:10px;
+      padding:11px 14px;font-size:.88rem;color:var(--eg-text);outline:none;
+      transition:border-color .2s,box-shadow .2s;font-family:var(--body);
+    }
+    .field input::placeholder,.field textarea::placeholder{color:var(--eg-muted-2)}
+    .field input:focus,.field textarea:focus,.field select:focus{
+      border-color:rgba(33,230,138,.4);box-shadow:0 0 0 3px rgba(33,230,138,.1)}
+    .field textarea{min-height:88px;resize:vertical}
+    .field select{
+      appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(33,230,138,0.5)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right 13px center;padding-right:34px;cursor:pointer;
+    }
+    .field select option{background:var(--eg-bg)}
+
+    .chip-group{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+    .chip-label{cursor:pointer}
+    .chip-label input{display:none}
+    .chip-label span{
+      display:inline-block;padding:7px 13px;font-family:var(--mono);font-size:.62rem;font-weight:600;
+      letter-spacing:.08em;text-transform:uppercase;
+      color:var(--eg-muted-2);background:rgba(7,10,15,.5);
+      border:1px solid var(--eg-border-strong);border-radius:4px;
+      transition:all .15s;user-select:none;
+    }
+    .chip-label input:checked+span{background:var(--eg-green-soft);border-color:var(--eg-green-border);color:var(--eg-green)}
+    .chip-label:hover span{border-color:rgba(234,240,255,.18);color:var(--eg-muted)}
+
+    .workflow-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:2px}
+    @media(max-width:480px){.workflow-grid{grid-template-columns:1fr}}
+    .workflow-option{cursor:pointer}
+    .workflow-option input{display:none}
+    .workflow-option span{
+      display:flex;align-items:center;gap:9px;padding:11px 13px;
+      font-size:.83rem;font-weight:600;color:var(--eg-muted-2);
+      background:rgba(7,10,15,.5);border:1px solid var(--eg-border-strong);
+      border-radius:10px;transition:all .15s;user-select:none;
+    }
+    .workflow-option span::before{content:"";width:15px;height:15px;border:1.5px solid var(--eg-border-strong);border-radius:4px;flex-shrink:0;transition:all .15s}
+    .workflow-option input:checked+span{background:var(--eg-green-soft);border-color:var(--eg-green-border);color:var(--eg-text)}
+    .workflow-option input:checked+span::before{background:var(--eg-green);border-color:var(--eg-green);box-shadow:0 0 6px rgba(33,230,138,.5)}
+
+    .comfort-opts{display:flex;flex-direction:column;gap:8px}
+    .comfort-label{cursor:pointer;display:flex;align-items:flex-start;gap:12px}
+    .comfort-label input{display:none}
+    .comfort-card{display:flex;flex:1;padding:12px 14px;border-radius:10px;background:rgba(7,10,15,.5);border:1px solid var(--eg-border-strong);transition:all .15s;cursor:pointer;gap:10px;align-items:flex-start}
+    .comfort-label input:checked~.comfort-card{background:var(--eg-green-soft);border-color:var(--eg-green-border)}
+    .comfort-dot{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--eg-border-strong);flex-shrink:0;margin-top:2px;transition:all .15s}
+    .comfort-label input:checked~.comfort-card .comfort-dot{background:var(--eg-green);border-color:var(--eg-green);box-shadow:0 0 8px rgba(33,230,138,.5)}
+    .comfort-text strong{display:block;font-size:.85rem;font-weight:700;color:var(--eg-text);margin-bottom:2px}
+    .comfort-text small{font-size:.77rem;color:var(--eg-muted-2);line-height:1.4}
+
+    .field-error{font-family:var(--mono);font-size:.62rem;color:var(--eg-red);margin-top:5px;display:none;letter-spacing:.06em}
+    .field.has-error input,.field.has-error textarea,.field.has-error select{border-color:rgba(239,68,68,.4)}
+    .field.has-error .field-error{display:block}
+
+    .step-footer{padding:0 28px 28px;display:flex;justify-content:space-between;align-items:center}
+    .btn-back{font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--eg-muted-2);background:none;border:none;cursor:pointer;padding:10px 0;transition:color .2s}
+    .btn-back:hover{color:var(--eg-muted)}
+    .btn-next{background:var(--eg-green);color:var(--eg-bg);font-family:var(--body);font-size:.9rem;font-weight:800;padding:12px 28px;border:none;border-radius:8px;cursor:pointer;box-shadow:0 0 24px rgba(33,230,138,.3);transition:box-shadow .2s,transform .2s}
+    .btn-next:hover{transform:translateY(-1px);box-shadow:0 0 36px rgba(33,230,138,.5)}
+    .btn-submit{background:var(--eg-green);color:var(--eg-bg);font-family:var(--body);font-size:.9rem;font-weight:800;padding:13px 32px;border:none;border-radius:8px;cursor:pointer;box-shadow:0 0 28px rgba(33,230,138,.35);transition:box-shadow .2s,transform .2s}
+    .btn-submit:hover{transform:translateY(-1px);box-shadow:0 0 44px rgba(33,230,138,.55)}
+
+    #loading-state{display:none;text-align:center;padding:52px 28px}
+    .spinner{width:38px;height:38px;border:2px solid var(--eg-border);border-top-color:var(--eg-green);border-radius:50%;margin:0 auto 20px;animation:spin .7s linear infinite;box-shadow:0 0 16px rgba(33,230,138,.2)}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    #loading-state p{font-family:var(--mono);font-size:.72rem;color:var(--eg-muted-2);letter-spacing:.08em;text-transform:uppercase}
+
+    #result-state{display:none;padding:28px 28px 36px}
+    .result-badge{display:inline-flex;align-items:center;gap:6px;background:var(--eg-green-soft);border:1px solid var(--eg-green-border);color:var(--eg-green);font-family:var(--mono);font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 13px;border-radius:4px;margin-bottom:18px}
+    .result-badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--eg-green);box-shadow:0 0 6px rgba(33,230,138,.5)}
+    #result-state h2{font-family:var(--display);font-size:1.9rem;font-weight:400;letter-spacing:.04em;text-transform:uppercase;color:var(--eg-text);margin-bottom:10px;line-height:.92}
+    .snapshot-box{background:rgba(7,10,15,.7);border:1px solid var(--eg-border-strong);border-left:2px solid var(--eg-green);border-radius:0 12px 12px 0;padding:18px 20px;font-size:.88rem;color:var(--eg-muted);line-height:1.7;margin-bottom:22px}
+    .prompts-label{font-family:var(--mono);font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--eg-green);margin-bottom:12px}
+    .prompt-card{background:rgba(7,10,15,.7);border:1px solid var(--eg-border-strong);border-radius:12px;padding:14px 16px;margin-bottom:9px}
+    .prompt-card-label{font-family:var(--mono);font-size:.58rem;font-weight:700;color:var(--eg-green);margin-bottom:7px;text-transform:uppercase;letter-spacing:.12em}
+    .prompt-card-text{font-family:var(--mono);font-size:.75rem;color:rgba(150,255,210,.75);line-height:1.65;white-space:pre-wrap}
+    .copy-btn{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-family:var(--mono);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--eg-green);background:var(--eg-green-soft);border:1px solid var(--eg-green-border);border-radius:4px;padding:4px 11px;cursor:pointer;transition:all .15s}
+    .copy-btn:hover{background:rgba(33,230,138,.14)}
+    .email-note{font-family:var(--mono);font-size:.62rem;color:var(--eg-muted-2);text-align:center;margin-top:4px;letter-spacing:.08em}
+    .email-note span{color:var(--eg-green)}
+
+    .step{display:none}
+    .step.active{display:block}
+
+    @media(max-width:480px){
+      .step-header{padding:22px 18px 0}
+      .step-body{padding:18px 18px 20px}
+      .step-footer{padding:0 18px 22px}
+      #result-state{padding:22px 18px 28px}
+      #loading-state{padding:40px 18px}
+    }
+
+    /* ── AUDIT INTRO ── */
+    .audit-intro{width:100%;max-width:600px;margin-bottom:20px;text-align:center}
+    .audit-intro-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(33,230,138,.07);border:1px solid rgba(33,230,138,.22);border-radius:4px;padding:5px 14px;font-family:var(--mono);font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--eg-green);margin-bottom:16px}
+    .audit-intro-badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--eg-green);box-shadow:0 0 6px rgba(33,230,138,.5)}
+    .audit-intro h1{font-family:var(--display);font-size:clamp(2rem,6vw,2.8rem);letter-spacing:.04em;text-transform:uppercase;line-height:.92;color:var(--eg-text);margin-bottom:12px}
+    .audit-intro h1 span{color:var(--eg-green)}
+    .audit-intro-sub{font-family:var(--mono);font-size:.78rem;color:var(--eg-muted);line-height:1.7;max-width:480px;margin:0 auto 24px}
+    .audit-what-you-get{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px;text-align:left}
+    @media(max-width:560px){.audit-what-you-get{grid-template-columns:1fr}}
+    .audit-get-card{background:rgba(13,18,25,.7);border:1px solid rgba(234,240,255,.08);border-radius:12px;padding:16px 14px;position:relative;overflow:hidden}
+    .audit-get-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--eg-green),transparent)}
+    .audit-get-num{font-family:var(--display);font-size:1.4rem;color:var(--eg-green);line-height:1;margin-bottom:6px}
+    .audit-get-title{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--eg-text);margin-bottom:5px}
+    .audit-get-desc{font-family:var(--mono);font-size:.65rem;color:var(--eg-muted);line-height:1.6}
+    .audit-time-note{font-family:var(--mono);font-size:.62rem;color:rgba(234,240,255,.32);letter-spacing:.1em;text-transform:uppercase}
+  </style>
+<link rel="stylesheet" href="/assets/cinema/cinema-v5-trailer.css?v=4">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <div class="page">
+    <div class="top-nav">
+      <a aria-label='eCon Growth' class='eg-logo' href='/'>
+        <span class="eg-logo-dot"></span>
+        <span class="eg-logo-text">e<span class="eg-logo-c">C</span>on Growth</span>
+      </a>
+      <a class='back-link' href='/'>← Home</a>
+    </div>
+
+    <div class="audit-intro">
+      <div class="audit-intro-badge">Free · 7 Questions · On-Screen Instantly</div>
+      <h1>See Your #1 AI<br><span>Bottleneck</span></h1>
+      <p class="audit-intro-sub">Answer 7 questions about your operation. You'll get a specific diagnosis of your biggest AI opportunity — not a generic checklist, but a real read on your business — on screen the moment you submit.</p>
+
+      <div class="audit-what-you-get">
+        <div class="audit-get-card">
+          <div class="audit-get-num">01</div>
+          <div class="audit-get-title">Your Bottleneck Report</div>
+          <div class="audit-get-desc">A written diagnosis of your #1 AI opportunity — specific to your industry, tools, and the workflows eating your time.</div>
+        </div>
+        <div class="audit-get-card">
+          <div class="audit-get-num">02</div>
+          <div class="audit-get-title">3 Actions You Can Take Today</div>
+          <div class="audit-get-desc">Ready-to-run AI prompts built for your exact situation. Copy them into Claude or ChatGPT and start immediately.</div>
+        </div>
+        <div class="audit-get-card">
+          <div class="audit-get-num">03</div>
+          <div class="audit-get-title">Your Growth Call Option</div>
+          <div class="audit-get-desc">After the report, book a free 30-min call. We walk through your results and show you exactly how to install the fix.</div>
+        </div>
+      </div>
+      <p class="audit-time-note">No account · No credit card · Results on screen in under 3 minutes</p>
+    </div>
+
+    <div class="form-card">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progress-fill" style="width:14%"></div>
+      </div>
+
+      <form id="intake-form" novalidate>
+
+        <div class="step active" data-step="1">
+          <div class="step-header">
+            <div class="step-count">Step 1 of 7</div>
+            <h2>Business Basics</h2>
+            <p>Let's start with the fundamentals.</p>
+          </div>
+          <div class="step-body">
+            <div class="field" id="field-name">
+              <label>Your name *</label>
+              <input type="text" name="name" placeholder="First name is fine" />
+              <div class="field-error">Please enter your name.</div>
+            </div>
+            <div class="field" id="field-email">
+              <label>Email address *</label>
+              <input type="email" name="email" placeholder="you@yourbusiness.com" />
+              <div class="field-error">Please enter a valid email.</div>
+            </div>
+            <div class="field" id="field-business_name">
+              <label>Business name *</label>
+              <input type="text" name="business_name" placeholder="What's your business called?" />
+              <div class="field-error">Please enter your business name.</div>
+            </div>
+            <div class="field" id="field-website">
+              <label>Website <span style="font-weight:400;opacity:.5">(optional)</span></label>
+              <input type="url" name="website" placeholder="https://" />
+            </div>
+            <div class="field" id="field-industry">
+              <label>Industry *</label>
+              <select name="industry">
+                <option value="" disabled selected>Select your industry</option>
+                <option>HVAC</option>
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>General Contracting</option>
+                <option>Coaching / Consulting</option>
+                <option>Health &amp; Wellness</option>
+                <option>Marketing / Agency</option>
+                <option>Real Estate</option>
+                <option>Legal / Finance</option>
+                <option>E-commerce / Retail</option>
+                <option>Food &amp; Hospitality</option>
+                <option>Creative / Design</option>
+                <option>Technology</option>
+                <option>Education</option>
+                <option>Other</option>
+              </select>
+              <div class="field-error">Please select your industry.</div>
+            </div>
+          </div>
+          <div class="step-footer">
+            <span></span>
+            <button type="button" class="btn-next" onclick="nextStep(1)">Continue →</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="2">
+          <div class="step-header">
+            <div class="step-count">Step 2 of 7</div>
+            <h2>Brand Feel</h2>
+            <p>How would your best client describe your vibe?</p>
+          </div>
+          <div class="step-body">
+            <div class="field">
+              <label>Pick words that fit your brand voice</label>
+              <div class="chip-group">
+                <label class="chip-label"><input type="checkbox" name="brand_voice" value="Warm &amp; approachable"><span>Warm &amp; approachable</span></label>
+                <label class="chip-label"><input type="checkbox" name="brand_voice" value="Bold &amp; direct"><span>Bold &amp; direct</span></label>
+                <label class="chip-label"><input type="checkbox" name="brand_voice" value="Expert &amp; authoritative"><span>Expert &amp; authoritative</span></label>
+                <label class="chip-label"><input type="checkbox" name="brand_voice" value="Playful &amp; fun"><span>Playful &amp; fun</span></label>
+                <label class="chip-label"><input type="checkbox" name="brand_voice" value="Calm &amp; reassuring"><span>Calm &amp; reassuring</span></label>
+                <label class="chip-label"><input type="checkbox" name="brand_voice" value="Luxury &amp; premium"><span>Luxury &amp; premium</span></label>
+                <label class="chip-label"><input type="checkbox" name="brand_voice" value="Conversational"><span>Conversational</span></label>
+                <label class="chip-label"><input type="checkbox" name="brand_voice" value="No-nonsense"><span>No-nonsense</span></label>
+              </div>
+            </div>
+            <div class="field" id="field-tagline">
+              <label>Describe your business in one sentence *</label>
+              <textarea name="tagline" placeholder="e.g. We run the AI operations layer for serious HVAC owners."></textarea>
+              <div class="field-error">Please add a one-sentence description.</div>
+            </div>
+          </div>
+          <div class="step-footer">
+            <button type="button" class="btn-back" onclick="prevStep(2)">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep(2)">Continue →</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="3">
+          <div class="step-header">
+            <div class="step-count">Step 3 of 7</div>
+            <h2>Current Tools</h2>
+            <p>Tell me what's already in your stack.</p>
+          </div>
+          <div class="step-body">
+            <div class="field">
+              <label>Which tools do you use regularly?</label>
+              <div class="chip-group">
+                <label class="chip-label"><input type="checkbox" name="tools" value="Google Workspace"><span>Google Workspace</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="Microsoft 365"><span>Microsoft 365</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="ServiceTitan"><span>ServiceTitan</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="HouseCall Pro"><span>HouseCall Pro</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="Jobber"><span>Jobber</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="Slack"><span>Slack</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="HubSpot"><span>HubSpot</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="Mailchimp / Email"><span>Mailchimp / Email</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="QuickBooks / Xero"><span>QuickBooks / Xero</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="ChatGPT"><span>ChatGPT</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="Zapier / Make"><span>Zapier / Make</span></label>
+                <label class="chip-label"><input type="checkbox" name="tools" value="Canva"><span>Canva</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label>Any tools not listed above?</label>
+              <input type="text" name="other_tools" placeholder="e.g. FieldEdge, Vonigo, custom dispatch software..." />
+            </div>
+          </div>
+          <div class="step-footer">
+            <button type="button" class="btn-back" onclick="prevStep(3)">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep(3)">Continue →</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="4">
+          <div class="step-header">
+            <div class="step-count">Step 4 of 7</div>
+            <h2>Where Time Goes</h2>
+            <p>Be as specific as you want — this shapes everything.</p>
+          </div>
+          <div class="step-body">
+            <div class="field" id="field-time_sinks">
+              <label>What repetitive tasks eat the most time? *</label>
+              <textarea name="time_sinks" placeholder="e.g. Dispatching, following up on estimates, answering the same customer questions, scheduling..."></textarea>
+              <div class="field-error">Please describe at least one time sink.</div>
+            </div>
+            <div class="field">
+              <label>Anything you dread doing every week?</label>
+              <textarea name="dreaded_tasks" placeholder="e.g. Monthly reporting, callbacks, reviews follow-up..."></textarea>
+            </div>
+          </div>
+          <div class="step-footer">
+            <button type="button" class="btn-back" onclick="prevStep(4)">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep(4)">Continue →</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="5">
+          <div class="step-header">
+            <div class="step-count">Step 5 of 7</div>
+            <h2>Top 3 Workflows</h2>
+            <p>Pick up to 3 areas where AI could help most.</p>
+          </div>
+          <div class="step-body">
+            <div class="field">
+              <div class="workflow-grid">
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Dispatch &amp; Scheduling"><span>Dispatch &amp; Scheduling</span></label>
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Estimates &amp; Quotes"><span>Estimates &amp; Quotes</span></label>
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Customer Follow-up"><span>Customer Follow-up</span></label>
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Marketing &amp; Reviews"><span>Marketing &amp; Reviews</span></label>
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Tech Performance"><span>Tech Performance</span></label>
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Financial Reporting"><span>Financial Reporting</span></label>
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Invoicing &amp; Collections"><span>Invoicing &amp; Collections</span></label>
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Hiring &amp; Onboarding"><span>Hiring &amp; Onboarding</span></label>
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Customer Support"><span>Customer Support</span></label>
+                <label class="workflow-option"><input type="checkbox" name="workflows" value="Inventory &amp; Parts"><span>Inventory &amp; Parts</span></label>
+              </div>
+              <p id="workflow-limit-msg" style="font-family:var(--mono);font-size:.62rem;color:var(--eg-red);margin-top:9px;display:none;letter-spacing:.06em">Maximum 3 workflows selected.</p>
+            </div>
+          </div>
+          <div class="step-footer">
+            <button type="button" name="btn-back" class="btn-back" onclick="prevStep(5)">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep(5)">Continue →</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="6">
+          <div class="step-header">
+            <div class="step-count">Step 6 of 7</div>
+            <h2>Privacy &amp; Limits</h2>
+            <p>What should AI never have access to in your business?</p>
+          </div>
+          <div class="step-body">
+            <div class="field">
+              <label>Select anything that applies</label>
+              <div class="chip-group">
+                <label class="chip-label"><input type="checkbox" name="sensitive_data" value="Customer contact info"><span>Customer contact info</span></label>
+                <label class="chip-label"><input type="checkbox" name="sensitive_data" value="Financial records"><span>Financial records</span></label>
+                <label class="chip-label"><input type="checkbox" name="sensitive_data" value="Employee HR / payroll"><span>Employee HR / payroll</span></label>
+                <label class="chip-label"><input type="checkbox" name="sensitive_data" value="Pricing &amp; margins"><span>Pricing &amp; margins</span></label>
+                <label class="chip-label"><input type="checkbox" name="sensitive_data" value="Confidential contracts"><span>Confidential contracts</span></label>
+                <label class="chip-label"><input type="checkbox" name="sensitive_data" value="Trade secrets / SOPs"><span>Trade secrets / SOPs</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label>Anything else AI should never see or touch?</label>
+              <textarea name="privacy_notes" placeholder="Any rules specific to your business or customers..."></textarea>
+            </div>
+          </div>
+          <div class="step-footer">
+            <button type="button" class="btn-back" onclick="prevStep(6)">← Back</button>
+            <button type="button" class="btn-next" onclick="nextStep(6)">Continue →</button>
+          </div>
+        </div>
+
+        <div class="step" data-step="7">
+          <div class="step-header">
+            <div class="step-count">Step 7 of 7</div>
+            <h2>Comfort Level</h2>
+            <p>Where are you right now with AI tools?</p>
+          </div>
+          <div class="step-body">
+            <div class="field" id="field-comfort">
+              <div class="comfort-opts">
+                <label class="comfort-label">
+                  <input type="radio" name="comfort" value="never" />
+                  <div class="comfort-card"><div class="comfort-dot"></div><div class="comfort-text"><strong>Never used it</strong><small>I've heard about AI but haven't tried it in my business.</small></div></div>
+                </label>
+                <label class="comfort-label">
+                  <input type="radio" name="comfort" value="dabbled" />
+                  <div class="comfort-card"><div class="comfort-dot"></div><div class="comfort-text"><strong>Dabbled a little</strong><small>I've tried ChatGPT or Claude a few times but not consistently.</small></div></div>
+                </label>
+                <label class="comfort-label">
+                  <input type="radio" name="comfort" value="using_casually" />
+                  <div class="comfort-card"><div class="comfort-dot"></div><div class="comfort-text"><strong>Using it casually</strong><small>I use AI regularly for a few things but want to do more.</small></div></div>
+                </label>
+                <label class="comfort-label">
+                  <input type="radio" name="comfort" value="building_workflows" />
+                  <div class="comfort-card"><div class="comfort-dot"></div><div class="comfort-text"><strong>Building workflows</strong><small>I'm actively integrating AI — I want advanced systems and automation.</small></div></div>
+                </label>
+              </div>
+              <div class="field-error" id="comfort-error">Please select your comfort level.</div>
+            </div>
+          </div>
+          <div class="step-footer">
+            <button type="button" class="btn-back" onclick="prevStep(7)">← Back</button>
+            <button type="submit" class="btn-submit">Get My AI Bottleneck Report</button>
+          </div>
+        </div>
+
+      </form>
+
+      <div id="loading-state">
+        <div class="spinner"></div>
+        <p>Analyzing your operation with AI…</p>
+      </div>
+
+      <div id="result-state">
+        <div class="result-badge">Your AI Bottleneck Report</div>
+        <h2 id="result-heading">Here's your #1 AI opportunity:</h2>
+        <div class="snapshot-box" id="snapshot-content"></div>
+        <div id="prompts-section" style="display:none;margin-bottom:22px">
+          <div class="prompts-label">3 actions you can take right now</div>
+          <div id="prompts-container"></div>
+        </div>
+        <p class="email-note">Full breakdown sent to <span id="result-email"></span></p>
+        <div style="margin-top:24px;padding-top:22px;border-top:1px solid var(--eg-border);text-align:center">
+          <p style="font-family:var(--mono);font-size:.62rem;color:var(--eg-muted-2);margin-bottom:14px;letter-spacing:.08em;text-transform:uppercase">Ready to install the full AI Operating System for your business?</p>
+          <a href='/book' style='display:inline-block;background:var(--eg-green);color:#070A0F;font-size:.95rem;font-weight:800;padding:13px 30px;border-radius:8px;text-decoration:none;box-shadow:0 0 28px rgba(33,230,138,.35)'>Book Your Growth Call →</a>
+          <p style="font-family:var(--mono);font-size:.6rem;color:var(--eg-muted-2);margin-top:10px;letter-spacing:.1em;text-transform:uppercase">30 minutes · No contract required</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Live intake — eCon OS. POSTs the JSON body below, returns
+    // { teaser: string, actionPrompts: [{label, prompt}] }. The lead is saved
+    // to the CRM before the snapshot is generated, so a slow or failed
+    // generation still captures the lead.
+    const API_ENDPOINT = 'https://econ-os-nine.vercel.app/api/audit';
+
+    const totalSteps = 7;
+    function updateProgress(step) {
+      document.getElementById('progress-fill').style.width = Math.round((step / totalSteps) * 100) + '%';
+    }
+    function showStep(n) {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      document.querySelector(`.step[data-step="${n}"]`).classList.add('active');
+      updateProgress(n);
+    }
+    function validateStep(step) {
+      let valid = true;
+      if (step === 1) {
+        ['name', 'email', 'business_name', 'industry'].forEach(f => {
+          const el = document.querySelector(`[name="${f}"]`);
+          const wrap = document.getElementById(`field-${f}`);
+          if (wrap) {
+            const empty = !el || !el.value.trim() || (f === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value));
+            wrap.classList.toggle('has-error', empty);
+            if (empty) valid = false;
+          }
+        });
+      }
+      if (step === 2) {
+        const el = document.querySelector('[name="tagline"]');
+        const wrap = document.getElementById('field-tagline');
+        const empty = !el || !el.value.trim();
+        wrap.classList.toggle('has-error', empty);
+        if (empty) valid = false;
+      }
+      if (step === 4) {
+        const el = document.querySelector('[name="time_sinks"]');
+        const wrap = document.getElementById('field-time_sinks');
+        const empty = !el || !el.value.trim();
+        wrap.classList.toggle('has-error', empty);
+        if (empty) valid = false;
+      }
+      return valid;
+    }
+    function nextStep(current) { if (!validateStep(current)) return; if (current < totalSteps) showStep(current + 1); }
+    function prevStep(current) { if (current > 1) showStep(current - 1); }
+
+    document.querySelectorAll('[name="workflows"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const checked = document.querySelectorAll('[name="workflows"]:checked');
+        const msg = document.getElementById('workflow-limit-msg');
+        if (checked.length > 3) { cb.checked = false; msg.style.display = 'block'; }
+        else msg.style.display = 'none';
+      });
+    });
+
+    document.getElementById('intake-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const comfort = document.querySelector('[name="comfort"]:checked');
+      if (!comfort) { document.getElementById('comfort-error').style.display = 'block'; return; }
+      const form = e.target;
+      const f = name => form.querySelector(`[name="${name}"]`);
+      const data = {
+        name: f('name').value.trim(), email: f('email').value.trim(),
+        business_name: f('business_name').value.trim(), website: f('website').value.trim(),
+        industry: f('industry').value,
+        brand_voice: [...form.querySelectorAll('[name="brand_voice"]:checked')].map(c => c.value),
+        tagline: f('tagline').value.trim(),
+        tools: [...form.querySelectorAll('[name="tools"]:checked')].map(c => c.value),
+        other_tools: f('other_tools').value.trim(),
+        time_sinks: f('time_sinks').value.trim(), dreaded_tasks: f('dreaded_tasks').value.trim(),
+        workflows: [...form.querySelectorAll('[name="workflows"]:checked')].map(c => c.value),
+        sensitive_data: [...form.querySelectorAll('[name="sensitive_data"]:checked')].map(c => c.value),
+        privacy_notes: f('privacy_notes').value.trim(), comfort: comfort.value,
+      };
+      form.style.display = 'none';
+      document.getElementById('loading-state').style.display = 'block';
+      try {
+        const res = await fetch(API_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        const json = await res.json();
+        document.getElementById('loading-state').style.display = 'none';
+        document.getElementById('result-state').style.display = 'block';
+        document.getElementById('snapshot-content').textContent = json.teaser || 'Your report is being prepared — check your email in a moment.';
+        document.getElementById('result-email').textContent = data.email;
+        if (json.actionPrompts && json.actionPrompts.length) {
+          document.getElementById('prompts-section').style.display = 'block';
+          const container = document.getElementById('prompts-container');
+          container.innerHTML = '';
+          json.actionPrompts.forEach((p, i) => {
+            const card = document.createElement('div');
+            card.className = 'prompt-card';
+            card.innerHTML = `<div class="prompt-card-label">${p.label}</div><div class="prompt-card-text">${p.prompt}</div><button class="copy-btn" onclick="copyPrompt(this,${i})">Copy</button>`;
+            container.appendChild(card);
+          });
+          window._prompts = json.actionPrompts;
+        }
+      } catch (err) {
+        document.getElementById('loading-state').style.display = 'none';
+        document.getElementById('result-state').style.display = 'block';
+        document.getElementById('snapshot-content').textContent = 'Something went wrong. Please try again or contact us directly.';
+        document.getElementById('result-email').textContent = data.email;
+      }
+    });
+    function copyPrompt(btn, i) {
+      navigator.clipboard.writeText(window._prompts[i].prompt).then(() => {
+        btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    }
+  </script>
+<script src="/assets/cinema/cinema-v5-trailer.js?v=2" defer></script>
+</body>
+</html>

@@ -310,19 +310,36 @@
       tease.innerHTML = '<span class="lbl">UP NEXT</span><span class="text" id="tourTeaseText"></span>';
       D.body.appendChild(tease);
     }
+    // Jarvis narration subtitle — this is where Jarvis EXPLAINS the offer
+    if(!D.querySelector('.cine-tour-say')){
+      const say = D.createElement('div');
+      say.className = 'cine-tour-say';
+      say.innerHTML = '<span class="cine-tour-say-who">JARVIS</span><span class="cine-tour-say-text" id="tourSayText"></span>';
+      D.body.appendChild(say);
+    }
     B.classList.add('tour-running');
 
     // Tour pacing — matches recorded MP3 lengths (+12% sped up).
     // Lets each clip play to completion, breathes at the climax.
+    // Each stop steps through a REAL section (in scroll order) and Jarvis
+    // explains the ONE offer via the on-screen `say` subtitle.
     const TOUR = [
-      {id:'problem',    name:'The Problem',           dur:9000,  tease:'Three traps. One way out.'},
-      {id:'operations', name:'Operations',            dur:11000, tease:'Marketing layer next.'},
-      {id:'marketing',  name:'Marketing',             dur:9000,  tease:'Then the half nobody plans for…'},
-      {id:'financial',  name:'Financial',             dur:8000,  tease:'Now watch all three converge.'},
-      {id:'fullstack',  name:'∞ LEVERAGE',            dur:10500, tease:'Who built it?'},  // climax — breathes
-      {id:'founders',   name:'Founders',              dur:9000,  tease:'Is this for you?'},
-      {id:'qualify',    name:'Who For',               dur:8500,  tease:'Last stop — answers.'},
-      {id:'faq',        name:'Questions',             dur:8500,  tease:''},
+      {id:'problem',        name:'The Problem',      dur:8000, tease:'Here is what we do →',
+       say:'Right now, sir, everything runs through you. Step away and the work stops. That is the trap eCon Growth exists to break.'},
+      {id:'guide',          name:'What We Do',       dur:8000, tease:'The AI War Room →',
+       say:'Plainly: we build the one AI system that runs your business — so it stops running on you.'},
+      {id:'mastermind',     name:'The AI War Room',  dur:7000, tease:'One system, three fronts →',
+       say:'The AI War Room — five live sessions a week where operators actually build with AI. Free to join.'},
+      {id:'services',       name:'One System',       dur:8000, tease:'Where to start →',
+       say:'One system, three fronts — operations, marketing, and the numbers. Not three vendors. One machine.'},
+      {id:'start',          name:'Where to Start',   dur:8000, tease:'The payoff →',
+       say:'Start free: a five-minute audit finds your number-one bottleneck. Then we build the fix — with you, or for you.'},
+      {id:'transformation', name:'The Payoff',       dur:7000, tease:'Your questions →',
+       say:'The result: you stop being the system your business runs on. You become the one who built it.'},
+      {id:'faq',            name:'Questions',        dur:7000, tease:'One last thing →',
+       say:'The straight answers — what this is, who it is for, and how it works.'},
+      {id:'contact',        name:'Your Move',        dur:7000, tease:'',
+       say:'That is the whole offer, sir. When you are ready, book a growth call. I will be right here.'},
     ];
     const INTRO_DURATION = 3500; // beat to land the intro before first scroll
 
@@ -338,6 +355,13 @@
       // Update HUD: section name + position + progress bar
       const label = D.getElementById('tourSection');
       if(label) label.textContent = stop.name;
+      // Jarvis narration subtitle — reveal the line for this stop
+      const sayEl = D.getElementById('tourSayText');
+      const sayBox = D.querySelector('.cine-tour-say');
+      if(sayEl && stop.say){
+        sayEl.textContent = stop.say;
+        if(sayBox){ sayBox.classList.remove('show'); void sayBox.offsetWidth; sayBox.classList.add('show'); }
+      }
       const pos = D.getElementById('tourPos');
       if(pos) pos.textContent = `${idx}/${TOUR.length}`;
       const fill = D.getElementById('tourProgFill');
@@ -383,7 +407,7 @@
 
   function stopAutoTour(){
     B.classList.remove('tour-running');
-    ['.cine-tour-status','.cine-tour-progress','.cine-tour-tease'].forEach(sel=>{
+    ['.cine-tour-status','.cine-tour-progress','.cine-tour-tease','.cine-tour-say'].forEach(sel=>{
       const el = D.querySelector(sel); if(el) el.remove();
     });
     if(B._tourCleanup){ B._tourCleanup(); delete B._tourCleanup; }
@@ -503,7 +527,7 @@
       } catch(err){
         // Fallback canned response (no backend yet — Kris will wire later)
         thinking.remove();
-        const fallback = "I'd love to chat properly, sir — but live conversations need an API key wired up. Until then: Operations is the AI system layer, Marketing compounds growth, Financial structures it. Book a Growth Call below to talk to Kris or Watson directly.";
+        const fallback = "I'd love to chat properly, sir — but live conversations need an API key wired up. Until then: Operations is the AI system layer, Marketing compounds growth, Financial structures it. Book a Growth Call below to talk to Kris directly.";
         append('jarvis', fallback);
         speakResponse(fallback);
       }
@@ -671,7 +695,7 @@
     credits.className = 'cine-credits';
     const items = [
       '<span class="grn">ECON GROWTH</span> · AI OPERATING SYSTEMS FOR SERIOUS OPERATORS',
-      'CO-FOUNDED BY <span class="grn">KRISTOPHER CRAVENS</span> &amp; <span class="grn">WATSON WHEELER</span>',
+      'FOUNDED BY <span class="grn">KRISTOPHER CRAVENS</span>',
       'POWERED BY <span class="grn">ANTHROPIC CLAUDE</span>',
       'OPERATIONS · MARKETING · FINANCIAL · ONE FULL STACK',
       '<span class="grn">∞ LEVERAGE</span> · THE FULL STACK, INSTALLED',
@@ -1080,7 +1104,7 @@
           osc.connect(g); g.connect(hbBus);
           osc.start(t); osc.stop(t + 0.25);
         }
-        setInterval(pulseHeartbeat, 1000); // 60bpm
+        // setInterval(pulseHeartbeat, 1000); // 60bpm — DISABLED (Kris: heartbeat felt like a scare tactic)
 
         // ── FX: lock-on tick (short, high)
         function tick(){
@@ -1227,7 +1251,7 @@
           "Marketing that compounds. Built quietly. Hits hard.": 'marketing',
           "Financial structure. The half nobody plans for.": 'financial',
           "The Full Stack, sir. Infinite leverage.": 'fullstack',
-          "Two operators. One operating system. Kris and Watson.": 'founders',
+          "One founder. One operating system. Kris Cravens.": 'founders',
           "Serious operators only, sir.": 'qualify',
           "Questions, sir? Answered.": 'faq',
         };

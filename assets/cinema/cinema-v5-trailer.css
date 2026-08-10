@@ -1,0 +1,143 @@
+/* ══════════════════════════════════════════════════════════════════
+   CINEMA v5 — TRAILER MODE
+   Additive "bold / cinematic" layer. No markup changes required.
+   Layers on top of cinema v2/v3/v4 without touching their logic.
+══════════════════════════════════════════════════════════════════ */
+:root{ --tr-green:#21E68A; --tr-red:#FF3B41; }
+
+/* 1) HERO — animated cinematic backdrop drifting behind the grid */
+#scroll-hero-sticky::before{
+  content:"";position:absolute;inset:-20%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(40% 55% at 22% 28%, rgba(33,230,138,.18), transparent 60%),
+    radial-gradient(46% 52% at 82% 70%, rgba(255,59,65,.12), transparent 62%),
+    radial-gradient(65% 60% at 50% 122%, rgba(33,230,138,.12), transparent 60%);
+  filter:blur(6px);
+  animation:trDrift 20s ease-in-out infinite alternate;
+}
+@keyframes trDrift{
+  0%{transform:translate3d(-2%,-1%,0) scale(1.02);opacity:.85}
+  50%{transform:translate3d(2%,1.6%,0) scale(1.08);opacity:1}
+  100%{transform:translate3d(-1%,2%,0) scale(1.05);opacity:.8}
+}
+/* scanning broadcast light sweep across the hero */
+#scroll-hero-sticky::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(100deg,transparent 32%,rgba(33,230,138,.07) 49%,transparent 66%);
+  background-size:250% 100%;mix-blend-mode:screen;
+  animation:trSweep 7.5s linear infinite;
+}
+@keyframes trSweep{0%{background-position:180% 0}100%{background-position:-80% 0}}
+
+/* 2) HERO TITLE — amplified glow + slow pulse */
+.hero-h1 .green{
+  text-shadow:0 0 26px rgba(33,230,138,.55),0 0 62px rgba(33,230,138,.22);
+  animation:trPulse 3.4s ease-in-out infinite;
+}
+@keyframes trPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.16)}}
+
+/* 3) PRIMARY CTA — pulsing energy ring */
+a.btn-primary,.btn-primary{position:relative;overflow:visible}
+.btn-primary::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  animation:trCta 2.6s ease-out infinite;
+}
+@keyframes trCta{
+  0%{box-shadow:0 0 0 0 rgba(33,230,138,.38)}
+  70%{box-shadow:0 0 0 15px rgba(33,230,138,0)}
+  100%{box-shadow:0 0 0 0 rgba(33,230,138,0)}
+}
+
+/* 4) THE AI WAR ROOM — red tension accent bar */
+#mastermind{position:relative}
+#mastermind::before{
+  content:"";position:absolute;left:0;top:12%;bottom:12%;width:2px;
+  background:linear-gradient(180deg,transparent,var(--tr-red),transparent);
+  box-shadow:0 0 18px rgba(255,59,65,.55);opacity:.85;pointer-events:none;
+}
+
+/* 5) FILM GRAIN + VIGNETTE (divs injected by cinema-v5-trailer.js) */
+#tr-grain{
+  position:fixed;inset:0;z-index:9996;pointer-events:none;opacity:.07;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:160px 160px;
+  animation:trGrain .5s steps(3) infinite;
+}
+@keyframes trGrain{
+  0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}
+  66%{transform:translate(2%,-2%)}100%{transform:translate(-2%,-1%)}
+}
+#tr-vignette{
+  position:fixed;inset:0;z-index:9995;pointer-events:none;
+  background:radial-gradient(125% 105% at 50% 42%,transparent 56%,rgba(0,0,0,.5) 100%);
+}
+
+/* 6) BROADCAST SCANLINES — global drifting CRT texture */
+#tr-scan{
+  position:fixed;inset:0;z-index:9994;pointer-events:none;opacity:.55;
+  background:repeating-linear-gradient(to bottom,
+     rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,
+     rgba(0,0,0,.18) 3px,rgba(0,0,0,0) 4px);
+  animation:trScan 9s linear infinite;
+}
+@keyframes trScan{0%{background-position:0 0}100%{background-position:0 120px}}
+
+/* 7) SECTION HEADINGS — amplified glow (v4 handles the decrypt reveal) */
+.section-h2 .green{text-shadow:0 0 24px rgba(33,230,138,.45);}
+
+/* 8) SCROLL REVEALS — content blocks rise + sharpen as they enter.
+   Guarded by .tr-js on <html>: if JS never runs, nothing is ever hidden. */
+.tr-js .tr-up{
+  opacity:0;transform:translateY(38px) scale(.984);filter:blur(7px);
+  transition:opacity .72s cubic-bezier(.2,.7,.2,1),
+             transform .72s cubic-bezier(.2,.7,.2,1),
+             filter .72s cubic-bezier(.2,.7,.2,1);
+  will-change:opacity,transform,filter;
+}
+.tr-js .tr-up.tr-in{opacity:1;transform:none;filter:none;}
+
+/* respect reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  #scroll-hero-sticky::before,#scroll-hero-sticky::after,
+  .hero-h1 .green,.btn-primary::after,#tr-grain,#tr-scan{animation:none!important}
+  .tr-js .tr-up{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+}
+
+/* ── UX consolidation (Kris): ONE button = Talk to Jarvis, bottom-LEFT.
+      Remove the separate 'Take the tour' pill — the tour lives inside the
+      Jarvis panel already. ── */
+.cine-sound{display:none!important}
+.cine-talk-btn{left:30px!important;right:auto!important}
+.cine-talk-panel{left:30px!important;right:auto!important}
+@media(max-width:760px){
+  .cine-talk-btn{left:14px!important;right:auto!important}
+  .cine-talk-panel{left:12px!important;right:12px!important;width:auto!important}
+}
+
+/* ── JARVIS TOUR SUBTITLE — where Jarvis explains the offer as he scrolls ── */
+.cine-tour-say{
+  position:fixed;left:50%;bottom:104px;transform:translate(-50%,14px);
+  z-index:9800;max-width:min(760px,90vw);pointer-events:none;
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 20px;border-radius:14px;
+  background:rgba(7,10,15,.82);border:1px solid rgba(33,230,138,.28);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 18px 60px -12px rgba(0,0,0,.7),0 0 30px rgba(33,230,138,.12);
+  opacity:0;transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.cine-tour-say.show{opacity:1;transform:translate(-50%,0)}
+.cine-tour-say-who{
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;
+  color:#21E68A;padding-top:3px;flex-shrink:0;text-shadow:0 0 12px rgba(33,230,138,.5)}
+.cine-tour-say-text{
+  font-family:'JetBrains Mono',monospace;font-size:15px;line-height:1.55;
+  color:#EAF0FF;font-weight:300}
+@media(max-width:760px){
+  .cine-tour-say{bottom:78px;padding:11px 15px;gap:9px}
+  .cine-tour-say-text{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cine-tour-say{transition:opacity .3s ease!important}
+  .cine-tour-say.show{transform:translate(-50%,0)}
+}

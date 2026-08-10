@@ -31,11 +31,6 @@
       "@type": "Person",
       "name": "Kristopher Cravens",
       "jobTitle": "Founder & CEO"
-    },
-    {
-      "@type": "Person",
-      "name": "Watson Wheeler",
-      "jobTitle": "Co-Founder & COO"
     }
   ],
   "sameAs": [
@@ -71,7 +66,7 @@
       "name": "What is eCon Growth?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "eCon Growth is an AI operations company that builds AI Operating Systems for serious operators. It installs the operations layer behind serious businesses across three service lines: AI Operating Systems, marketing services, and financial planning. eCon Growth was co-founded by Kristopher Cravens and Watson Wheeler and is powered by Anthropic's Claude."
+        "text": "eCon Growth is an AI operations company that builds AI Operating Systems for serious operators. It installs the operations layer behind serious businesses across three service lines: AI Operating Systems, marketing services, and financial planning. eCon Growth was founded by Kristopher Cravens and is powered by Anthropic's Claude."
       }
     },
     {
@@ -199,8 +194,13 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 @keyframes pulse-ring{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.2);opacity:0}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
 .rv.v{opacity:1;transform:translateY(0)}
+.svc-grid .svc-card{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s}
+.svc-grid .svc-card.v{opacity:1;transform:translateY(0)}
+.svc-grid .svc-card:nth-child(2){transition-delay:.1s}
+.svc-grid .svc-card:nth-child(3){transition-delay:.2s}
+.svc-grid .svc-card:nth-child(4){transition-delay:.3s}
 
 /* ═══ BUTTONS ═══ */
 .btn-primary{display:inline-flex;align-items:center;gap:9px;background:var(--green);color:#070A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;padding:16px 32px;border-radius:8px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 0 32px rgba(33,230,138,.28);transition:all .25s;letter-spacing:.01em;white-space:nowrap}
@@ -243,9 +243,9 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 /* PROOF STRIP */
 .proof-strip{display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap;animation:fu .6s 1s both}
 .proof-band{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
-.proof-band-inner{max-width:1100px;margin:0 auto;padding:44px 52px}
+.proof-band-inner{max-width:1100px;margin:0 auto;padding:32px 52px}
 /* SERVICE CARDS — premium glass bento */
-.svc-grid{display:grid;gap:16px;margin-top:52px}
+.svc-grid{display:grid;gap:16px;margin-top:36px}
 .svc-grid--3{grid-template-columns:repeat(3,1fr)}
 .svc-grid--2{grid-template-columns:repeat(2,1fr)}
 .svc-card{position:relative;background:linear-gradient(165deg,rgba(255,255,255,.045),rgba(255,255,255,.008));border:1px solid var(--bd);border-radius:16px;padding:34px 30px 30px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s}
@@ -282,7 +282,7 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
   background:conic-gradient(from var(--beam,0deg),transparent 0deg 268deg,var(--gf) 310deg,var(--green) 334deg,var(--gf) 352deg,transparent 360deg);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
   -webkit-mask-composite:xor;mask-composite:exclude;
-  animation:beamspin 5.5s linear infinite;
+  animation:beamspin 14s linear infinite;
 }
 @keyframes beamspin{to{--beam:360deg}}
 .tw-cursor{display:inline-block;width:.56ch;height:.8em;background:var(--green);vertical-align:-.02em;margin-left:.05em;box-shadow:0 0 10px var(--gg);animation:twblink 1s steps(2,jump-none) infinite}
@@ -303,10 +303,10 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 .ticker{position:relative;z-index:1;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);background:rgba(7,10,15,.85);backdrop-filter:blur(12px);padding:11px 0;overflow:hidden}
 .ticker-track{display:flex;white-space:nowrap;animation:tk 28s linear infinite}
 .ticker-item{display:inline-flex;align-items:center;padding:0 24px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);letter-spacing:.07em;text-transform:uppercase}
-.ticker-item::after{content:'●';color:var(--green);opacity:.5;margin-left:18px;font-size:6px}
+.ticker-item::after{content:'';color:var(--green);opacity:.5;margin-left:18px;font-size:6px}
 
 /* ═══ PAIN SECTION ═══ */
-.section{padding:130px 0}
+.section{padding:80px 0}
 .section-inner{max-width:1100px;margin:0 auto;padding:0 52px}
 .section-inner.wide{max-width:1200px}
 
@@ -355,7 +355,7 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 .bridge-icon{font-size:13px;flex-shrink:0;margin-top:1px;line-height:1.5}
 .bridge-row.is-before .bridge-icon{color:var(--red)}
 .bridge-row.is-after .bridge-icon{color:var(--green)}
-.bridge-row-text{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.65}
+.bridge-row-text,.bridge-text{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:300;color:var(--mu);line-height:1.65}
 .bridge-row.is-after .bridge-row-text{color:rgba(234,240,255,.82)}
 
 .bridge-right-col{display:flex;flex-direction:column;gap:28px}
@@ -570,6 +570,7 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
   .nav{padding:0 24px}
   .nav-links{display:none}
   .hero-inner{padding:90px 24px 60px}
+  .section{padding:56px 0}
   .section-inner{padding:0 24px}
   .proof-strip{gap:24px}
   .proof-sep{display:none}
@@ -965,6 +966,17 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 }
 
 </style>
+<style>
+/* ── SCROLL HERO ── */
+#scroll-hero-outer{position:relative;height:100vh;z-index:2}
+#scroll-hero-sticky{position:relative;width:100%;height:100vh;overflow:hidden;background:#070A0F;display:flex;align-items:center;padding-top:64px}
+#scroll-canvas{display:none}
+#scroll-overlay{display:none}
+#scroll-hero-sticky .hero-bg{display:none}
+#scroll-hero-sticky .hero-inner{position:relative;z-index:2}
+@keyframes lineAnim{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+@keyframes hintIn{from{opacity:0}to{opacity:1}}
+</style>
 <!-- CINEMA v2 (consolidated) -->
 <link rel="preload" href="/assets/cinema/cinema-v2.css?v=2f" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/assets/cinema/cinema-v2.css?v=2f"></noscript>
@@ -974,6 +986,7 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 <!-- CINEMA v4 (systems / futuristic layer) -->
 <link rel="preload" href="/assets/cinema/cinema-v4-systems.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/assets/cinema/cinema-v4-systems.css?v=5"></noscript>
+<link rel="stylesheet" href="/assets/cinema/cinema-v5-trailer.css?v=4">
 </head>
 <body>
 
@@ -983,14 +996,14 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 <nav class="nav" id="mainNav">
   <a href="/" class="logo"><div class="logo-dot"></div><span class="logo-text">e<span class="c">C</span>on Growth</span></a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#operations">Operations</a></li>
-    <li><a href="#marketing">Marketing</a></li>
-    <li><a href="#financial">Financial Planning</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="/login">Log In</a></li>
-    <li class="nav-mob-cta-li"><a href="book.html" class="nav-mob-cta">Book Your Growth Call</a></li>
+    <li><a href="/#services">What I Do</a></li>
+    <li><a href='/mastermind'>The AI War Room</a></li>
+    <li><a href='/about'>About</a></li>
+    <li class="nav-mob-cta-li"><a class='nav-mob-cta' href='/book' style='background:transparent;border:1px solid rgba(234,240,255,.2);color:var(--text);margin-bottom:10px'>Book a growth call</a></li>
+    <li class="nav-mob-cta-li"><a class='nav-mob-cta' href='/audit'>Get my free AI audit</a></li>
   </ul>
-  <a href="book.html" class="nav-cta nav-cta-desk">Book Your Growth Call</a>
+  <a class='nav-cta nav-cta-desk' href='/book' style='background:transparent;border:1px solid rgba(234,240,255,.18);color:var(--text);margin-right:10px'>Book a growth call</a>
+  <a class='nav-cta nav-cta-desk' href='/audit'>Get my free AI audit</a>
   <button class="ham-btn" id="hamBtn" aria-label="Open menu">
     <span class="ham-bar"></span>
     <span class="ham-bar"></span>
@@ -1002,40 +1015,34 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 <!-- ═══════════════════════════════════
      HERO
 ════════════════════════════════════ -->
-<section class="hero" id="home" data-chapter="Open" data-grade="20,40,80,0.025">
-  <div class="hero-bg">
-    <div id="cine-atmosphere"></div>
-    <div class="hero-grid"></div>
-    <div class="orb-1"></div>
-    <div class="orb-2"></div>
-    <div class="orb-3"></div>
-    <div class="scanline"></div>
-  </div>
-  <div class="hero-inner">
-    <div class="hero-badge" id="hero-badge"><div class="badge-dot"></div><span id="geo-label">eCon Growth · AI Operating Systems</span></div>
-
-    <h1 class="hero-h1" id="typeHead">
-      <span class="tw">AI OPERATING SYSTEMS</span>
-      <span class="tw green">FOR SERIOUS OPERATORS.</span>
-      <span class="tw sub-line" style="color:var(--text);opacity:.9">OPERATIONS. MARKETING. FINANCIAL.</span>
-    </h1>
-
-    <div class="hero-divider"></div>
-
-    <p class="hero-body">
-      We build the operations layer behind serious businesses.<br>
-      <strong>Operations that run themselves. Marketing that compounds. Financial structure that holds up under pressure.</strong><br>
-      Most companies sell you one. We build all three.
-    </p>
-
-    <div class="hero-btns">
-      <a href="book.html" class="btn-primary">Book Your Growth Call →</a>
-      <a href="#operations" class="btn-ghost">See the Full Stack ↓</a>
+<div id="scroll-hero-outer">
+  <div id="scroll-hero-sticky" data-chapter="Open" data-grade="20,40,80,0.025">
+    <canvas id="scroll-canvas"></canvas>
+    <div id="scroll-overlay"></div>
+    <div class="hero-bg" style="z-index:1;opacity:.4">
+      <div id="cine-atmosphere"></div>
+      <div class="hero-grid"></div>
     </div>
-    <div class="hero-note">30 minutes · No pitch deck · No contract required · If we're not a fit, we'll tell you</div>
+    <div class="hero-inner">
+      <div class="hero-badge" id="hero-badge"><div class="badge-dot"></div><span id="geo-label">eCon Growth · AI Operating Systems</span></div>
 
+      <h1 class="hero-h1" id="typeHead">
+        <span class="tw">AI CHANGED EVERYTHING.</span>
+        <span class="tw green">EXCEPT YOUR WORKLOAD.</span>
+      </h1>
+
+      <div class="hero-divider"></div>
+
+      <p class="hero-body">You know AI could take work off your plate. You just cannot see where it fits. We find the one system worth building first, then we build it with you or for you, so your business stops running on you.</p>
+
+      <div class="hero-btns">
+        <a class='btn-primary' href='/audit'>Get my free AI audit →</a>
+        <a class='btn-ghost' href='/book'>Book a growth call</a>
+      </div>
+      <div class="hero-note">Free · 5 minutes · See your #1 bottleneck on screen instantly</div>
+    </div>
   </div>
-</section>
+</div>
 
 <!-- FULL-STACK CREDENTIAL BAND -->
 <section class="proof-band">
@@ -1064,267 +1071,200 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
   </div>
 </section>
 
+
 <!-- ═══════════════════════════════════
-     01 — OPERATIONS
+     01 — THE PROBLEM
 ════════════════════════════════════ -->
-<!-- ═══════════════════════════════════
-     THE PROBLEM
-════════════════════════════════════ -->
-<section class="section" id="problem" data-chapter="The Problem" data-grade="140,40,40,0.035" data-narrate="The operator's trap, sir. The bottleneck is always you.">
+<section class="section" id="problem">
   <div class="section-inner">
     <div class="rv" style="text-align:center">
-      <div class="section-label" style="justify-content:center">The Reality</div>
-      <h2 class="section-h2" style="text-align:center;max-width:900px;margin:0 auto 16px">YOU'RE NOT RUNNING THE BUSINESS.<br>THE BUSINESS IS <span class="green">RUNNING YOU.</span></h2>
-      <p class="section-sub" style="margin:0 auto;text-align:center;max-width:640px">You started this to build something — and to be free. Most days it feels like the opposite. That's not a discipline problem. It's a structure problem.</p>
+      <div class="section-label" style="justify-content:center">01 · The problem</div>
+      <h2 class="section-h2" style="text-align:center;max-width:780px;margin:0 auto 20px">YOUR BUSINESS<br><span class="green">RUNS ON YOU.</span></h2>
+      <p class="section-sub" style="margin:0 auto 12px">Every lead, every decision, every handoff still routes through you. You bought the tools. You are still the one holding it all together.</p>
     </div>
     <div class="svc-grid svc-grid--3 rv">
       <div class="svc-card">
-        <div class="svc-idx">The Trap · 01</div>
-        <div class="svc-name">The Bottleneck</div>
-        <div class="svc-tag">Everything Routes Through You</div>
-        <div class="svc-headline">Every decision, every fire, every call — back to you.</div>
-        <div class="svc-text">You've hired people. It didn't fix it. The business still can't make a move without you in the middle of it. You're not the owner — you're the operating system.</div>
+        <div class="svc-name">Everything routes through you.</div>
+        <div class="svc-headline">If you step away for two weeks, the work stops. You are the operating system.</div>
       </div>
       <div class="svc-card">
-        <div class="svc-idx">The Trap · 02</div>
-        <div class="svc-name">The Patchwork</div>
-        <div class="svc-tag">Held Together by Duct Tape</div>
-        <div class="svc-headline">Six tools, three contractors, none of them talking.</div>
-        <div class="svc-text">A subscription for this, a freelancer for that, an assistant who quit in ninety days. Nothing connects. You're the integration layer — and it's wearing you down.</div>
+        <div class="svc-name">Tools that do not talk.</div>
+        <div class="svc-headline">A stack of software that each does one thing and none of it adds up to a system.</div>
       </div>
       <div class="svc-card">
-        <div class="svc-idx">The Trap · 03</div>
-        <div class="svc-name">The Ceiling</div>
-        <div class="svc-tag">Growth That Costs You</div>
-        <div class="svc-headline">More revenue just means more chaos on your plate.</div>
-        <div class="svc-text">Every level up adds weight instead of lifting it. You can feel the ceiling — and you know working harder isn't the way through it. A bigger version of this isn't the goal.</div>
+        <div class="svc-name">AI everywhere, no idea where it fits.</div>
+        <div class="svc-headline">You know it matters. You cannot tell which part of your business it should touch first.</div>
       </div>
+    </div>
+    <div class="rv" style="text-align:center;margin-top:40px">
+      <a class='btn-primary' href='/audit'>Find my bottleneck →</a>
+      <div class="hero-note" style="margin-top:12px">Free · 5 minutes · no call required</div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════
-     01 — OPERATIONS
+     02 — WHERE WE COME IN
 ════════════════════════════════════ -->
-<section class="section" id="operations" data-chapter="Operations" data-grade="33,230,138,0.04" data-narrate="Operations layer. Installing now.">
+<section class="section" id="guide" style="background:var(--bg2);border-top:1px solid var(--bd)">
   <div class="section-inner">
-    <div class="rv" style="text-align:center">
-      <div class="section-label" style="justify-content:center">01 — Operations</div>
-      <h2 class="section-h2" style="text-align:center;max-width:780px;margin:0 auto 16px">AI OPERATING SYSTEMS,<br>BUILT FOR THE <span class="green">OPERATOR.</span></h2>
-      <p class="section-sub" style="margin:0 auto;text-align:center;max-width:640px">Custom AI Operating Systems — each one built for a specific kind of operator. The system runs the business so the owner doesn't have to.</p>
-    </div>
-    <div class="svc-grid svc-grid--3 rv">
-      <div class="svc-card featured">
-        <span class="svc-badge">Flagship · Live</span>
-        <div class="svc-idx">Operations · 01</div>
-        <div class="svc-name">Command HVAC</div>
-        <div class="svc-tag">AI Operating System · HVAC Owners</div>
-        <div class="svc-headline">The operating system HVAC companies run on.</div>
-        <div class="svc-text">AI voice dispatch, smart scheduling, real-time visibility, and weekly intelligence — the full operating layer for HVAC business owners. Our flagship product, in active deployment.</div>
-        <a href="https://commandhvac.tech/" style="display:inline-block;margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--green);text-transform:uppercase">See Command HVAC →</a>
-      </div>
-      <div class="svc-card">
-        <span class="svc-badge">$497/mo · Live</span>
-        <div class="svc-idx">Operations · 02</div>
-        <div class="svc-name">AI Social Media OS</div>
-        <div class="svc-tag">Your AI Social Media Manager</div>
-        <div class="svc-headline">Kill the $10K-a-month agency.</div>
-        <div class="svc-text">A full AI social media manager — strategy, content, and posting cadence, run end to end. Same job a $10K/mo agency does, run by AI, ~16× cheaper.</div>
-        <a href="ai-social-os.html" style="display:inline-block;margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--green);text-transform:uppercase">See the pricing →</a>
-      </div>
-      <div class="svc-card" style="opacity:.72">
-        <span class="svc-badge" style="background:rgba(234,240,255,.08);border-color:rgba(234,240,255,.18);color:rgba(234,240,255,.6)">Coming Soon</span>
-        <div class="svc-idx">Operations · 03</div>
-        <div class="svc-name">AI Executive Assistant</div>
-        <div class="svc-tag">AI OS for Individual Operators</div>
-        <div class="svc-headline">The operator's right hand, built in AI.</div>
-        <div class="svc-text">A dedicated AI Operating System for the individual operator — inbox, calendar, research, follow-up. The administrative weight, lifted off your plate. <strong>Launching Q3 2026.</strong></div>
-      </div>
-      <div class="svc-card">
-        <span class="svc-badge">Live · Call to Hear</span>
-        <div class="svc-idx">Operations · 04</div>
-        <div class="svc-name">Roger</div>
-        <div class="svc-tag">AI Voice Dispatch</div>
-        <div class="svc-headline">The voice agent that answers every call.</div>
-        <div class="svc-text">Roger answers, qualifies, and books the job — in under three seconds, around the clock. Standalone, or built into Command HVAC.</div>
-        <a href="tel:18445419279" style="display:inline-block;margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--green);text-transform:uppercase">Call Roger · (844) 541-9279 →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     02 — MARKETING
-════════════════════════════════════ -->
-<section class="section" id="marketing" data-chapter="Marketing" data-grade="40,200,180,0.035" data-narrate="Marketing that compounds. Built quietly. Hits hard." style="background:var(--bg2);border-top:1px solid var(--bd)">
-  <div class="section-inner">
-    <div class="rv" style="text-align:center">
-      <div class="section-label" style="justify-content:center">02 — Marketing</div>
-      <h2 class="section-h2" style="text-align:center;max-width:780px;margin:0 auto 16px">MARKETING THAT <span class="green">COMPOUNDS.</span></h2>
-      <p class="section-sub" style="margin:0 auto;text-align:center;max-width:640px">Once the operations layer is in, growth is the next move. Full-service marketing — run by operators, not an agency reading from a template.</p>
+    <div class="rv">
+      <div class="section-label left">02 · Where we come in</div>
+      <h2 class="section-h2" style="max-width:820px;margin-bottom:20px">WE KNOW WHAT IT IS LIKE WHEN THE BUSINESS<br><span class="green">CANNOT RUN WITHOUT YOU IN THE ROOM.</span></h2>
+      <p class="section-sub" style="max-width:640px;margin-bottom:40px">We build AI operating systems for operators in exactly that spot. We do not hand you another tool and wish you luck. We find the one workflow worth automating first, show it to you on screen in five minutes, and then help you put it to work.</p>
     </div>
     <div class="svc-grid svc-grid--2 rv">
       <div class="svc-card">
-        <div class="svc-idx">Marketing · 01</div>
-        <div class="svc-name">Retainers</div>
-        <div class="svc-tag">Ongoing Marketing Partnership</div>
-        <div class="svc-headline">We run the marketing. You run the business.</div>
-        <div class="svc-text">A monthly partnership where your marketing is handled end to end — strategy, execution, and reporting — by a team that thinks like operators, not vendors.</div>
+        <div class="svc-name">One system, not three vendors.</div>
+        <div class="svc-headline">Operations, marketing, and financial structure installed together so they actually connect.</div>
       </div>
       <div class="svc-card">
-        <div class="svc-idx">Marketing · 02</div>
-        <div class="svc-name">Campaigns</div>
-        <div class="svc-tag">Campaign Management</div>
-        <div class="svc-headline">Launches that land — start to finish.</div>
-        <div class="svc-text">Product launches, promotions, and seasonal pushes, managed from the first idea to the final number. You set the goal; we run the campaign.</div>
+        <div class="svc-name">We coach you or we install it for you.</div>
+        <div class="svc-headline">Your call. Either way it gets done.</div>
       </div>
       <div class="svc-card">
-        <div class="svc-idx">Marketing · 03</div>
-        <div class="svc-name">Content</div>
-        <div class="svc-tag">Content Systems</div>
-        <div class="svc-headline">A content engine, not one-off posts.</div>
-        <div class="svc-text">A repeatable system that turns your expertise into a steady stream of content — built to compound attention over months, not chase a single viral hit.</div>
+        <div class="svc-name">Honest about what not to automate.</div>
+        <div class="svc-headline">We will tell you when to wait. That is part of the job.</div>
       </div>
       <div class="svc-card">
-        <div class="svc-idx">Marketing · 04</div>
-        <div class="svc-name">Ads + Funnels</div>
-        <div class="svc-tag">Paid Acquisition</div>
-        <div class="svc-headline">Cold traffic in. Booked calls out.</div>
-        <div class="svc-text">Paid advertising and conversion funnels that turn ad spend into real pipeline — measured, optimized, and accountable to revenue, not vanity metrics.</div>
+        <div class="svc-name">Your data stays yours.</div>
+        <div class="svc-headline">No jargon. No pressure to buy.</div>
+      </div>
+    </div>
+    <div class="rv" style="margin-top:40px;display:flex;gap:14px;flex-wrap:wrap">
+      <a class='btn-primary' href='/audit'>Get my free AI audit →</a>
+      <a href="#plan" class="btn-ghost">See the 3 step plan ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- MASTERMIND CALLOUT -->
+<section class="section" id="mastermind" style="border-top:1px solid var(--bd)">
+  <div class="section-inner">
+    <div style="max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap" class="rv">
+      <div>
+        <div class="section-label left" style="margin-bottom:16px">Free · 5 days a week</div>
+        <h2 class="section-h2" style="max-width:560px;margin-bottom:16px">THE <span class="green">AI WAR ROOM.</span></h2>
+        <p class="section-sub" style="max-width:480px">Five live sessions a week. A Sunday AI forecast in your inbox. A room of operators actually building with AI, not just watching tutorials. Free to join. No credit card.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;flex-shrink:0">
+        <a class='btn-primary' href='/mastermind'>Save my seat →</a>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(234,240,255,.28);letter-spacing:.1em;text-transform:uppercase;text-align:center">Mon through Fri · Google Meet · Free</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════
-     03 — FINANCIAL PLANNING
+     04 — WHAT WE PUT TO WORK
 ════════════════════════════════════ -->
-<section class="section" id="financial" data-chapter="Financial" data-grade="40,110,210,0.035" data-narrate="Financial structure. The half nobody plans for.">
+<section class="section" id="services" style="background:var(--bg2);border-top:1px solid var(--bd)">
   <div class="section-inner">
     <div class="rv" style="text-align:center">
-      <div class="section-label" style="justify-content:center">03 — Financial Planning</div>
-      <h2 class="section-h2" style="text-align:center;max-width:780px;margin:0 auto 16px">FINANCIAL STRUCTURE<br>THAT <span class="green">HOLDS.</span></h2>
-      <p class="section-sub" style="margin:0 auto;text-align:center;max-width:640px">Operations and marketing build the engine. Financial structure makes sure it holds — and that what you build is worth something when you're ready to step back. Led by co-founder Watson Wheeler.</p>
+      <div class="section-label" style="justify-content:center">04 · What we put to work</div>
+      <h2 class="section-h2" style="text-align:center;max-width:780px;margin:0 auto 36px">THREE PLACES AI TAKES<br>WEIGHT <span class="green">OFF YOUR PLATE.</span></h2>
     </div>
     <div class="svc-grid svc-grid--3 rv">
       <div class="svc-card">
-        <div class="svc-idx">Financial · 01</div>
-        <div class="svc-name">Planning</div>
-        <div class="svc-tag">Business Financial Planning</div>
-        <div class="svc-headline">Clarity on the numbers that decide everything.</div>
-        <div class="svc-text">A real financial picture of the business — cash flow, margins, and the levers that actually move the needle — so every decision is made with the numbers in front of you.</div>
+        <div class="svc-idx" id="operations">Operations</div>
+        <div class="svc-name">Stop being the bottleneck.</div>
+        <div class="svc-headline">Intake, follow up, scheduling, and reporting that run on their own so the business does not wait on you to move.</div>
       </div>
       <div class="svc-card">
-        <div class="svc-idx">Financial · 02</div>
-        <div class="svc-name">Structure</div>
-        <div class="svc-tag">Structuring for Growth</div>
-        <div class="svc-headline">Build the foundation before you build the height.</div>
-        <div class="svc-text">The financial structure a company needs to scale without cracking — entity setup, capital strategy, and the systems that keep growth from outrunning the foundation.</div>
+        <div class="svc-idx" id="marketing">Marketing</div>
+        <div class="svc-name">No lead falls through.</div>
+        <div class="svc-headline">Every inquiry answered and followed up the moment it lands, without you watching the inbox at 9pm.</div>
       </div>
       <div class="svc-card">
-        <div class="svc-idx">Financial · 03</div>
-        <div class="svc-name">Exit-Ready</div>
-        <div class="svc-tag">Exit-Prep Financial Work</div>
-        <div class="svc-headline">Build something worth selling — at what it's worth.</div>
-        <div class="svc-text">The financial preparation that turns a business into an asset: clean books, documented value, and a structure built so that when you're ready to exit, you exit on your terms.</div>
+        <div class="svc-idx" id="financial">Financial Planning</div>
+        <div class="svc-name">See where to spend.</div>
+        <div class="svc-headline">The numbers that tell you where to push and where to stop, in plain language you can act on this week.</div>
       </div>
+    </div>
+    <div class="rv" style="text-align:center;margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a class='btn-primary' href='/audit'>Find which one to fix first →</a>
+      <a href="#start" class="btn-ghost">See where to start ↓</a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════
-     FOUNDERS
+     05 — WHERE TO START
 ════════════════════════════════════ -->
-<!-- ═══════════════════════════════════
-     THE FULL STACK
-════════════════════════════════════ -->
-<section class="section fullstack-sec" id="fullstack" data-chapter="Full Stack" data-keymoment data-grade="255,255,255,0.04" data-narrate="The Full Stack, sir. Infinite leverage." style="background:var(--bg2);border-top:1px solid var(--bd)">
+<section class="section" id="start">
   <div class="section-inner">
     <div class="rv" style="text-align:center">
-      <div class="section-label" style="justify-content:center">The Full Stack</div>
-      <h2 class="section-h2" style="text-align:center;max-width:920px;margin:0 auto 18px">MOST COMPANIES SELL YOU ONE.<br>WE BUILD <span class="green">ALL THREE.</span></h2>
-      <p class="section-sub" style="margin:0 auto 46px;text-align:center;max-width:680px">Serious operators need three things to scale and exit: operations that run themselves, marketing that compounds, and financial structure that holds under pressure. Buy them in pieces and they never connect. We install them as one system.</p>
+      <div class="section-label" style="justify-content:center">05 · Where to start</div>
+      <h2 class="section-h2" style="text-align:center;max-width:780px;margin:0 auto 36px">PICK THE DOOR THAT<br><span class="green">FITS WHERE YOU ARE.</span></h2>
     </div>
-    <div class="fullstack-row rv">
-      <div class="fs-pillar"><span class="fs-num">01</span><span class="fs-name">Operations</span><span class="fs-desc">The system runs the business.</span></div>
-      <div class="fs-op">+</div>
-      <div class="fs-pillar"><span class="fs-num">02</span><span class="fs-name">Marketing</span><span class="fs-desc">Growth that compounds.</span></div>
-      <div class="fs-op">+</div>
-      <div class="fs-pillar"><span class="fs-num">03</span><span class="fs-name">Financial</span><span class="fs-desc">Structure that holds.</span></div>
-      <div class="fs-op eq">=</div>
-      <div class="fs-pillar fs-result"><span class="fs-num">∞</span><span class="fs-name">Leverage</span><span class="fs-desc">A business that runs — and is worth selling.</span></div>
+    <div class="svc-grid svc-grid--2 rv">
+      <div class="svc-card featured">
+        <span class="svc-badge">Free · Start here</span>
+        <div class="svc-name">Free AI Audit</div>
+        <div class="svc-headline">Find your number one bottleneck in five minutes. The fastest way to see what to fix first.</div>
+        <a class='btn-primary' href='/audit' style='margin-top:22px;display:inline-flex'>Get my audit →</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-badge">$9.99</span>
+        <div class="svc-name">Custom AI Build Plan</div>
+        <div class="svc-headline">A 30 day plan built around your business, your tools, and your bottleneck.</div>
+        <a class='btn-ghost' href='/audit' style='margin-top:22px;display:inline-flex'>Build my plan →</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-badge">Free · 5 days a week</span>
+        <div class="svc-name">The AI War Room</div>
+        <div class="svc-headline">Five live sessions a week, Mon through Fri. A room of operators actually building with AI, not just watching tutorials.</div>
+        <a class='btn-ghost' href='/mastermind' style='margin-top:22px;display:inline-flex'>Save my seat →</a>
+      </div>
+      <div class="svc-card">
+        <span class="svc-badge">Free · 30 min</span>
+        <div class="svc-name">Growth Call</div>
+        <div class="svc-headline">Map your first system with us. We tell you honestly whether to build it yourself, with us, or wait.</div>
+        <a class='btn-ghost' href='/book' style='margin-top:22px;display:inline-flex'>Book a call →</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════
-     FOUNDERS
+     06 — WHAT CHANGES
 ════════════════════════════════════ -->
-<section class="section founders-sec" id="founders" data-chapter="Founders" data-grade="180,140,80,0.03" data-narrate="Two operators. One operating system. Kris and Watson.">
+<section class="section" id="transformation" style="background:var(--bg2);border-top:1px solid var(--bd)">
   <div class="section-inner">
-    <div class="founders-origin rv">
-      <div class="section-label left">Who We Are</div>
-      <h2 class="founders-origin-h">TWO OPERATORS.<br><span class="green">ONE OPERATING-SYSTEM COMPANY.</span></h2>
-      <p class="founders-origin-p">eCon Growth was built by two co-founders — Kristopher Cravens and Watson Wheeler. Kris spent a decade in the field as an operator and builds the products. Watson runs strategy, scale, and the financial side. We didn't come from a software background and decide to sell to operators. We were the operators. eCon Growth is the operating layer we wished existed — now built, in deployment, and powered by Anthropic's Claude.</p>
+    <div class="rv" style="text-align:center">
+      <div class="section-label" style="justify-content:center">06 · What changes</div>
+      <h2 class="section-h2" style="text-align:center;max-width:780px;margin:0 auto 48px">FROM RUNNING THE BUSINESS<br><span class="green">TO LEADING IT.</span></h2>
     </div>
-
-    <div class="founders-cta rv" style="margin-top:48px">
-      <div class="founders-cta-text">
-        <div class="founders-cta-title">READY TO SEE WHAT WE BUILT?</div>
-        <div class="founders-cta-sub">We'll walk through your operation live and show you exactly which system fits — Operations, Marketing, or Financial. Real conversation. No pitch deck.</div>
+    <div class="bridge-layout rv">
+      <div>
+        <div class="bridge-col-label" style="color:rgba(239,68,68,.7)">Today</div>
+        <div class="bridge-list">
+          <div class="bridge-row"><div class="bridge-text">You approve every decision.</div></div>
+          <div class="bridge-row"><div class="bridge-text">Leads slip while you are heads down.</div></div>
+          <div class="bridge-row"><div class="bridge-text">The stack grows, the chaos grows with it.</div></div>
+          <div class="bridge-row"><div class="bridge-text">AI sits on the sidelines.</div></div>
+        </div>
       </div>
-      <a href="book.html" class="btn-primary">Book Your Growth Call →</a>
+      <div>
+        <div class="bridge-col-label" style="color:var(--green)">After</div>
+        <div class="bridge-list">
+          <div class="bridge-row" style="border-color:rgba(33,230,138,.2)"><div class="bridge-text">Systems handle the repeat work.</div></div>
+          <div class="bridge-row" style="border-color:rgba(33,230,138,.2)"><div class="bridge-text">Every lead gets answered and followed up.</div></div>
+          <div class="bridge-row" style="border-color:rgba(33,230,138,.2)"><div class="bridge-text">One operating layer, not ten tools.</div></div>
+          <div class="bridge-row" style="border-color:rgba(33,230,138,.2)"><div class="bridge-text">You steer the vision, not the busywork.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="rv" style="text-align:center;margin-top:52px">
+      <p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.8vw,34px);letter-spacing:.5px;color:var(--text);margin-bottom:28px;max-width:700px;margin-left:auto;margin-right:auto">YOU STOP BEING THE SYSTEM YOUR BUSINESS RUNS ON. YOU BECOME <span class="green">THE ONE WHO BUILT IT.</span></p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a class='btn-primary' href='/audit'>Get my free AI audit →</a>
+        <a class='btn-ghost' href='/book'>Book a growth call</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     QUALIFY
-════════════════════════════════════ -->
-<section class="section qualify-sec" id="qualify" data-chapter="Who For" data-grade="33,230,138,0.03" data-narrate="Serious operators only, sir.">
-  <div class="section-inner">
-    <div class="rv" style="margin-bottom:0">
-      <div class="section-label">Who This Is For</div>
-      <h2 class="section-h2">WE'RE SPECIFIC ABOUT<br>WHO <span class="green">WE WORK WITH.</span></h2>
-      <p class="section-sub" style="margin:0 0 56px">eCon Growth isn't for everyone. It's for serious operators ready to build a business that runs without them.</p>
-    </div>
-    <div class="qualify-layout rv">
-      <div class="qualify-list">
-        <div class="qualify-item">
-          <div class="qualify-check yes">✓</div>
-          <div class="qualify-text"><strong>You're running a real business with real revenue</strong> — but it still depends on you being in the middle of everything.</div>
-        </div>
-        <div class="qualify-item">
-          <div class="qualify-check yes">✓</div>
-          <div class="qualify-text"><strong>You're the bottleneck.</strong> Every decision, every escalation, every problem ends up back on your desk — no matter who you hire.</div>
-        </div>
-        <div class="qualify-item">
-          <div class="qualify-check yes">✓</div>
-          <div class="qualify-text"><strong>You want the operations layer installed</strong> — systems that run without you, not another tool you have to manage.</div>
-        </div>
-        <div class="qualify-item">
-          <div class="qualify-check yes">✓</div>
-          <div class="qualify-text"><strong>You want to scale without breaking.</strong> Growth should mean more freedom — not more chaos landing on your plate every morning.</div>
-        </div>
-        <div class="qualify-item">
-          <div class="qualify-check yes">✓</div>
-          <div class="qualify-text"><strong>You're playing the long game.</strong> Building something that holds its value — something you could step back from, or sell.</div>
-        </div>
-        <div class="qualify-item no">
-          <div class="qualify-check no">✗</div>
-          <div class="qualify-text" style="color:var(--mu)"><strong style="color:rgba(234,240,255,.4)">Not for you</strong> if you want a magic button. This is real infrastructure — it takes real implementation. If you want something you set up in an afternoon and forget, this isn't it.</div>
-        </div>
-      </div>
-      <div class="cta-card">
-        <div class="cta-card-tag">The Next Step</div>
-        <h3 class="cta-card-h">BOOK A<br><span class="green">GROWTH CALL.</span></h3>
-        <p class="cta-card-p">30 minutes. We look at your operation, show you exactly which system fits — Operations, Marketing, or Financial — and what changes when it's running. No pressure. No pitch deck. Two operators having an honest conversation about what's possible for your company.</p>
-        <a href="book.html" class="btn-primary" style="width:100%;justify-content:center">Book Your Growth Call →</a>
-        <div class="cta-card-note">No contract required · Full onboarding included · (615) 664-9178</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════
      FAQ
@@ -1342,7 +1282,7 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
           <div class="faq-q-text">What is eCon Growth?</div>
           <div class="faq-icon">+</div>
         </div>
-        <div class="faq-a"><div class="faq-a-inner"><p>eCon Growth is an AI operations company that builds <strong>AI Operating Systems for serious operators</strong>. We install the operations layer behind serious businesses across three service lines — AI Operating Systems, marketing, and financial planning. Co-founded by Kristopher Cravens and Watson Wheeler. Powered by Anthropic's Claude.</p></div></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>eCon Growth is an AI operations company that builds <strong>AI Operating Systems for serious operators</strong>. We install the operations layer behind serious businesses across three service lines — AI Operating Systems, marketing, and financial planning. Founded by Kristopher Cravens. Powered by Anthropic's Claude.</p></div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -1390,19 +1330,51 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
   </div>
 </section>
 
+<!-- ═══════════════════════════════════
+     FREE AI AUDIT / FUNNEL
+════════════════════════════════════ -->
+<section class="section" id="plan">
+  <div class="section-inner">
+    <div class="rv" style="text-align:center;margin-bottom:36px">
+      <div class="section-label" style="justify-content:center">03 · The plan</div>
+      <h2 class="section-h2">THREE STEPS TO A BUSINESS<br><span class="green">THAT RUNS WITHOUT YOU.</span></h2>
+    </div>
+    <div class="svc-grid svc-grid--3 rv" style="margin-bottom:40px">
+      <div class="svc-card" style="text-align:center">
+        <div class="svc-idx" style="color:var(--green)">Step 01 · Free</div>
+        <div class="svc-name">Take the free audit.</div>
+        <div class="svc-headline">Answer a few questions about how your business runs. See your number one bottleneck on screen and in your inbox.</div>
+      </div>
+      <div class="svc-card" style="text-align:center">
+        <div class="svc-idx" style="color:var(--green)">Step 02 · 30 min</div>
+        <div class="svc-name">Get your plan.</div>
+        <div class="svc-headline">We map the first system to build and tell you honestly whether to do it yourself, build it with us, or wait.</div>
+      </div>
+      <div class="svc-card" style="text-align:center">
+        <div class="svc-idx" style="color:var(--green)">Step 03 · Done</div>
+        <div class="svc-name">Build it and hand it off.</div>
+        <div class="svc-headline">We coach you through the build or install it for you. The work runs on its own, and you get your time back.</div>
+      </div>
+    </div>
+    <div class="rv" style="text-align:center">
+      <a class='btn-primary' href='/audit' style='display:inline-flex;gap:8px;margin-bottom:16px'>Start with the free audit →</a>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(234,240,255,.28);letter-spacing:.14em;text-transform:uppercase">No jargon · No pressure · Start free · Your data stays yours</p>
+    </div>
+  </div>
+</section>
+
 <section class="final-cta" id="contact">
   <div class="final-cta-inner rv">
     <h2 class="final-cta-h">
-      YOUR COMPETITION<br>
-      IS <span class="green">ALREADY MOVING.</span><br>
-      <span style="opacity:.9">ARE YOU?</span>
+      FIND THE FIRST THING AI SHOULD<br>
+      <span class="green">TAKE OFF YOUR PLATE.</span>
     </h2>
-    <p class="final-cta-p">Book a Growth Call. We'll look at your operation, show you exactly where the system fits, and what changes when it's running. No pitch. No pressure. Two operators, an honest conversation about your business.</p>
+    <p class="final-cta-p">Free audit. Five minutes. See your number one bottleneck on screen instantly, no call required. Every month you stay the bottleneck is a month the business cannot grow past you.</p>
     <div class="final-cta-btns">
-      <a href="book.html" class="btn-primary">Book Your Growth Call →</a>
-      <a href="tel:6156649178" class="btn-ghost">Call (615) 664-9178</a>
+      <a class='btn-primary' href='/audit'>Get my free AI audit →</a>
+      <a class='btn-ghost' href='/book'>Book a growth call</a>
     </div>
-    <div class="final-cta-note">No contract · Full onboarding included · Operations · Marketing · Financial · (615) 664-9178</div>
+    <div class="final-cta-note">Free audit · 5 minutes · No account needed · (615) 664-9178</div>
   </div>
 </section>
 
@@ -1419,27 +1391,27 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
       <div>
         <div class="footer-col-title">Operations</div>
         <ul class="footer-links">
-          <li><a href="https://commandhvac.tech/command-hvac.html">Command HVAC</a></li>
-          <li><a href="ai-social-os.html">AI Social Media OS</a></li>
+          <li><a href='https://commandhvac.tech/command-hvac'>Command HVAC</a></li>
+          <li><a href='/ai-social-os'>AI Social Media OS</a></li>
           <li><a href="#operations">AI Executive Assistant</a></li>
-          <li><a href="https://commandhvac.tech/meet-roger.html">Meet Roger</a></li>
+          <li><a href='https://commandhvac.tech/meet-roger'>Meet Roger</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Services</div>
         <ul class="footer-links">
-          <li><a href="marketing.html">Marketing</a></li>
-          <li><a href="financial-planning.html">Financial Planning</a></li>
-          <li><a href="book.html">Book a Growth Call</a></li>
+          <li><a href='/marketing'>Marketing</a></li>
+          <li><a href='/#financial'>Financial Planning</a></li>
+          <li><a href='/book'>Book a Growth Call</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
-          <li><a href="about.html">About</a></li>
-          <li><a href="press.html">Press Kit</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href='/about'>About</a></li>
+          <li><a href='/press'>Press Kit</a></li>
+          <li><a href='/privacy'>Privacy Policy</a></li>
+          <li><a href='/terms'>Terms &amp; Conditions</a></li>
         </ul>
       </div>
     </div>
@@ -1472,7 +1444,7 @@ body.hovering #ring{width:46px;height:46px;border-color:rgba(33,230,138,.5)}
 
 /* ═══ REVEAL ═══ */
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+document.querySelectorAll('.rv,.svc-grid .svc-card').forEach(el=>obs.observe(el));
 
 /* ═══ S2 LIVE DASHBOARD ENGINE ═══ */
 /* removed dead JS — was targeting markup that no longer exists */
@@ -1539,7 +1511,7 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
     var io=new IntersectionObserver(function(es){
       es.forEach(function(e){
         if(e.isIntersecting){
-          cards.forEach(function(card,i){setTimeout(function(){card.classList.add('cine-in')},i*110)});
+          cards.forEach(function(card){card.classList.add('cine-in');});
           io.disconnect();
         }
       });
@@ -1547,28 +1519,6 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
     io.observe(grid);
   });
 
-  // 3D tilt toward cursor on glass cards
-  document.querySelectorAll('.svc-card').forEach(function(c){
-    c.addEventListener('mouseenter',function(){c.style.transition='transform .12s ease-out'});
-    c.addEventListener('mousemove',function(e){
-      var r=c.getBoundingClientRect();
-      var px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
-      c.style.transform='perspective(900px) rotateX('+(-py*5).toFixed(2)+'deg) rotateY('+(px*5).toFixed(2)+'deg) translateY(-8px)';
-    });
-    c.addEventListener('mouseleave',function(){
-      c.style.transition='transform .5s cubic-bezier(.2,.7,.2,1)';
-      c.style.transform='';
-    });
-  });
-
-  // Magnetic CTA buttons
-  document.querySelectorAll('.btn-primary,.btn-ghost,.nav-cta').forEach(function(b){
-    b.addEventListener('mousemove',function(e){
-      var r=b.getBoundingClientRect();
-      b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.16).toFixed(1)+'px,'+((e.clientY-r.top-r.height/2)*.22).toFixed(1)+'px)';
-    });
-    b.addEventListener('mouseleave',function(){b.style.transform=''});
-  });
 
   // Hero typewriter — types the real headline (SEO-safe: text is in the HTML)
   var head=document.getElementById('typeHead');
@@ -1658,15 +1608,15 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 (function(){
   var items=[
     {cat:'Page',ti:'Home',ds:'eCon Growth umbrella',href:'/'},
-    {cat:'Page',ti:'About',ds:'Kris + Watson, the story',href:'/about.html'},
+    {cat:'Page',ti:'About',ds:'Kris Cravens, the story',href:'/about.html'},
     {cat:'Service',ti:'AI Social Media OS',ds:'Kill the $10K agency · $1,500 + $497/mo',href:'/ai-social-os.html'},
     {cat:'Service',ti:'Marketing',ds:'Retainers · campaigns · content · ads',href:'/marketing.html'},
-    {cat:'Service',ti:'Financial Planning',ds:'Watson-led · planning, structure, exit',href:'/financial-planning.html'},
+    {cat:'Service',ti:'Financial Planning',ds:'Planning, structure, exit',href:'/#financial'},
     {cat:'Section',ti:'Operations',ds:'AI Operating Systems',href:'/#operations'},
     {cat:'Section',ti:'Marketing (homepage)',ds:'On the homepage',href:'/#marketing'},
     {cat:'Section',ti:'Financial (homepage)',ds:'On the homepage',href:'/#financial'},
     {cat:'Section',ti:'The Full Stack',ds:'Operations + Marketing + Financial = Leverage',href:'/#fullstack'},
-    {cat:'Section',ti:'Founders',ds:'Kris Cravens + Watson Wheeler',href:'/#founders'},
+    {cat:'Section',ti:'Founders',ds:'Kris Cravens',href:'/#founders'},
     {cat:'Section',ti:'FAQ',ds:'Common questions',href:'/#faq'},
     {cat:'Blog',ti:"The Operator's Blog",ds:'Operator intelligence',href:'/blog.html'},
     {cat:'Page',ti:'Press Kit',ds:'For journalists + AI engines',href:'/press.html'},
@@ -1716,10 +1666,96 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
   });
 })();
 </script>
+<script>
+/* ── SCROLL-DRIVEN FRAME SCRUBBER — disabled ── */
+(function(){
+  return;
+  const TOTAL  = 240;
+  const AHEAD  = 20;
+  const canvas = document.getElementById('scroll-canvas');
+  if(!canvas) return;
+  const ctx    = canvas.getContext('2d');
+  const outer  = document.getElementById('scroll-hero-outer');
+  const hint   = document.getElementById('scroll-hint');
+  const frames = new Array(TOTAL).fill(null);
+
+  let targetFrame = 0;
+  let curFrame    = 0;
+  let animId      = null;
+
+  function resize(){
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    drawFrame(Math.round(curFrame));
+  }
+
+  function drawFrame(i){
+    const img = frames[i];
+    if(!img){ return; }
+    const cw = canvas.width, ch = canvas.height;
+    const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+    const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
+    ctx.clearRect(0,0,cw,ch);
+    ctx.drawImage(img, (cw-w)/2, (ch-h)/2, w, h);
+  }
+
+  function loadFrame(i){
+    if(i < 0 || i >= TOTAL || frames[i] !== null) return;
+    frames[i] = false;
+    const img = new Image();
+    img.onload  = () => { frames[i] = img; if(Math.round(curFrame) === i) drawFrame(i); };
+    img.onerror = () => { frames[i] = null; };
+    img.src = 'assets/frames/frame-' + String(i+1).padStart(3,'0') + '.webp';
+  }
+
+  // Preload first 4 frames only — rest load on scroll
+  for(let i = 0; i < 4; i++) loadFrame(i);
+
+  function tick(){
+    curFrame += (targetFrame - curFrame) * 0.14;
+    const idx = Math.round(curFrame);
+    drawFrame(idx);
+    if(Math.abs(curFrame - targetFrame) > 0.2){
+      animId = requestAnimationFrame(tick);
+    } else {
+      curFrame = targetFrame;
+      drawFrame(Math.round(curFrame));
+      animId = null;
+    }
+  }
+
+  function onScroll(){
+    const rect     = outer.getBoundingClientRect();
+    const scrolled = -rect.top;
+    const total    = rect.height - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, scrolled / total));
+    targetFrame    = Math.min(TOTAL - 1, Math.floor(progress * TOTAL));
+
+    if(hint && scrolled > 60) hint.style.opacity = '0';
+    else if(hint && scrolled <= 60) hint.style.opacity = '1';
+
+    // Lazy-load ahead of scroll position
+    for(let i = targetFrame; i < Math.min(targetFrame + AHEAD, TOTAL); i++) loadFrame(i);
+
+    if(!animId) animId = requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', resize);
+  resize();
+})();
+</script>
+<!-- Kill cinematic overlays that distract from content -->
+<script>
+  window.CINE3_OFF = true;      // disables: chapter title cards, grain, vignette, film credits
+  window.SYS_OFF   = true;      // disables: CRT scanlines, bottom ticker, text-scramble headings
+  try { sessionStorage.setItem('cine_co_seen_v1','1'); } catch(e){}  // skip boot screen
+</script>
 <!-- CINEMA v2 (consolidated) -->
-<script src="/assets/cinema/cinema-v2.js?v=2g" defer></script>
-<script src="/assets/cinema/cinema-v3-cine.js?v=7" defer></script>
+<script src="/assets/cinema/cinema-v2.js?v=2j" defer></script>
+<script src="/assets/cinema/cinema-v3-cine.js?v=8" defer></script>
 <script src="/assets/cinema/cinema-v4-systems.js?v=4" defer></script>
+<script src="/assets/cinema/cinema-v5-trailer.js?v=2" defer></script>
 <!-- Service worker — caches static assets for instant repeat visits.
      On localhost: actively UNREGISTERS any existing SW so dev iterations always hit network. -->
 <script>

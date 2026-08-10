@@ -121,7 +121,7 @@
     var credits = el("cine3-credits",
       '<div class="cr-fin">FIN.</div>' +
       row("The Operating System", "ECON GROWTH") +
-      row("Founders", "Kristopher Cravens &middot; Watson Wheeler") +
+      row("Founder", "Kristopher Cravens") +
       row("Operations Layer", "Run themselves") +
       row("Marketing Layer", "Compounds") +
       row("Financial Layer", "Holds under pressure") +
