@@ -176,6 +176,7 @@
     .audit-time-note{font-family:var(--mono);font-size:.62rem;color:rgba(234,240,255,.32);letter-spacing:.1em;text-transform:uppercase}
   </style>
 <link rel="stylesheet" href="/assets/cinema/cinema-v5-trailer.css?v=4">
+  <link rel="stylesheet" href="/assets/css/mobile-fix.css">
 </head>
 <body>
   <div class="bg-mesh"></div>
@@ -489,7 +490,13 @@
     // { teaser: string, actionPrompts: [{label, prompt}] }. The lead is saved
     // to the CRM before the snapshot is generated, so a slow or failed
     // generation still captures the lead.
-    const API_ENDPOINT = 'https://econ-os-nine.vercel.app/api/audit';
+    // /api/audit (the AI-snapshot endpoint) is written but NOT deployed — it
+    // 404s in production, which silently lost every audit lead. Point at the
+    // live intake instead: same captureLead path, same CRM tagging, same owner
+    // alert. It returns {ok:true} with no `teaser`, so the page falls through
+    // to its existing "report is being prepared" copy. Repoint to /api/audit
+    // once that route is deployed AND the Anthropic key is funded.
+    const API_ENDPOINT = 'https://econ-os-nine.vercel.app/api/leads/inbound';
 
     const totalSteps = 7;
     function updateProgress(step) {
@@ -548,6 +555,7 @@
       const form = e.target;
       const f = name => form.querySelector(`[name="${name}"]`);
       const data = {
+        source: 'audit',
         name: f('name').value.trim(), email: f('email').value.trim(),
         business_name: f('business_name').value.trim(), website: f('website').value.trim(),
         industry: f('industry').value,

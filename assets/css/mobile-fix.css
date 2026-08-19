@@ -1,0 +1,31 @@
+/* ============================================================
+   mobile-fix.css — small-screen polish
+   ------------------------------------------------------------
+   Verified 2026-08-11 against a TRUE 390px viewport (page loaded
+   in a 390px iframe, measured with getBoundingClientRect).
+
+   Baseline result: documentElement.scrollWidth === 390. There is
+   NO horizontal overflow and NO clipped copy. .hero-inner is 390,
+   .hero-h1 and .hero-body are 342 inside 24px padding, body text
+   wraps correctly, and the nav hamburger renders. The layout is
+   sound — nothing here is a bug fix.
+
+   NOTE FOR FUTURE SESSIONS: headless Chrome `--window-size=390,844`
+   does NOT produce a 390px layout viewport. It lays out wider and
+   crops the image to 390, which fabricates convincing "clipped
+   text" screenshots. Do not diagnose responsive bugs from it.
+   Measure in a real 390px viewport (iframe or device emulation).
+
+   What remains below is deliberate polish, not repair.
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  /* The ⌘K command-palette trigger needs a keyboard that a phone
+     does not have, and it sits directly under the Talk to Jarvis
+     button. Verified visible at 390px. */
+  .ckp-trigger { display: none !important; }
+
+  /* Safety net only — media should never widen the page. */
+  img, svg, video, iframe { max-width: 100%; height: auto; }
+}

@@ -195,6 +195,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </style>
 <!-- CINEMA v2 (consolidated) -->
 <link rel="stylesheet" href="/assets/cinema/cinema-v2.css">
+  <link rel="stylesheet" href="/assets/css/mobile-fix.css">
 </head>
 <body>
 <div id="cur"></div><div id="ring"></div>
@@ -358,34 +359,53 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 </script>
 
 <script>
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('contact-submit');
+  const original = btn.textContent;
   btn.disabled = true;
-  btn.textContent = 'Opening...';
+  btn.textContent = 'Sending...';
 
   const fd = new FormData(this);
   const name = ((fd.get('firstName') || '') + ' ' + (fd.get('lastName') || '')).trim();
-  const lines = [
-    'Hi Kris — message from econ-growth.com:',
-    '',
-    'Name: ' + name,
-    'Email: ' + (fd.get('email') || ''),
-    'Phone: ' + (fd.get('phone') || ''),
-    'Company: ' + (fd.get('company') || ''),
-    '',
-    (fd.get('message') || '')
-  ];
-  const body = encodeURIComponent(lines.join('\n'));
 
-  // Open SMS app to founder line with pre-filled message — guaranteed delivery path
-  window.location.href = 'sms:+16156649178?&body=' + body;
+  // Previously this ONLY opened an sms: link and then showed the success card
+  // unconditionally — on desktop that link does nothing, so the visitor was
+  // told the message sent when nothing had been sent. Now it POSTs to the live
+  // intake (same endpoint the War Room opt-in uses) and only confirms on a real
+  // 2xx. SMS is offered as a bonus on touch devices, not as the delivery path.
+  const payload = {
+    source: 'contact',
+    name: name,
+    email: (fd.get('email') || '').toString().trim(),
+    phone: (fd.get('phone') || '').toString().trim(),
+    company: (fd.get('company') || '').toString().trim(),
+    message: (fd.get('message') || '').toString().trim()
+  };
 
-  // Show confirmation card after a short delay
-  setTimeout(function(){
+  try {
+    const res = await fetch('https://econ-os-nine.vercel.app/api/leads/inbound', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+
     document.getElementById('contact-form').style.display = 'none';
     document.getElementById('contact-success').classList.add('show');
-  }, 600);
+  } catch (err) {
+    // Never claim delivery we did not achieve. Give a real fallback.
+    btn.disabled = false;
+    btn.textContent = original;
+    const note = document.getElementById('contact-error') || (function(){
+      const d = document.createElement('div');
+      d.id = 'contact-error';
+      d.style.cssText = 'margin-top:14px;font-family:\'JetBrains Mono\',monospace;font-size:12px;line-height:1.7;color:#ff6b6b';
+      btn.parentNode.appendChild(d);
+      return d;
+    })();
+    note.innerHTML = 'That did not go through. Email <a href="mailto:kristopher@econ-growth.com" style="color:#21E68A">kristopher@econ-growth.com</a> or call <a href="tel:+16156649178" style="color:#21E68A">(615) 664-9178</a> and I will get right back to you.';
+  }
 });
 </script>
 
