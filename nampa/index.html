@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Found by AI — Websites for Nampa Businesses | Kristopher Cravens</title>
+<meta name="description" content="Your next customer is asking ChatGPT, not Google. I build Nampa businesses a website that AI and Google can actually read. $297 to build, $97/month. No contract.">
+<link rel="canonical" href="https://econ-growth.com/nampa/">
+<meta name="robots" content="noindex, follow">
+<meta property="og:site_name" content="eCon Growth">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://econ-growth.com/nampa/">
+<meta property="og:title" content="Your next customer is asking AI, not Google.">
+<meta property="og:description" content="Websites for Nampa businesses, built to be found by ChatGPT, Gemini and Google. $297 to build, $97/month. No contract.">
+<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --ink:#070A0F; --ink-2:#0A0E15; --ink-3:#0D1219;
+  --green:#21E68A; --green-dim:#1a9e6a; --amber:#F59E0B;
+  --text:#EAF0FF; --dim:rgba(234,240,255,.62); --faint:rgba(234,240,255,.38);
+  --line:rgba(234,240,255,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink); color:var(--text);
+  font-family:'Syne',ui-sans-serif,system-ui,sans-serif;
+  line-height:1.6; overflow-x:hidden;
+}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 22px}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--green);
+}
+h1,h2,h3{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.02em;line-height:1.02}
+h1{font-size:clamp(42px,8.5vw,86px)}
+h2{font-size:clamp(30px,5.4vw,52px)}
+h3{font-size:clamp(20px,3vw,26px)}
+p{font-size:clamp(15px,1.9vw,17px)}
+a{color:inherit}
+
+/* ── header ─────────────────────────────── */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(7,10,15,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 12px var(--green);animation:pulse 2.2s ease-in-out infinite;flex:none}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+.wordmark{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.06em}
+.wordmark span{color:var(--green)}
+
+/* ── buttons ────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  padding:15px 26px;border-radius:3px;border:1px solid transparent;
+  transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+  white-space:nowrap;cursor:pointer;
+}
+.btn-primary{background:var(--green);color:#04140C;box-shadow:0 0 0 rgba(33,230,138,0)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 34px rgba(33,230,138,.32)}
+.btn-ghost{border-color:rgba(234,240,255,.22);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
+.btn-sm{padding:11px 18px;font-size:11px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+/* ── hero ───────────────────────────────── */
+.hero{position:relative;padding:74px 0 78px;overflow:hidden}
+.hero::before{
+  content:'';position:absolute;top:-320px;left:50%;transform:translateX(-50%);
+  width:min(1100px,150vw);height:660px;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(33,230,138,.16),transparent 66%);
+}
+.hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(33,230,138,.05) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(33,230,138,.05) 1px,transparent 1px);
+  background-size:58px 58px;
+  mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 72%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 72%);
+}
+.hero .wrap{position:relative;z-index:2}
+.scanned{
+  display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;
+  border:1px solid rgba(33,230,138,.3);background:rgba(33,230,138,.07);
+  padding:7px 14px;border-radius:100px;
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--green);
+}
+h1 .hl{color:var(--green)}
+.lede{margin-top:24px;max-width:610px;color:var(--dim);font-size:clamp(16px,2.2vw,19px);line-height:1.62}
+.lede strong{color:var(--text);font-weight:600}
+.hero-note{
+  margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--faint);letter-spacing:.03em;
+}
+
+/* ── proof strip ────────────────────────── */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2)}
+.strip-in{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.strip-cell{background:var(--ink-2);padding:26px 20px;text-align:center}
+.strip-cell .n{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,5vw,44px);color:var(--green);line-height:1}
+.strip-cell .l{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--faint);margin-top:9px;line-height:1.5}
+
+/* ── sections ───────────────────────────── */
+section{padding:76px 0}
+.sec-head{max-width:680px;margin-bottom:44px}
+.sec-head h2{margin-top:13px}
+.sec-head p{color:var(--dim);margin-top:16px}
+
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px}
+.card{
+  background:var(--ink-2);border:1px solid var(--line);border-radius:4px;
+  padding:28px 26px;transition:border-color .2s ease,transform .2s ease;
+}
+.card:hover{border-color:rgba(33,230,138,.34);transform:translateY(-3px)}
+.card .num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--green);
+  display:block;margin-bottom:15px}
+.card h3{margin-bottom:11px}
+.card p{color:var(--dim);font-size:15px;line-height:1.62}
+
+/* ── what you get ───────────────────────── */
+.get{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.get-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.item{display:flex;gap:15px;align-items:flex-start;padding:19px 20px;
+  background:var(--ink);border:1px solid var(--line);border-radius:4px}
+.tick{flex:none;width:21px;height:21px;border-radius:3px;background:rgba(33,230,138,.13);
+  border:1px solid rgba(33,230,138,.4);display:grid;place-items:center;margin-top:2px}
+.tick svg{width:11px;height:11px;stroke:var(--green);stroke-width:2.6;fill:none}
+.item b{display:block;font-family:'Syne',sans-serif;font-weight:700;font-size:15.5px;margin-bottom:4px}
+.item span{color:var(--dim);font-size:14px;line-height:1.58;display:block}
+
+/* ── who ────────────────────────────────── */
+.who{display:grid;grid-template-columns:230px 1fr;gap:44px;align-items:start}
+.who-photo{width:100%;border-radius:4px;border:1px solid var(--line);display:block;
+  filter:grayscale(.28) contrast(1.05)}
+.who-tag{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--faint);line-height:1.9}
+.who-tag b{color:var(--green);font-weight:400}
+.who-body p{color:var(--dim);margin-top:17px}
+.who-body p:first-of-type{margin-top:20px}
+.who-body strong{color:var(--text);font-weight:600}
+
+/* ── price ──────────────────────────────── */
+.price-wrap{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.price{
+  max-width:620px;margin:0 auto;text-align:center;
+  border:1px solid rgba(33,230,138,.3);border-radius:5px;padding:46px 32px;
+  background:linear-gradient(180deg,rgba(33,230,138,.06),rgba(33,230,138,0) 62%);
+}
+.price .tag{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,11vw,84px);line-height:.92;color:var(--green)}
+.price .tag small{font-size:.38em;color:var(--text);letter-spacing:.04em}
+.price .then{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,5vw,36px);margin-top:12px;letter-spacing:.03em}
+.price .then em{font-style:normal;color:var(--green)}
+.price .sub{color:var(--dim);margin-top:16px;font-size:15px}
+.nocontract{display:inline-flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.pill{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:100px;padding:7px 14px;color:var(--dim)}
+
+/* ── faq ────────────────────────────────── */
+details{border-bottom:1px solid var(--line);padding:20px 0}
+details summary{
+  cursor:pointer;list-style:none;font-family:'Syne',sans-serif;font-weight:700;
+  font-size:clamp(16px,2.2vw,18px);display:flex;justify-content:space-between;gap:20px;align-items:center;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:'+';font-family:'JetBrains Mono',monospace;color:var(--green);
+  font-size:19px;flex:none;transition:transform .2s ease}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--dim);margin-top:13px;max-width:760px;font-size:15px}
+
+/* ── final ──────────────────────────────── */
+.final{text-align:center;padding:88px 0}
+.final h2{margin-bottom:18px}
+.final p{color:var(--dim);max-width:520px;margin:0 auto}
+.final .cta-row{justify-content:center;margin-top:32px}
+
+footer{border-top:1px solid var(--line);padding:34px 0;background:var(--ink-2)}
+.foot{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--faint);letter-spacing:.05em}
+.foot a{color:var(--dim);text-decoration:none}
+.foot a:hover{color:var(--green)}
+
+/* ── sticky mobile bar ──────────────────── */
+.mobar{display:none}
+@media(max-width:760px){
+  .who{grid-template-columns:1fr;gap:28px}
+  .who-photo{max-width:190px}
+  .strip-in{grid-template-columns:1fr}
+  section{padding:58px 0}
+  .hero{padding:52px 0 62px}
+  .hdr .btn{display:none}
+  body{padding-bottom:74px}
+  .mobar{
+    display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+    position:fixed;bottom:0;left:0;right:0;z-index:60;
+    border-top:1px solid var(--line);
+  }
+  .mobar a{
+    background:var(--ink-2);color:var(--text);text-decoration:none;padding:17px 8px;text-align:center;
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  }
+  .mobar a.go{background:var(--green);color:#04140C;font-weight:500}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hdr">
+    <a class="brand" href="https://econ-growth.com/">
+      <span class="dot"></span>
+      <span class="wordmark">eCON<span>&nbsp;GROWTH</span></span>
+    </a>
+    <a class="btn btn-primary btn-sm" href="https://os.econ-growth.com/book/growth-call?src=card">Book a call</a>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="wrap">
+    <span class="scanned">◈&nbsp; You scanned my card</span>
+    <h1>Your next customer<br>is asking <span class="hl">AI</span>,<br>not Google.</h1>
+    <p class="lede">
+      People don't scroll ten blue links anymore. They ask ChatGPT, Gemini or Siri
+      <em>"who's the best in Nampa for this?"</em> — and take the first answer.
+      <strong>AI can only recommend a business it can actually read.</strong>
+      Most websites in this town can't be read. That's the whole problem, and it's fixable.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://os.econ-growth.com/book/growth-call?src=card">Book a 15-minute call →</a>
+      <a class="btn btn-ghost" href="sms:+16156649178?&amp;body=Hey%20Kris%20-%20scanned%20your%20card.">Text me instead</a>
+    </div>
+    <p class="hero-note">Kristopher Cravens · eCon Growth · Nampa, Idaho</p>
+  </div>
+</div>
+
+<!-- ══ STRIP ══ -->
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-in">
+      <div class="strip-cell">
+        <div class="n">$297</div>
+        <div class="l">To build it<br>one time</div>
+      </div>
+      <div class="strip-cell">
+        <div class="n">$97</div>
+        <div class="l">A month<br>to run it</div>
+      </div>
+      <div class="strip-cell">
+        <div class="n">0</div>
+        <div class="l">Contracts<br>cancel anytime</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ THE PROBLEM ══ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The 30-second version</span>
+      <h2>Nothing's wrong with your business.<br>Something's wrong with how machines see it.</h2>
+      <p>You can be the best shop on the street and still be invisible to the thing your
+         customer just asked. Here's the mechanism, plainly.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="num">01</span>
+        <h3>The search moved</h3>
+        <p>Your customer used to type into Google and scan a page of results. Now they ask an
+           assistant a question and get <em>one recommendation</em>. There's no page two. There's
+           barely a page one.</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h3>AI reads code, not design</h3>
+        <p>Underneath every page is structured data — machine-readable facts about who you are,
+           what you do, your hours, your address, what you answer. Pretty sites routinely ship
+           with none of it. To an AI, that page is a blank wall.</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <h3>Your competitor gets the name-drop</h3>
+        <p>The assistant still has to answer. So it names whoever it <em>can</em> read — which is
+           often the chain three towns over, not the local shop with twenty years on the same corner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT YOU GET ══ -->
+<div class="get">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">One product · no menu</span>
+        <h2>What you actually get</h2>
+        <p>I don't sell packages, tiers or a list of add-ons. There is one thing, and this is it.</p>
+      </div>
+      <div class="get-grid">
+        <div class="item">
+          <span class="tick"><svg viewBox="0 0 12 12"><polyline points="1.5,6.4 4.4,9.3 10.5,2.6"/></svg></span>
+          <div><b>A real website, built for you</b><span>Not a template with your name dropped in. Built around what you actually sell and who actually walks in.</span></div>
+        </div>
+        <div class="item">
+          <span class="tick"><svg viewBox="0 0 12 12"><polyline points="1.5,6.4 4.4,9.3 10.5,2.6"/></svg></span>
+          <div><b>Structured so AI and Google can read it</b><span>Machine-readable business data and a real FAQ baked into the page — the part almost nobody in this market ships.</span></div>
+        </div>
+        <div class="item">
+          <span class="tick"><svg viewBox="0 0 12 12"><polyline points="1.5,6.4 4.4,9.3 10.5,2.6"/></svg></span>
+          <div><b>Built for the phone first</b><span>Tap-to-call and tap-for-directions pinned to the bottom of every screen. That's where your customer already is.</span></div>
+        </div>
+        <div class="item">
+          <span class="tick"><svg viewBox="0 0 12 12"><polyline points="1.5,6.4 4.4,9.3 10.5,2.6"/></svg></span>
+          <div><b>Hosting, security and updates handled</b><span>The $97 covers keeping it live, fast and current. You never get a renewal invoice from three different companies.</span></div>
+        </div>
+        <div class="item">
+          <span class="tick"><svg viewBox="0 0 12 12"><polyline points="1.5,6.4 4.4,9.3 10.5,2.6"/></svg></span>
+          <div><b>Changes when you need them</b><span>New hours, new service, new photo, holiday closure — you text me, it's done. No ticket system.</span></div>
+        </div>
+        <div class="item">
+          <span class="tick"><svg viewBox="0 0 12 12"><polyline points="1.5,6.4 4.4,9.3 10.5,2.6"/></svg></span>
+          <div><b>You own it</b><span>Your domain, your content, your business. Walk away whenever you want and it's still yours.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ WHO ══ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Who you're dealing with</span>
+      <h2>One person. Who knocked on your door.</h2>
+    </div>
+    <div class="who">
+      <div>
+        <img class="who-photo" src="/kris-photo.jpg" alt="Kristopher Cravens, founder of eCon Growth">
+        <div class="who-tag">
+          <b>Kristopher Cravens</b><br>
+          Founder · eCon Growth<br>
+          Nampa, Idaho
+        </div>
+      </div>
+      <div class="who-body">
+        <p>I'm an <strong>AI consultant</strong>. My actual job is building AI systems for business
+           owners — the automations, the assistants, the plumbing that lets a small operation punch
+           three weight classes up. Websites are where that starts, because a site an AI can't read
+           is a business an AI can't recommend.</p>
+        <p>I'm not an agency. There's no account manager, no offshore team, no 40-page proposal.
+           <strong>You get me.</strong> The same person who walked into your shop is the person who
+           builds the thing and the person who answers when you call about it.</p>
+        <p>And I don't ask you to take any of this on faith. On our call I'll pull up your business
+           live, ask an AI assistant to recommend someone in your category, and we'll both watch
+           what it says. <strong>That takes about ninety seconds and it costs you nothing.</strong>
+           If your name comes up first, I'll tell you straight — you don't need me.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICE ══ -->
+<div class="price-wrap">
+  <section>
+    <div class="wrap">
+      <div class="price">
+        <span class="eyebrow">The whole price</span>
+        <div class="tag" style="margin-top:14px">$297<small> to build</small></div>
+        <div class="then">then <em>$97</em> a month</div>
+        <p class="sub">That's it. No setup fee hiding underneath, no annual commitment,
+           no "starting at." If it's not worth $97 to you next month, you cancel it.</p>
+        <div class="nocontract">
+          <span class="pill">No contract</span>
+          <span class="pill">Cancel anytime</span>
+          <span class="pill">You own the site</span>
+        </div>
+        <div class="cta-row" style="justify-content:center">
+          <a class="btn btn-primary" href="https://os.econ-growth.com/book/growth-call?src=card">Book the call →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ FAQ ══ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Straight answers</span>
+      <h2>The questions I get at the door</h2>
+    </div>
+
+    <details>
+      <summary>I already have a website.</summary>
+      <p>Good — then this is a shorter conversation. Having a site and being readable by AI are two
+         different things, and most sites built before the last couple of years have none of the
+         structured data an assistant needs. On the call I'll show you what yours is actually
+         handing over. If it's already doing its job, I'll say so.</p>
+    </details>
+
+    <details>
+      <summary>How long does it take?</summary>
+      <p>Days, not months. I build it, you look at it, you tell me what's wrong, I fix it. You're
+         not filling out a 30-page intake form — I get what I need from a conversation and from
+         what's already out there about your business.</p>
+    </details>
+
+    <details>
+      <summary>What's the $97 actually for?</summary>
+      <p>Hosting, the domain side of things, security and speed, keeping the structured data current
+         as your hours and services change, and any edits you want. It's the difference between a
+         site that was built once and a site that's still working for you in a year.</p>
+    </details>
+
+    <details>
+      <summary>What if I want to stop?</summary>
+      <p>You stop. There's no contract to get out of and no cancellation call to survive. The site
+         and the domain are yours — I'll hand over everything needed to move it elsewhere.</p>
+    </details>
+
+    <details>
+      <summary>Why is this so much cheaper than the quotes I've gotten?</summary>
+      <p>Because I'm one person with the tools to do in an afternoon what used to take a team a
+         month, and because I'd rather have thirty local businesses paying me $97 than three paying
+         me a thousand. I'm building something here, and it only works if you stay.</p>
+    </details>
+
+    <details>
+      <summary>Can you do more than a website?</summary>
+      <p>Yes — AI automation is the actual practice. Answering services, follow-up systems, review
+         generation, the tedious back-office work nobody wants to do. But I won't sell you that on
+         day one. Get the front door right first.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ══ FINAL ══ -->
+<div class="final">
+  <div class="wrap">
+    <span class="eyebrow">Next step</span>
+    <h2 style="margin-top:14px">Fifteen minutes.<br>Then you'll know.</h2>
+    <p>Pick a time that works. I'll pull your business up live, we'll ask an AI who it
+       recommends in your category, and you can decide from there.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://os.econ-growth.com/book/growth-call?src=card">Book a 15-minute call →</a>
+      <a class="btn btn-ghost" href="tel:+16156649178">Or just call me</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 eCon Growth · Nampa, Idaho</span>
+    <span>
+      <a href="tel:+16156649178">615-664-9178</a> &nbsp;·&nbsp;
+      <a href="mailto:kristopher@econ-growth.com">kristopher@econ-growth.com</a> &nbsp;·&nbsp;
+      <a href="https://econ-growth.com/">econ-growth.com</a>
+    </span>
+  </div>
+</footer>
+
+<nav class="mobar">
+  <a href="tel:+16156649178">Call</a>
+  <a class="go" href="https://os.econ-growth.com/book/growth-call?src=card">Book a call</a>
+</nav>
+
+</body>
+</html>
