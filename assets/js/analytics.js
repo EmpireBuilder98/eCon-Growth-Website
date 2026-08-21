@@ -26,7 +26,10 @@
     // GA4 measurement id, looks like G-XXXXXXXXXX
     ga4Id: "GA4_ID_PENDING",
     // Google Ads conversion id, looks like AW-000000000 (optional)
-    googleAdsId: ""
+    googleAdsId: "",
+    // eCon OS — the CRM keeps its own copy, so the data lives next to the
+    // bookings and prospects it should be compared against.
+    crmEndpoint: "https://os.econ-growth.com/api/track"
   };
 
   var isPlaceholder = function (v) { return !v || /_PENDING$/.test(v); };
@@ -55,8 +58,21 @@
     if (CONFIG.googleAdsId) gtag("config", CONFIG.googleAdsId);
   }
 
+  // ── a stable id for this visit, so events can be stitched into a session ─
+  function sessionId() {
+    try {
+      var id = sessionStorage.getItem("econ_sid");
+      if (!id) {
+        id = (Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
+        sessionStorage.setItem("econ_sid", id);
+      }
+      return id;
+    } catch (e) { return ""; }
+  }
+
   // ── unified event sink ───────────────────────────────────────────────────
-  // Everything goes to both tools so neither dashboard has a blind spot.
+  // Everything goes to all three destinations so no dashboard has a blind
+  // spot, and eCon OS holds the durable copy Kris actually owns.
   function track(name, props) {
     props = props || {};
     try { if (window.gtag) window.gtag("event", name, props); } catch (e) {}
@@ -66,6 +82,32 @@
         Object.keys(props).forEach(function (k) {
           window.clarity("set", k, String(props[k]));
         });
+      }
+    } catch (e) {}
+
+    // → the CRM. sendBeacon survives the page being closed, which is the only
+    // way page_exit ever arrives; fetch with keepalive is the fallback.
+    try {
+      if (!CONFIG.crmEndpoint) return;
+      var payload = JSON.stringify({
+        event: name,
+        page: props.page || location.pathname,
+        source: props.source || "",
+        label: props.label || "",
+        href: props.href || "",
+        depth: typeof props.depth === "number" ? props.depth : null,
+        seconds: typeof props.seconds === "number" ? props.seconds : null,
+        session_id: sessionId(),
+        referrer: document.referrer || "",
+        props: props
+      });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(CONFIG.crmEndpoint, new Blob([payload], { type: "text/plain" }));
+      } else {
+        fetch(CONFIG.crmEndpoint, {
+          method: "POST", body: payload, keepalive: true,
+          headers: { "Content-Type": "text/plain" }
+        }).catch(function () {});
       }
     } catch (e) {}
   }
@@ -95,6 +137,9 @@
   };
 
   // ── page view + the card-scan event ──────────────────────────────────────
+  // Clarity and GA count pageviews on their own; the CRM needs to be told.
+  track("page_view", attribution);
+
   if (isCardLanding) {
     track("card_scan", attribution);
     try { if (window.clarity) window.clarity("set", "campaign", "nampa_business_card"); } catch (e) {}
